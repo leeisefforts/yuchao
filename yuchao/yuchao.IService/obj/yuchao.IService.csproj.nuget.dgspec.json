@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {}
+    "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {}
   },
   "projects": {
-    "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
-      "version": "5.0.0.9",
+    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+      "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj",
-        "projectName": "SqlSugar",
-        "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj",
+        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
+        "projectName": "yuchao.Entity",
+        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\obj\\",
+        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,43 +41,11 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
-            "Microsoft.Data.Sqlite": {
-              "target": "Package",
-              "version": "[2.2.4, )"
-            },
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[8.0.15, )"
-            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[10.0.3, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[3.2.7, )"
-            },
-            "Oracle.ManagedDataAccess.Core": {
-              "target": "Package",
-              "version": "[2.18.3, )"
-            },
-            "System.Data.Common": {
-              "target": "Package",
-              "version": "[4.3.0, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.4.0, )"
-            },
-            "System.Reflection.Emit.Lightweight": {
-              "target": "Package",
-              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -88,14 +56,14 @@
         }
       }
     },
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
+    "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
-        "projectName": "yuchao.Model",
-        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
+        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
+        "projectName": "yuchao.IService",
+        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\obj\\",
+        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -114,8 +82,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
-                "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj"
+              "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+                "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
               }
             }
           }

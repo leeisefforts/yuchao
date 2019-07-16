@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace yuchao.Model
+namespace yuchao.Business
 {
     public class Class1
     {

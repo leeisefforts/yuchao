@@ -11,3 +11,5 @@ E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.AssemblyInfo.c
 E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.RazorTargetAssemblyInfo.cache
 E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.dll
 E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Model.dll
+E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csprojAssemblyReference.cache
