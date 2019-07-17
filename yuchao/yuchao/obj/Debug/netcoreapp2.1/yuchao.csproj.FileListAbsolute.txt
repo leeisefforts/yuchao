@@ -13,3 +13,15 @@ E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.dll
 E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.pdb
 E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Model.dll
 E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csprojAssemblyReference.cache
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\SqlSugar.dll
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Business.dll
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Entity.dll
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.IService.dll
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Service.dll
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Business.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Entity.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Model.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\SqlSugar.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.IService.pdb
+E:\code\yuchao_azure\yuchao\yuchao\bin\Debug\netcoreapp2.1\yuchao.Service.pdb
+E:\code\yuchao_azure\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csproj.CopyComplete

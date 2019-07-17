@@ -1,12 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="Client\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\yuchao.Entity\yuchao.Entity.csproj" />
+    <ProjectReference Include="..\yuchao.IService\yuchao.IService.csproj" />
+    <ProjectReference Include="..\yuchao.Service\yuchao.Service.csproj" />
   </ItemGroup>
 
 </Project>

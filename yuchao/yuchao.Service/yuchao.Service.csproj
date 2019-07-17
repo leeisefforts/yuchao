@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\SqlSugar.csproj" />
     <ProjectReference Include="..\yuchao.Entity\yuchao.Entity.csproj" />
+    <ProjectReference Include="..\yuchao.IService\yuchao.IService.csproj" />
     <ProjectReference Include="..\yuchao.Model\yuchao.Model.csproj" />
   </ItemGroup>
 
