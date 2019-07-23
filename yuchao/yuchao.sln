@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yuchao.Service", "yuchao.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlSugar", "..\..\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\SqlSugar.csproj", "{F73E226B-37E5-488C-A41A-E537F340BE79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yuchao.Token", "yuchao.Token\yuchao.Token.csproj", "{4B1EBE0D-D73F-4F58-9ABE-9114D5117ECD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F73E226B-37E5-488C-A41A-E537F340BE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F73E226B-37E5-488C-A41A-E537F340BE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F73E226B-37E5-488C-A41A-E537F340BE79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B1EBE0D-D73F-4F58-9ABE-9114D5117ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B1EBE0D-D73F-4F58-9ABE-9114D5117ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B1EBE0D-D73F-4F58-9ABE-9114D5117ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B1EBE0D-D73F-4F58-9ABE-9114D5117ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

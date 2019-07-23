@@ -8,19 +8,19 @@ namespace yuchao.Service
 {
     public class RefereeApplyService: BaseDb, IRefereeApply
     {
-        public SimpleClient<RefereeApplyEntity> rdb = new SimpleClient<RefereeApplyEntity>(BaseDb.GetClient());
+        public SimpleClient<RefereeApply> rdb = new SimpleClient<RefereeApply>(BaseDb.GetClient());
 
-        public RefereeApplyEntity Get(int id)
+        public RefereeApply Get(int id)
         {
-            return rdb.GetById(id);
+            return rdb.GetSingle(p=>p.ApplyUserId == id);
         }
 
-        public bool Add(RefereeApplyEntity entity)
+        public bool Add(RefereeApply entity)
         {
             return rdb.Insert(entity);
         }
 
-        public bool Update(RefereeApplyEntity entity)
+        public bool Update(RefereeApply entity)
         {
             return rdb.Update(entity);
         }

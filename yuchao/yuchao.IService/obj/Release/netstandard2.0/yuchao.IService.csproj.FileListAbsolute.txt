@@ -1,0 +1,12 @@
+E:\code\yuchao_azure\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.IService.deps.json
+E:\code\yuchao_azure\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.IService.dll
+E:\code\yuchao_azure\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.IService.pdb
+E:\code\yuchao_azure\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.Entity.dll
+E:\code\yuchao_azure\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.Entity.pdb
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csprojAssemblyReference.cache
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csproj.CoreCompileInputs.cache
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.AssemblyInfoInputs.cache
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.AssemblyInfo.cs
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csproj.CopyComplete
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.dll
+E:\code\yuchao_azure\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.pdb

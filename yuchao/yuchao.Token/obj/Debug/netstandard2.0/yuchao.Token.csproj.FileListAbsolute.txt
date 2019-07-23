@@ -1,0 +1,9 @@
+E:\code\yuchao_azure\yuchao\yuchao.Token\bin\Debug\netstandard2.0\yuchao.Token.deps.json
+E:\code\yuchao_azure\yuchao\yuchao.Token\bin\Debug\netstandard2.0\yuchao.Token.dll
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.csprojAssemblyReference.cache
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.csproj.CoreCompileInputs.cache
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.AssemblyInfoInputs.cache
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.AssemblyInfo.cs
+E:\code\yuchao_azure\yuchao\yuchao.Token\bin\Debug\netstandard2.0\yuchao.Token.pdb
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.dll
+E:\code\yuchao_azure\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.pdb

@@ -10,7 +10,7 @@ namespace yuchao.Business.Admin
     {
         private IRefereeApply IService = new Service.RefereeApplyService();
 
-        public RefereeApplyEntity GetById(int id) {
+        public RefereeApply GetById(int id) {
             return IService.Get(id);
         }
     }

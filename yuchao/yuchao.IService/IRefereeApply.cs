@@ -10,21 +10,21 @@ namespace yuchao.IService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        RefereeApplyEntity Get(int id);
+        RefereeApply Get(int id);
 
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Add(RefereeApplyEntity entity);
+        bool Add(RefereeApply entity);
 
         /// <summary>
         /// 编辑
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Update(RefereeApplyEntity entity);
+        bool Update(RefereeApply entity);
 
         /// <summary>
         /// 批量删除
