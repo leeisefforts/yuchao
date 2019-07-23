@@ -12,9 +12,9 @@ namespace yuchao.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Json("Success Job");
         }
     }
 }
