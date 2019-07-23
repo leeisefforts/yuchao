@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Admin\Club\" />
     <Folder Include="Controllers\Client\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
