@@ -22,6 +22,17 @@
             <param name="httpContext"></param>
             <returns></returns>
         </member>
+        <member name="T:yuchao.Controllers.Admin.Club.ClubController">
+            <summary>
+            俱乐部后台接口
+            </summary>
+        </member>
+        <member name="M:yuchao.Controllers.Admin.Club.ClubController.Get">
+            <summary>
+            获取俱乐部列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:yuchao.Controllers.Admin.RefereeApplyController.GetById(System.Int32)">
             <summary>
             根据UserId获取单条审核数据
