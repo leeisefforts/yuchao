@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\SqlSugar.csproj" />
+    <ProjectReference Include="..\SqlSugar\SqlSugar.csproj" />
   </ItemGroup>
 
 </Project>

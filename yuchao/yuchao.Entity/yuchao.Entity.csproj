@@ -9,4 +9,8 @@
     <DocumentationFile>..\bin\Debug\netstandard2.0\netcoreapp2.1\EntityHelp.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SqlSugar\SqlSugar.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -994,6 +994,9 @@
       "yuchao.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "SqlSugar": "5.0.0.9"
+        },
         "compile": {
           "bin/placeholder/yuchao.Entity.dll": {}
         },
@@ -1005,6 +1008,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "SqlSugar": "5.0.0.9",
           "yuchao.Entity": "1.0.0"
         },
         "compile": {
@@ -4207,8 +4211,8 @@
     },
     "SqlSugar/5.0.0.9": {
       "type": "project",
-      "path": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj",
-      "msbuildProject": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj"
+      "path": "../SqlSugar/SqlSugar.csproj",
+      "msbuildProject": "../SqlSugar/SqlSugar.csproj"
     },
     "yuchao.Entity/1.0.0": {
       "type": "project",
@@ -4229,7 +4233,6 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
-      "SqlSugar >= 5.0.0.9",
       "yuchao.Entity >= 1.0.0",
       "yuchao.IService >= 1.0.0",
       "yuchao.Model >= 1.0.0"
@@ -4265,9 +4268,6 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
-              "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj"
-            },
             "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
               "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
             },

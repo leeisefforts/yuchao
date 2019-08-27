@@ -4171,8 +4171,8 @@
     },
     "SqlSugar/5.0.0.9": {
       "type": "project",
-      "path": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj",
-      "msbuildProject": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj"
+      "path": "../SqlSugar/SqlSugar.csproj",
+      "msbuildProject": "../SqlSugar/SqlSugar.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4211,8 +4211,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
-              "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj"
+            "E:\\code\\yuchao_azure\\yuchao\\SqlSugar\\SqlSugar.csproj": {
+              "projectPath": "E:\\code\\yuchao_azure\\yuchao\\SqlSugar\\SqlSugar.csproj"
             }
           }
         }
