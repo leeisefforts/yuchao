@@ -11,7 +11,7 @@ namespace yuchao.Model
                 new ConnectionConfig()
                 {
                     ConnectionString = BaseDbconfig.ConnectionString,
-                    DbType = DbType.SqlServer,
+                    DbType = DbType.MySql,
                     IsAutoCloseConnection = true
                 }
             );

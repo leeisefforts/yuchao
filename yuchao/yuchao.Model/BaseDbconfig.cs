@@ -6,6 +6,6 @@ namespace yuchao.Model
 {
     public class BaseDbconfig
     {
-        public static string ConnectionString = "Server=tcp:worktech.database.windows.net,1433;Initial Catalog=yuchao;Persist Security Info=False;User ID=bryant;Password=LeeKobe24;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public static string ConnectionString = "server=rm-m5eo89y536k75owz9go.mysql.rds.aliyuncs.com;Database=yuchao;Uid=root;Pwd=Worktech!;port=3306";
     }
 }
