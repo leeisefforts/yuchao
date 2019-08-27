@@ -4830,6 +4830,9 @@
       "yuchao.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "SqlSugar": "5.0.0.9"
+        },
         "compile": {
           "bin/placeholder/yuchao.Entity.dll": {}
         },
@@ -4841,6 +4844,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "SqlSugar": "5.0.0.9",
           "yuchao.Entity": "1.0.0"
         },
         "compile": {
@@ -4867,7 +4871,6 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "SqlSugar": "5.0.0.9",
           "yuchao.Entity": "1.0.0",
           "yuchao.IService": "1.0.0",
           "yuchao.Model": "1.0.0"
@@ -12923,8 +12926,8 @@
     },
     "SqlSugar/5.0.0.9": {
       "type": "project",
-      "path": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj",
-      "msbuildProject": "../../../SqlSugar/SqlSugar-SqlSugar5/Src/Asp.NetCore2/SqlSeverTest/SqlSugar/SqlSugar.csproj"
+      "path": "../SqlSugar/SqlSugar.csproj",
+      "msbuildProject": "../SqlSugar/SqlSugar.csproj"
     },
     "yuchao.Business/1.0.0": {
       "type": "project",

@@ -1,0 +1,9 @@
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\bin\Release\netstandard2.0\SqlSugar.deps.json
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\bin\Release\netstandard2.0\SqlSugar.dll
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\bin\Release\netstandard2.0\SqlSugar.pdb
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.csprojAssemblyReference.cache
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.csproj.CoreCompileInputs.cache
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.AssemblyInfoInputs.cache
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.AssemblyInfo.cs
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.dll
+E:\code\SqlSugar\SqlSugar-SqlSugar5\Src\Asp.NetCore2\SqlSeverTest\SqlSugar\obj\Release\netstandard2.0\SqlSugar.pdb
