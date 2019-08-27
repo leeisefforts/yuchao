@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Service\\yuchao.Service.csproj": {}
+    "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj": {}
   },
   "projects": {
     "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
@@ -10,14 +10,14 @@
         "projectUniqueName": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj",
         "projectName": "SqlSugar",
         "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
         "outputPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,20 +88,20 @@
         }
       }
     },
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+    "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
+        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
         "projectName": "yuchao.Entity",
-        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\obj\\",
+        "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj",
+        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -140,20 +140,20 @@
         }
       }
     },
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
+    "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
+        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
         "projectName": "yuchao.IService",
-        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\obj\\",
+        "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
+        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -166,8 +166,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
-                "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
+              "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+                "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
               }
             }
           }
@@ -196,20 +196,20 @@
         }
       }
     },
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
+    "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
+        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
         "projectName": "yuchao.Model",
-        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\obj\\",
+        "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
+        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -252,20 +252,20 @@
         }
       }
     },
-    "E:\\code\\yuchao_azure\\yuchao\\yuchao.Service\\yuchao.Service.csproj": {
+    "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
+        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
         "projectName": "yuchao.Service",
-        "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Service\\obj\\",
+        "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
+        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+        "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -281,14 +281,14 @@
               "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj": {
                 "projectPath": "E:\\code\\SqlSugar\\SqlSugar-SqlSugar5\\Src\\Asp.NetCore2\\SqlSeverTest\\SqlSugar\\SqlSugar.csproj"
               },
-              "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
-                "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
+              "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+                "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
               },
-              "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
-                "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.IService\\yuchao.IService.csproj"
+              "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
+                "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj"
               },
-              "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
-                "projectPath": "E:\\code\\yuchao_azure\\yuchao\\yuchao.Model\\yuchao.Model.csproj"
+              "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
+                "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj"
               }
             }
           }
