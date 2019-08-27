@@ -31,6 +31,7 @@ namespace yuchao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(_options => _options.AddPolicy("AllowCors", _builder => _builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IMemoryCache>(factory =>
@@ -83,7 +84,7 @@ namespace yuchao
             {
                 app.UseHsts();
             }
-
+            app.UseCors("AllowCors");
             app.UseHttpsRedirection();
             app.UseMvc();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace yuchao.Controllers.Admin.Club
     /// 俱乐部后台接口
     /// </summary>
     [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
     [ApiController]
     public class ClubController: Controller
     {

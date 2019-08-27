@@ -7,3 +7,6 @@ E:\code\yuchao_azure\yuchao\yuchao.Entity\obj\Release\netstandard2.0\yuchao.Enti
 E:\code\yuchao_azure\yuchao\yuchao.Entity\obj\Release\netstandard2.0\yuchao.Entity.AssemblyInfo.cs
 E:\code\yuchao_azure\yuchao\yuchao.Entity\obj\Release\netstandard2.0\yuchao.Entity.dll
 E:\code\yuchao_azure\yuchao\yuchao.Entity\obj\Release\netstandard2.0\yuchao.Entity.pdb
+E:\code\yuchao_azure\yuchao\yuchao.Entity\bin\Release\netstandard2.0\SqlSugar.dll
+E:\code\yuchao_azure\yuchao\yuchao.Entity\bin\Release\netstandard2.0\SqlSugar.pdb
+E:\code\yuchao_azure\yuchao\yuchao.Entity\obj\Release\netstandard2.0\yuchao.Entity.csproj.CopyComplete

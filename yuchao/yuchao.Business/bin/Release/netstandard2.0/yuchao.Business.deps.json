@@ -785,12 +785,16 @@
         }
       },
       "yuchao.Entity/1.0.0": {
+        "dependencies": {
+          "SqlSugar": "5.0.0.9"
+        },
         "runtime": {
           "yuchao.Entity.dll": {}
         }
       },
       "yuchao.IService/1.0.0": {
         "dependencies": {
+          "SqlSugar": "5.0.0.9",
           "yuchao.Entity": "1.0.0"
         },
         "runtime": {
@@ -807,7 +811,6 @@
       },
       "yuchao.Service/1.0.0": {
         "dependencies": {
-          "SqlSugar": "5.0.0.9",
           "yuchao.Entity": "1.0.0",
           "yuchao.IService": "1.0.0",
           "yuchao.Model": "1.0.0"

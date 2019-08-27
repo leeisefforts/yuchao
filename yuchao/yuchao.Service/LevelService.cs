@@ -16,5 +16,9 @@ namespace yuchao.Service
         {
             return rdb.GetList();
         }
+
+        public bool Insert(Level level) {
+            return rdb.Insert(level);
+        }
     }
 }
