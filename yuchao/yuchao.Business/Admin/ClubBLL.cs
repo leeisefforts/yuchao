@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
-using yuchao.IService;
+using yuchao.Service;
 
 namespace yuchao.Business.Admin
 {
-    public class RefereeApplyBLL
+  public  class ClubBLL
     {
-        private IRefereeApply IService = new Service.RefereeApplyService();
+        public ClubServer IService = new Service.ClubServer();
 
-        public RefereeApply GetById(int id) {
+        public Club GetById(int id)
+        {
             return IService.Get(id);
         }
-
-        public bool Insert(RefereeApply entity) {
+        public bool Insert(Club entity)
+        {
             return IService.Add(entity);
         }
-        
     }
 }

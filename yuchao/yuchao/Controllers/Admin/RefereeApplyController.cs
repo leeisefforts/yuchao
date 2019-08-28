@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using yuchao.Business.Admin;
-using yuchao.Entity;
+using Newtonsoft.Json;
 
 namespace yuchao.Controllers.Admin
 {
@@ -30,11 +24,24 @@ namespace yuchao.Controllers.Admin
         }
 
         [HttpPost("{id}")]
-        public JsonResult ApplyById(int id) {
+        public JsonResult ApplyById([FromBody] string values) {
+            RefereeApply obj = JsonConvert.DeserializeObject<RefereeApply>(values);
+            
             return Json("");
         }
     }
 
+    internal class RefereeApplyBLL
+    {
+        internal object GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class RefereeApply
+    {
+    }
 
     [Route("api/admin/[controller]")]
     public class TextController : Controller {

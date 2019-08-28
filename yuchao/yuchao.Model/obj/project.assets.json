@@ -4211,8 +4211,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\code\\yuchao_azure\\yuchao\\SqlSugar\\SqlSugar.csproj": {
-              "projectPath": "E:\\code\\yuchao_azure\\yuchao\\SqlSugar\\SqlSugar.csproj"
+            "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
+              "projectPath": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
             }
           }
         }

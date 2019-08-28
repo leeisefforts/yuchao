@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using yuchao.Entity;
+using yuchao.IService;
 using yuchao.Model;
 
 namespace yuchao.Service
@@ -10,9 +12,9 @@ namespace yuchao.Service
     {
         public SimpleClient<Club> rdb = new SimpleClient<Club>(BaseDb.GetClient());
 
-        public Club Get(int id)
+        public Club Get(int Id)
         {
-            return rdb.GetSingle(p => p.ApplyUserId == id);
+            return rdb.GetSingle(p => p.Id == Id);
         }
 
         public bool Add(Club entity)
