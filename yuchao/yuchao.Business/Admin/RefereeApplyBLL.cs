@@ -17,6 +17,6 @@ namespace yuchao.Business.Admin
         public bool Insert(RefereeApply entity) {
             return IService.Add(entity);
         }
-        
+       
     }
 }

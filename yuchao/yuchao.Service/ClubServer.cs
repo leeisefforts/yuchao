@@ -30,6 +30,7 @@ namespace yuchao.Service
         public bool Dels(dynamic[] ids)
         {
             return rdb.DeleteByIds(ids);
+            
         }
     }
 }

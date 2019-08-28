@@ -30,11 +30,12 @@ namespace yuchao.Controllers.Admin.Club
         {
             return Json(bll.GetById(Id));
         }
-        [HttpPost]
-        public JsonResult Post([FromBody]string Json) {
-           
-            return Json("Success");
-        }
+        //[HttpPost]
+        //public JsonResult Post([FromBody]string Json)
+        //{
+
+        //    return Json("Success");
+        //}
         [HttpPost("Add")]
         public JsonResult PostAdd([FromBody]string values)
         {
@@ -42,13 +43,13 @@ namespace yuchao.Controllers.Admin.Club
             return Json("");
         }
         [HttpPut("{id}")]
-        public JsonResult ApplyById([FromBody]string values)
+        public JsonResult Update()
         {
-           
-            return Json("");
+            
+            return Json("values");
         }
         [HttpDelete("{id}")]
-        public JsonResult GetById()
+        public JsonResult Delete()
         {
             return Json("");
         }
@@ -59,7 +60,7 @@ namespace yuchao.Controllers.Admin.Club
             {
             }
 
-            internal object GetById(int id)
+            internal object GetById(/*int id*/int id)
             {
                 throw new NotImplementedException();
             }
