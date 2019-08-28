@@ -9,5 +9,7 @@ namespace yuchao.Entity
         public int Id { get; set; }
 
         public string LevelName { get; set; }
+
+        public int LevelSort { get; set; }
     }
 }

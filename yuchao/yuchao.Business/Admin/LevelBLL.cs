@@ -14,5 +14,9 @@ namespace yuchao.Business.Admin
         {
             return IService.GetAll();
         }
+
+        public bool Insert(Level level) {
+            return IService.Insert(level);
+        }
     }
 }

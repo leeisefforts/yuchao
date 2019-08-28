@@ -11,6 +11,8 @@ namespace yuchao.IService
         /// 获取全部段位
         /// </summary>
         /// <returns></returns>
-        List<Level> GetAll(); 
+        List<Level> GetAll();
+
+        bool Insert(Level level);
     }
 }

@@ -1,11 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using yuchao.Business.Admin;
+using yuchao.Entity;
 
 namespace yuchao.Controllers.Admin
 {
     [Produces("application/json")]
     [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
     [ProducesResponseType(typeof(RefereeApply), 200)]
     [ApiController]
     public class RefereeApplyController : Controller
@@ -24,24 +32,11 @@ namespace yuchao.Controllers.Admin
         }
 
         [HttpPost("{id}")]
-        public JsonResult ApplyById([FromBody] string values) {
-            RefereeApply obj = JsonConvert.DeserializeObject<RefereeApply>(values);
-            
+        public JsonResult ApplyById(int id) {
             return Json("");
         }
     }
 
-    internal class RefereeApplyBLL
-    {
-        internal object GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    internal class RefereeApply
-    {
-    }
 
     [Route("api/admin/[controller]")]
     public class TextController : Controller {
