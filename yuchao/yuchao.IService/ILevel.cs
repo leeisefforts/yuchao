@@ -14,5 +14,11 @@ namespace yuchao.IService
         List<Level> GetAll();
 
         bool Insert(Level level);
+
+        Level GetById(int id);
+
+        bool DeleteById(int id);
+
+        bool Update(Level level);
     }
 }

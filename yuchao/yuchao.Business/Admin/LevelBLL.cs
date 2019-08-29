@@ -18,5 +18,17 @@ namespace yuchao.Business.Admin
         public bool Insert(Level level) {
             return IService.Insert(level);
         }
+
+        public bool DeleteById(int id) {
+            return IService.DeleteById(id);
+        }
+
+        public bool Update(Level level) {
+            Level l = IService.GetById(level.Id);
+            l.LevelName = level.LevelName;
+            l.LevelSort = level.LevelSort;
+            return IService.Update(level);
+
+        }
     }
 }

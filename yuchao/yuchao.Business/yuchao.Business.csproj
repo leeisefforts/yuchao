@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Client\" />
-    <Folder Include="yuchao\Service\" />
+    <Compile Remove="yuchao\**" />
+    <EmbeddedResource Remove="yuchao\**" />
+    <None Remove="yuchao\**" />
   </ItemGroup>
 
   <ItemGroup>

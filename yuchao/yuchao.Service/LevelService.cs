@@ -20,5 +20,17 @@ namespace yuchao.Service
         public bool Insert(Level level) {
             return rdb.Insert(level);
         }
+
+        public Level GetById(int id) {
+            return rdb.GetById(id);
+        }
+
+        public bool DeleteById(int id) {
+            return rdb.DeleteById(id);
+        }
+
+        public bool Update(Level level) {
+            return rdb.Update(level);
+        }
     }
 }

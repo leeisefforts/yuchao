@@ -11,5 +11,7 @@ namespace yuchao.Entity
         public string LevelName { get; set; }
 
         public int LevelSort { get; set; }
+
+        public int Status { get; set; }
     }
 }
