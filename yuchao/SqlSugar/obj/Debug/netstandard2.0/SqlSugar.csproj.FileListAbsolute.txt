@@ -16,3 +16,12 @@ E:\code\yuchao_azure\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyI
 E:\code\yuchao_azure\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfo.cs
 E:\code\yuchao_azure\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.dll
 E:\code\yuchao_azure\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb
+E:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.deps.json
+E:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.dll
+E:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.pdb
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csprojAssemblyReference.cache
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csproj.CoreCompileInputs.cache
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfoInputs.cache
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfo.cs
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.dll
+E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb
