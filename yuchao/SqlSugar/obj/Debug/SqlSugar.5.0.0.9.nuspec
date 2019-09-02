@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SqlSugar</id>
+    <version>5.0.0.9</version>
+    <authors>SqlSugar</authors>
+    <owners>SqlSugar</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/sunkaixuan/SqlSugar</projectUrl>
+    <description>Package Description</description>
+    <copyright>sun_kai_xuan</copyright>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Data.Sqlite" version="2.2.4" exclude="Build,Analyzers" />
+        <dependency id="MySql.Data" version="8.0.15" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="10.0.3" exclude="Build,Analyzers" />
+        <dependency id="Npgsql" version="3.2.7" exclude="Build,Analyzers" />
+        <dependency id="Oracle.ManagedDataAccess.Core" version="2.18.3" exclude="Build,Analyzers" />
+        <dependency id="System.Data.Common" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SqlClient" version="4.4.0" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.Emit.Lightweight" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="E:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.dll" target="lib\netstandard2.0\SqlSugar.dll" />
+  </files>
+</package>
