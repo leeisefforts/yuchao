@@ -4,13 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using yuchao.Business.Admin;
+using yuchao.Entity;
+using yuchao.Model;
 
 namespace yuchao.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VerifieduserController : ControllerBase
+    public class VerifieduserController : Controller
     {
+        private VerifieduserBLL bll = new VerifieduserBLL();
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,30 +27,64 @@ namespace yuchao.Controllers.Admin
         [HttpGet("{id}")]
         public JsonResult GetById(int id)
         {
-            return Json("");
-        }
-
-        private JsonResult Json(string v)
-        {
-            throw new NotImplementedException();
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetAll()
+            });
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public JsonResult Post(int id,[FromBody]JObject values)
         {
+            Verifieduser obj = new Verifieduser()
+            {
+                UserId = Convert.ToInt32(values["userId"]),
+                Card = values["card"].ToString(),
+                CardImg1 = values["cardImg1"].ToString(),
+                CardImg2 = values["cardImg2"].ToString()
+                 
+            };
+            bool result = false;
+            if (id!= 0)
+            {
+                obj.Id = id;
+                result = bll.Update(obj);
+            }
+            else
+            {
+                result = bll.Insert(obj);
+            }
+
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = result
+            });
+
+
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
-        {
+        {         
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public JsonResult Delete(int id)
         {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteById(id)
+            });
         }
     }
 }

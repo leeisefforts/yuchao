@@ -19,6 +19,7 @@ namespace yuchao.IService
         /// <param name="entity"></param>
         /// <returns></returns>
         bool Add(RefereeApply entity);
+        bool Update();
 
         /// <summary>
         /// 编辑
@@ -26,6 +27,7 @@ namespace yuchao.IService
         /// <param name="entity"></param>
         /// <returns></returns>
         bool Update(RefereeApply entity);
+        object Dels(int id);
 
         /// <summary>
         /// 批量删除

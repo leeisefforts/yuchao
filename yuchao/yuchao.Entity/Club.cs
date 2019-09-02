@@ -13,6 +13,8 @@ namespace yuchao.Entity
         public string ClubCity { get; set; }
         public string ClubArea { get; set; }
         public int Status { get; set; }
-       
+        public DateTime CreateTime { get; set; }
+
+
     }
 }

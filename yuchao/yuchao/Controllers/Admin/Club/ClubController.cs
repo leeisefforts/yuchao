@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using yuchao.Business.Admin;
 using yuchao.Entity;
 using yuchao.Model;
 
@@ -24,129 +25,79 @@ namespace yuchao.Controllers.Admin
         /// 获取俱乐部列表
         /// </summary>
         /// <returns></returns>
+        // GET: api/<controller>
         [HttpGet]
-        public JsonResult Get() {
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public JsonResult GetById(int id)
+        {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.Get()
+                Obj = bll.GetById(id)
             });
         }
 
-        [HttpGet]
-        public JsonResult Insert([FromBody]JObject values)
+        // POST api/<controller>
+        [HttpPost]
+        public JsonResult Post(int id, [FromBody]JObject values)
         {
-
-            ApiResult res = new ApiResult
+            Club obj = new Club()
             {
-                Status = 200,
-                Error = "Success"
+                 ClubArea = values["clubArea"].ToString(),
+                  ClubCity = values["clubCity"].ToString(),
+                   ClubDesc = values["clubDesc"].ToString(),
+                    ClubLogo = values["clubLogo"].ToString(),
+                     ClubName = values["clubName"].ToString(),
+                      Status = Convert.ToInt32(values["status"]),
+                       CreateTime=Convert.ToDateTime(values["createTime"])
+              
 
             };
-            bool suc = bll.Insert(new Entity.Club() { ClubName = values["ClubName"].ToString(), ClubDesc = values["ClubDesc"].ToString(), ClubLogo = values["ClubLogo"].ToString(), ClubCity = values["ClubCity"].ToString(), ClubArea = values["ClubArea"].ToString() });
-            if (suc) res.Obj = true;
+            bool result = false;
+            if (id != 0)
+            {
+                obj.Id = id;
+                result = bll.Update(obj);
+            }
             else
             {
-                res.Status = -1;
-                res.Obj = false;
+                result = bll.Insert(obj);
             }
 
-            return Json(res);
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = result
+            });
+
+
         }
 
-        [HttpPost("Add")]
-        public JsonResult PostAdd([FromBody]string values)
-        {
-            Object obj = JsonConvert.DeserializeObject<JObject>(values);
-            return Json("");
-        }
+        // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public JsonResult Update(int id,[FromBody]string values)
+        public void Put(int id, [FromBody]string value)
         {
-
-            ApiResult res = new ApiResult
-            {
-                Status = 200,
-                Error = "Success"
-
-            };
-            bool suc = bll.Update(new Entity.Club() { Id = id, ClubName = "ClubName", ClubDesc = "ClubDesc", ClubLogo ="ClubLogo" });
-            if (suc) res.Obj = true;
-            else
-            {
-                res.Status = -1;
-                res.Obj = false;
-            }
-
-            return Json(res);
         }
 
+        // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public JsonResult Delete()
+        public JsonResult DeleteById(dynamic[] ids)
         {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.Delete()
+                Obj = bll.DeleteById(ids)
             });
-        }
-
-        internal class ClubBLL
-        {
-            public ClubBLL()
-            {
-            }
-
-            internal object GetById(/*int id*/int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            internal object Get()
-            {
-                throw new NotImplementedException();
-            }
-
-            internal bool Insert(Club club)
-            {
-                throw new NotImplementedException();
-            }
-
-            internal bool Insert(Entity.Club club)
-            {
-                throw new NotImplementedException();
-            }
-
-            internal object Delete()
-            {
-                throw new NotImplementedException();
-            }
-
-            internal bool Update(Entity.Club club)
-            {
-                throw new NotImplementedException();
-            }
-
-            internal bool Update(string v)
-            {
-                throw new NotImplementedException();
-            }
-
-            internal class Club
-            {
-            }
-
-            [Route("api/admin/[controller]")]
-            public class TextController : Controller
-            {
-                [HttpGet]
-                public JsonResult Get()
-                {
-                    return Json("Success");
-                }
-            }
         }
     }
 }

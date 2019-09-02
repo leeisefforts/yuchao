@@ -12,7 +12,7 @@ namespace yuchao.Business.Admin
         // 查询      
         public User GetById(int id)
         {
-            return IService.Get(id);
+            return IService.GetById(id);
         }
         // 增加
         public bool Insert(User entity)
@@ -33,5 +33,8 @@ namespace yuchao.Business.Admin
             return IService.Update(entity);
         }
 
+      
+
+   
     }
 }

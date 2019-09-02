@@ -17,6 +17,16 @@ namespace yuchao.Business.Admin
         public bool Insert(RefereeApply entity) {
             return IService.Add(entity);
         }
-       
+
+
+        public bool Update(RefereeApply entity)
+        {
+            return IService.Update(entity);
+        }
+
+        public object DeleteById(int id)
+        {
+            return IService.Dels(id);
+        }
     }
 }

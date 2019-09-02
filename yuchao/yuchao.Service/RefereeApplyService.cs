@@ -29,5 +29,15 @@ namespace yuchao.Service
         {
             return rdb.DeleteByIds(ids);
         }
+
+        public object Dels(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

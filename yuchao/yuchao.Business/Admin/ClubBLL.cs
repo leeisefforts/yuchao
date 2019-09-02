@@ -35,5 +35,11 @@ namespace yuchao.Business.Admin
             return IService.Update(entity);
         }
 
+        public object DeleteById(dynamic[] ids)
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }
