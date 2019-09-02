@@ -38,6 +38,7 @@ namespace yuchao
             {
                 var cache = new MemoryCache(new MemoryCacheOptions());
                 return cache;
+
             });
 
             services.AddAuthorization(options =>

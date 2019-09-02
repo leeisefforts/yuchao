@@ -2,35 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
-using yuchao.IService;
 using yuchao.Service;
-
 
 namespace yuchao.Business.Admin
 {
-  public  class ClubBLL
+   public class UserBLL
     {
-        public ClubServer IService = new Service.ClubServer();
+        public UserServer IService = new Service.UserServer();
         // 查询      
-        public Club GetById(int id)
+        public User GetById(int id)
         {
             return IService.Get(id);
         }
         // 增加
-        public bool Insert(Club entity)
+        public bool Insert(User entity)
         {
             return IService.Add(entity);
         }
         // 删除
         public bool DeleteByIds(dynamic[] ids)
         {
-          
+
             return IService.Dels(ids);
         }
         /// <summary>
         /// 修改
         /// </summary>
-       public bool Update(Club entity)
+        public bool Update(User entity)
         {
             return IService.Update(entity);
         }

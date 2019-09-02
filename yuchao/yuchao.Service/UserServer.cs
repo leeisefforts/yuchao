@@ -8,21 +8,21 @@ using yuchao.Model;
 
 namespace yuchao.Service
 {
-   public class ClubServer: BaseDb, IClub
+    public class UserServer : BaseDb, IUser
     {
-        public SimpleClient<Club> rdb = new SimpleClient<Club>(BaseDb.GetClient());
+        public SimpleClient<User> rdb = new SimpleClient<User>(BaseDb.GetClient());
 
-        public Club Get(int Id)
+        public User Get(int Id)
         {
             return rdb.GetSingle(p => p.Id == Id);
         }
 
-        public bool Add(Club entity)
+        public bool Add(User entity)
         {
             return rdb.Insert(entity);
         }
 
-        public bool Update(Club entity)
+        public bool Update(User entity)
         {
             return rdb.Update(entity);
         }
@@ -30,10 +30,10 @@ namespace yuchao.Service
         public bool Dels(dynamic[] ids)
         {
             return rdb.DeleteByIds(ids);
-            
+
         }
 
-        public Club GetById(object id)
+        public User GetById(object id)
         {
             throw new NotImplementedException();
         }

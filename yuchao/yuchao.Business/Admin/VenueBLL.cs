@@ -27,6 +27,7 @@ namespace yuchao.Business.Admin
 
         public bool Update(Venue venue)
         {
+
             Venue l = IService.GetById(venue.Id);
             l.VenueName = venue.VenueName;
             l.VenueImg = venue.VenueImg;

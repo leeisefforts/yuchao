@@ -6,13 +6,13 @@ using yuchao.Model;
 
 namespace yuchao.Service
 {
-    public class RefereeApplyService: BaseDb, IRefereeApply
+    public class RefereeApplyService : BaseDb, IRefereeApply
     {
         public SimpleClient<RefereeApply> rdb = new SimpleClient<RefereeApply>(BaseDb.GetClient());
 
         public RefereeApply Get(int id)
         {
-            return rdb.GetSingle(p=>p.ApplyUserId == id);
+            return rdb.GetSingle(p => p.ApplyUserId == id);
         }
 
         public bool Add(RefereeApply entity)

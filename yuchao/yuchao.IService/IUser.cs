@@ -1,31 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using yuchao.Entity;
 
 namespace yuchao.IService
 {
-    public interface IRefereeApply
+   public interface IUser
     {
         /// <summary>
         /// 获取申请单条记录
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        RefereeApply Get(int id);
-      
+        User Get(int Id);
 
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Add(RefereeApply entity);
+        bool Add(User entity);
 
         /// <summary>
         /// 编辑
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Update(RefereeApply entity);
+        bool Update(User entity);
 
         /// <summary>
         /// 批量删除
@@ -33,6 +34,5 @@ namespace yuchao.IService
         /// <param name="ids"></param>
         /// <returns></returns>
         bool Dels(dynamic[] ids);
-
     }
 }

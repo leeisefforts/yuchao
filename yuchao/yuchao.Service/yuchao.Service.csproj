@@ -9,5 +9,4 @@
     <ProjectReference Include="..\yuchao.IService\yuchao.IService.csproj" />
     <ProjectReference Include="..\yuchao.Model\yuchao.Model.csproj" />
   </ItemGroup>
-
 </Project>

@@ -55,7 +55,9 @@ namespace yuchao.AuthHelp
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
                 httpContext.User = principal;
                 return _next(httpContext);
+               
             }
+            
             catch (Exception)
             {
                 return httpContext.Response.WriteAsync("token验证异常");
