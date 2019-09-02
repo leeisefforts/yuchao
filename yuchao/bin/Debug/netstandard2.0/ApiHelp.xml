@@ -33,13 +33,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:yuchao.Controllers.Admin.RefereeApplyController.GetById(System.Int32)">
-            <summary>
-            根据UserId获取单条审核数据
-            </summary>
-            <param name="id">用户Id</param>
-            <returns></returns>
-        </member>
         <member name="T:yuchao.SwaggerHelp.SwaggerHelp.SwaggerDocTag">
             <summary>
             Swagger注释帮助类
