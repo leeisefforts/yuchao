@@ -11,5 +11,7 @@ namespace yuchao.Model
         public string Error { get; set; }
 
         public Object Obj { get; set; }
+
+     
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
@@ -12,7 +13,9 @@ using yuchao.Model;
 
 namespace yuchao.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
     public class UserController : Controller
     {
         private UserBLL bll = new UserBLL();
@@ -31,7 +34,7 @@ namespace yuchao.Controllers.Admin
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetType()
+                Obj = bll.GetById(id)
             });
         }
 
@@ -41,12 +44,12 @@ namespace yuchao.Controllers.Admin
         {
             User obj = new User()
             {
-                AvatarUrl = values["avatarUrl"].ToString(),
-                City = values["city"].ToString(),
-                Country = values["country"].ToString(),
-                Gender = Convert.ToInt32(values["gender"]),
-                Language = values["language"].ToString(),
                 NickName = values["nickName"].ToString(),
+                Language = values["language"].ToString(),
+                Gender = Convert.ToInt32(values["gender"]),
+                AvatarUrl = values["avatarUrl"].ToString(),
+                Country = values["country"].ToString(),
+                City = values["city"].ToString(),
                 Province = values["province"].ToString()
             };
             bool result = false;
@@ -72,8 +75,26 @@ namespace yuchao.Controllers.Admin
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public JsonResult Put(int id, [FromBody]JObject values)
         {
+            ApiResult res = new ApiResult
+            {
+                Status = 200,
+                Error = "success",
+                Obj = bll.Update(new User
+                {
+                    AvatarUrl = values["avatarUrl"].ToString(),
+                    City = values["city"].ToString(),
+                    Country = values["country"].ToString(),
+                    Gender = Convert.ToInt32(values["gender"]),
+                    Language = values["language"].ToString(),
+                    NickName = values["nickName"].ToString(),
+                     Province=values["province"].ToString()
+
+                })
+
+            };
+             return Json(res);
         }
 
         // DELETE api/<controller>/5

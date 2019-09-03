@@ -43,10 +43,10 @@ namespace yuchao.Controllers.Admin
         {
             RefereeApply obj = new RefereeApply()
             {
-                 
-                 ApplyUserId= Convert.ToInt32(values["applyUserId"]),
-                 ApplyResult = Convert.ToInt32(values["applyResult"]),
-                 ApplyDate =Convert.ToDateTime(values["applyDate"])
+
+                ApplyUserId = Convert.ToInt32(values["applyUserId"]),
+                ApplyResult = Convert.ToInt32(values["applyResult"]),
+                ApplyDate = Convert.ToDateTime(values["applyDate"])
             };
             bool result = false;
             if (id != 0)
@@ -72,8 +72,21 @@ namespace yuchao.Controllers.Admin
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public JsonResult Put(int id, [FromBody]JObject values)
         {
+            ApiResult res = new ApiResult
+            {
+                Status = 200,
+                Error = "success",
+                Obj = bll.Update(new RefereeApply()
+                {
+                     Id=id,
+                    ApplyDate = Convert.ToDateTime(values["applyDate"]),
+                    ApplyResult = Convert.ToInt32(values["applyResult"]),
+                    ApplyUserId = Convert.ToInt32(values["applyUserId"])
+                })
+            };
+            return Json(res);
         }
 
         // DELETE api/<controller>/5

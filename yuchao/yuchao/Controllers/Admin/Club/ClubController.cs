@@ -15,12 +15,12 @@ namespace yuchao.Controllers.Admin
     /// 俱乐部后台接口
     /// </summary>
     [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
     [ApiController]
     public class ClubController : Controller
     {
         private ClubBLL bll = new ClubBLL();
-
-
         /// <summary>
         /// 获取俱乐部列表
         /// </summary>
@@ -31,7 +31,6 @@ namespace yuchao.Controllers.Admin
         {
             return new string[] { "value1", "value2" };
         }
-
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public JsonResult GetById(int id)
@@ -43,22 +42,19 @@ namespace yuchao.Controllers.Admin
                 Obj = bll.GetById(id)
             });
         }
-
         // POST api/<controller>
         [HttpPost]
         public JsonResult Post(int id, [FromBody]JObject values)
         {
             Club obj = new Club()
             {
-                 ClubArea = values["clubArea"].ToString(),
-                  ClubCity = values["clubCity"].ToString(),
-                   ClubDesc = values["clubDesc"].ToString(),
-                    ClubLogo = values["clubLogo"].ToString(),
-                     ClubName = values["clubName"].ToString(),
-                      Status = Convert.ToInt32(values["status"]),
-                       CreateTime=Convert.ToDateTime(values["createTime"])
-              
-
+                ClubArea = values["clubArea"].ToString(),
+                ClubCity = values["clubCity"].ToString(),
+                ClubDesc = values["clubDesc"].ToString(),
+                ClubLogo = values["clubLogo"].ToString(),
+                ClubName = values["clubName"].ToString(),
+                Status = Convert.ToInt32(values["status"]),
+                CreateTime = Convert.ToDateTime(values["createTime"])
             };
             bool result = false;
             if (id != 0)
@@ -70,24 +66,36 @@ namespace yuchao.Controllers.Admin
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
-
         }
-
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public JsonResult Update(int id, [FromBody]JObject values)
         {
-        }
+            ApiResult res = new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.Update(new Club() {
+                    Id = id,
+                    ClubArea = values["clubArea"].ToString(),
+                    ClubCity = values["clubCity"].ToString(),
+                    ClubDesc = values["clubDesc"].ToString(),
+                    ClubLogo = values["clubLogo"].ToString(),
+                    ClubName = values["clubName"].ToString(),
+                    CreateTime = Convert.ToDateTime(values["createTime"]),
+                    Status = Convert.ToInt32(values["status"])
+                })
+            };
 
+
+            return Json(res);
+        }
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult DeleteById(dynamic[] ids)

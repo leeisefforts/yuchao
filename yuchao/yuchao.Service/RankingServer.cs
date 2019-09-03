@@ -8,38 +8,34 @@ using yuchao.Model;
 
 namespace yuchao.Service
 {
-    public class UserServer : BaseDb, IUser
+   public class RankingServer : BaseDb, IRanking
     {
-        public SimpleClient<User> rdb = new SimpleClient<User>(BaseDb.GetClient());
-
-        public User Get(int Id)
+        public SimpleClient<Ranking> rdb = new SimpleClient<Ranking>(BaseDb.GetClient());
+        //查询
+        public Ranking Get(int Id)
         {
             return rdb.GetSingle(p => p.Id == Id);
         }
-
-        public bool Add(User entity)
+        //增加
+        public bool Insert(Ranking entity)
         {
             return rdb.Insert(entity);
         }
-
-        public bool Update(User entity)
+        //修改
+        public bool Update(Ranking entity)
         {
             return rdb.Update(entity);
-        }
-
+        }   
+        //删除
         public bool Dels(dynamic[] ids)
         {
             return rdb.DeleteByIds(ids);
 
         }
 
-        public User GetById(int id)
+        public bool Add(Ranking entity)
         {
-            return rdb.GetById(id);
-        }
-
-        public User GetByOpenId(string openId) {
-            return rdb.GetSingle(p=>p.OpenId.Equals(openId));
+            throw new NotImplementedException();
         }
     }
 }

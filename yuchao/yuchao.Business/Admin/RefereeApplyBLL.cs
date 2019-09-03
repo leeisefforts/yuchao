@@ -19,13 +19,19 @@ namespace yuchao.Business.Admin
         }
 
 
-        public bool Update(RefereeApply entity)
+        public bool Update(RefereeApply refereeApply)
         {
-            return IService.Update(entity);
+            RefereeApply refereeApply1 = IService.GetById(refereeApply.Id);
+            refereeApply1.ApplyDate = refereeApply.ApplyDate;
+            refereeApply1.ApplyResult = refereeApply.ApplyResult;
+            refereeApply1.ApplyUserId = refereeApply.ApplyUserId;
+
+            return IService.Update(refereeApply);
         }
 
         public object DeleteById(int id)
         {
+
             return IService.Dels(id);
         }
     }

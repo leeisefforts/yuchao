@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
 using yuchao.Entity;
@@ -17,32 +16,35 @@ namespace yuchao.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
-    public class LevelController : Controller
+    public class RankingController : Controller
     {
-        private LevelBLL bll = new LevelBLL();
+        private RankingBLL bll = new RankingBLL();
 
         [HttpGet]
-        public JsonResult GetAll() {
+        public JsonResult GetById(int id)
+        {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetAll()
+                Obj = bll.GetById(id)
             });
         }
 
         [HttpPost]
-        public JsonResult Insert([FromBody]JObject values) {
+        public JsonResult Insert([FromBody]JObject values)
+        {
 
             ApiResult res = new ApiResult
             {
                 Status = 200,
                 Error = "Success"
-         
+
             };
-            bool suc = bll.Insert(new Level() {
-                LevelName = values["levelName"].ToString(),
-                LevelSort =Convert.ToInt32( values["levelSort"])
+            bool suc = bll.Insert(new Ranking()
+            {
+                 Rank= Convert.ToInt32(values["rank"]),
+                  UserId =Convert.ToInt32(values["userId"])
             });
             if (suc) res.Obj = true;
             else
@@ -55,29 +57,32 @@ namespace yuchao.Controllers.Admin
         }
 
         [HttpPut]
-        public JsonResult Update(int id, [FromBody]JObject values) {
+        public JsonResult Update(int id, [FromBody]JObject values)
+        {
             ApiResult res = new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.Update(new Level() {
+                Obj = bll.Update(new Ranking()
+                {
                     Id = id,
-                    LevelName = values["levelName"].ToString(),
-                    LevelSort = Convert.ToInt32(values["levelSort"])
+                    Rank = Convert.ToInt32(values["rank"]),
+                    UserId = Convert.ToInt32(values["userId"])
                 })
             };
-          
+
 
             return Json(res);
         }
 
         [HttpDelete("{id}")]
-        public JsonResult DeleteById(int id) {
+        public JsonResult DeleteById(dynamic[] ids)
+        {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.DeleteById(id)
+                Obj = bll.DeleteById(ids)
             });
 
         }

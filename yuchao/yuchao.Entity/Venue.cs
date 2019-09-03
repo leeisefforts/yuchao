@@ -15,5 +15,9 @@ namespace yuchao.Entity
         public string VenueAddress { get; set; }
 
         public string VenueImg { get; set; }
+        public decimal AvePrice { get; set; }
+
+        public int Status { get; set; }
+
     }
 }

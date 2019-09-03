@@ -33,6 +33,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:yuchao.Controllers.Client.ClubApiController">
+            <summary>
+            创建俱乐部
+            </summary>
+        </member>
+        <member name="T:yuchao.Controllers.Client.RankingApiController">
+            <summary>
+            比赛排名
+            </summary>
+        </member>
+        <member name="T:yuchao.Controllers.Client.RefereeapplyApiController">
+            <summary>
+            申请裁判
+            </summary>
+        </member>
+        <member name="T:yuchao.Controllers.Client.VenueApiController">
+            <summary>
+            场地信息
+            </summary>
+        </member>
+        <member name="T:yuchao.Controllers.Client.VerifieduserApiController">
+            <summary>
+            实名认真
+            </summary>
+        </member>
         <member name="T:yuchao.SwaggerHelp.SwaggerHelp.SwaggerDocTag">
             <summary>
             Swagger注释帮助类

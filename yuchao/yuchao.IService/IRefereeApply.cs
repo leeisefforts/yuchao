@@ -20,6 +20,7 @@ namespace yuchao.IService
         /// <returns></returns>
         bool Add(RefereeApply entity);
         bool Update();
+        RefereeApply GetById(int id);
 
         /// <summary>
         /// 编辑

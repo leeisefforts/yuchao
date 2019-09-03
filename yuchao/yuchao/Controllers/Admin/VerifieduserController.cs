@@ -11,7 +11,9 @@ using yuchao.Model;
 
 namespace yuchao.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
     [ApiController]
     public class VerifieduserController : Controller
     {
@@ -25,7 +27,7 @@ namespace yuchao.Controllers.Admin
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public JsonResult GetById(int id)
+        public JsonResult GetAll()
         {
             return Json(new ApiResult
             {
@@ -71,8 +73,24 @@ namespace yuchao.Controllers.Admin
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {         
+        public JsonResult Update(int id, [FromBody]JObject values)
+        {
+            ApiResult res = new ApiResult
+            {
+                Status = 200,
+                Error = "success",
+                Obj = bll.Update(new Verifieduser
+                {
+
+                    UserId = Convert.ToInt32(values["userId"]),
+                    Card = values["card"].ToString(),
+                    CardImg1 = values["cardImg1"].ToString(),
+                    CardImg2 = values["cardImg2"].ToString()
+
+                })
+
+            };
+            return Json(res);
         }
 
         // DELETE api/<controller>/5

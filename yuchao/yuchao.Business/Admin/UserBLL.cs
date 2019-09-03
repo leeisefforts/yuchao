@@ -10,9 +10,9 @@ namespace yuchao.Business.Admin
     {
         public UserServer IService = new Service.UserServer();
         // 查询      
-        public User GetById(int id)
+        public object GetById(int id)
         {
-            return IService.GetById(id);
+            return IService.Get(id);
         }
         // 增加
         public bool Insert(User entity)
@@ -25,16 +25,22 @@ namespace yuchao.Business.Admin
 
             return IService.Dels(ids);
         }
-        /// <summary>
-        /// 修改
-        /// </summary>
-        public bool Update(User entity)
+
+        // 修改
+  
+        public bool Update(User user)
         {
-            return IService.Update(entity);
+            User user1 = IService.GetById(user.Id);
+            user1.Language = user.Language;
+            user1.NickName = user.NickName;
+            user1.Province = user.Province;
+            user1.Gender = user.Gender;
+            user1.AvatarUrl = user.AvatarUrl;
+            user1.City = user.City;
+            user1.Country = user.Country;
+            return IService.Update(user);
         }
 
       
-
-   
     }
 }

@@ -22,23 +22,27 @@ namespace yuchao.Business.Admin
             return IService.Add(entity);
         }
         // 删除
-        public bool DeleteByIds(dynamic[] ids)
+         public object DeleteById(dynamic[] ids)
         {
-          
             return IService.Dels(ids);
         }
         /// <summary>
         /// 修改
         /// </summary>
-       public bool Update(Club entity)
+       public bool Update(Club club)
         {
-            return IService.Update(entity);
+            Club club1 = IService.GetById(club.Id);
+            club1.ClubName = club.ClubName;
+            club1.ClubCity = club.ClubCity;
+            club1.ClubArea = club.ClubArea;
+            club1.ClubDesc = club.ClubDesc;
+            club1.ClubLogo = club.ClubLogo;
+            club1.CreateTime = club.CreateTime;
+            club1.Status = club.Status;
+            return IService.Update(club);
         }
 
-        public object DeleteById(dynamic[] ids)
-        {
-            throw new NotImplementedException();
-        }
+      
 
        
     }

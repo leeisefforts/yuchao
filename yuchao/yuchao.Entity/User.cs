@@ -4,9 +4,9 @@ using System.Text;
 
 namespace yuchao.Entity
 {
-   public class User
+    public class User
     {
-             public int Id { get; set; }
+        public int Id { get; set; }
 
         public string NickName { get; set; }
 
@@ -19,5 +19,7 @@ namespace yuchao.Entity
         public string City { get; set; }
 
         public string Province { get; set; }
+
+        public string OpenId { get; set; }
     }
 }

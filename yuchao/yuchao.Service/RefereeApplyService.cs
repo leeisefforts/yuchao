@@ -39,5 +39,10 @@ namespace yuchao.Service
         {
             throw new NotImplementedException();
         }
+
+        public RefereeApply GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

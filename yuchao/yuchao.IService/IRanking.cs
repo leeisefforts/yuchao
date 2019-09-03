@@ -5,28 +5,28 @@ using yuchao.Entity;
 
 namespace yuchao.IService
 {
-   public interface IUser
+   public interface IRanking
     {
         /// <summary>
         /// 获取申请单条记录
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        User Get(int Id);
+        Ranking Get(int Id);
 
         /// <summary>
         /// 添加
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Add(User entity);
+        bool Add(Ranking entity);
 
         /// <summary>
         /// 编辑
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Update(User entity);
+        bool Update(Ranking entity);
 
         /// <summary>
         /// 批量删除
@@ -34,7 +34,5 @@ namespace yuchao.IService
         /// <param name="ids"></param>
         /// <returns></returns>
         bool Dels(dynamic[] ids);
-
-        User GetByOpenId(string openId);
     }
 }
