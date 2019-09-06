@@ -4239,23 +4239,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\acer\\.nuget\\packages\\": {},
+    "C:\\Users\\bryant.lee\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
+      "projectUniqueName": "G:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
       "projectName": "yuchao.Service",
-      "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
-      "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-      "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Service\\obj\\",
+      "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Service\\yuchao.Service.csproj",
+      "packagesPath": "C:\\Users\\bryant.lee\\.nuget\\packages\\",
+      "outputPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bryant.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4268,14 +4268,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
-              "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
+            "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+              "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
             },
-            "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
-              "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj"
+            "G:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj": {
+              "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj"
             },
-            "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
-              "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj"
+            "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
+              "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj"
             }
           }
         }
