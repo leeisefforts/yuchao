@@ -17,7 +17,7 @@ namespace yuchao.Controllers.Admin
     [Produces("application/json")]
     [ApiController]
     public class OrderController : Controller
-    {
+    { 
         private OrderBLL bll = new OrderBLL();
 
         [HttpGet]
