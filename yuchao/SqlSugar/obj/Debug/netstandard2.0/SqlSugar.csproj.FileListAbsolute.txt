@@ -25,3 +25,11 @@ E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfoI
 E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfo.cs
 E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.dll
 E:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb
+G:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.deps.json
+G:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.dll
+G:\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.pdb
+G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csproj.CoreCompileInputs.cache
+G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfoInputs.cache
+G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfo.cs
+G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.dll
+G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb

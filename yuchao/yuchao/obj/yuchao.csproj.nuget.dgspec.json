@@ -293,6 +293,9 @@
             "projectReferences": {
               "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
                 "projectPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
+              },
+              "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+                "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
               }
             }
           }

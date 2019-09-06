@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SqlSugar\SqlSugar.csproj" />
+    <ProjectReference Include="..\yuchao.Entity\yuchao.Entity.csproj" />
   </ItemGroup>
 
 </Project>

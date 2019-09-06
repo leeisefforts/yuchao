@@ -990,6 +990,19 @@
         "runtime": {
           "bin/placeholder/SqlSugar.dll": {}
         }
+      },
+      "yuchao.Entity/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "SqlSugar": "5.0.0.9"
+        },
+        "compile": {
+          "bin/placeholder/yuchao.Entity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/yuchao.Entity.dll": {}
+        }
       }
     }
   },
@@ -4173,12 +4186,18 @@
       "type": "project",
       "path": "../SqlSugar/SqlSugar.csproj",
       "msbuildProject": "../SqlSugar/SqlSugar.csproj"
+    },
+    "yuchao.Entity/1.0.0": {
+      "type": "project",
+      "path": "../yuchao.Entity/yuchao.Entity.csproj",
+      "msbuildProject": "../yuchao.Entity/yuchao.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
-      "SqlSugar >= 5.0.0.9"
+      "SqlSugar >= 5.0.0.9",
+      "yuchao.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4213,6 +4232,9 @@
           "projectReferences": {
             "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
               "projectPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
+            },
+            "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+              "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
             }
           }
         }

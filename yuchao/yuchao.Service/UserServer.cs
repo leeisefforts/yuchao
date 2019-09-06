@@ -5,6 +5,7 @@ using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
 using yuchao.Model;
+using yuchao.Model.Extends;
 
 namespace yuchao.Service
 {
@@ -39,5 +40,6 @@ namespace yuchao.Service
         public User GetByOpenId(string openId) {
             return rdb.GetSingle(p=>p.OpenId.Equals(openId));
         }
+
     }
 }
