@@ -16,34 +16,41 @@ namespace yuchao.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
-    public class RankingController : Controller
+    public class OrderController : Controller
     {
-        private RankingBLL bll = new RankingBLL();
+        private OrderBLL bll = new OrderBLL();
 
         [HttpGet]
-        public JsonResult GetById(int id)
+        public JsonResult GetAll()
         {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetById(id)
+                Obj = bll.GetAll()
             });
         }
 
         [HttpPost]
         public JsonResult Insert([FromBody]JObject values)
         {
+
             ApiResult res = new ApiResult
             {
                 Status = 200,
                 Error = "Success"
-
             };
-            bool suc = bll.Insert(new Ranking()
+            bool suc = bll.Insert(new Order()
             {
-                Rank = Convert.ToInt32(values["rank"]),
-                UserId = Convert.ToInt32(values["userId"])
+                CreateTime = Convert.ToDateTime(values["createTime"]),
+                Money = Convert.ToDecimal(values["money"]),
+                OrderSn = values["orderSn"].ToString(),
+                OrderType = Convert.ToInt32(values["orderType"]),
+                PayStatus = Convert.ToInt32(values["payStatus"]),
+                PayTime = Convert.ToDateTime(values["payTime"]),
+                Status = Convert.ToInt32(values["status"]),
+                VenueId = Convert.ToInt32(values["venueId"])
+
             });
             if (suc) res.Obj = true;
             else
@@ -61,24 +68,30 @@ namespace yuchao.Controllers.Admin
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.Update(new Ranking()
+                Obj = bll.Update(new Order()
                 {
                     Id = id,
-                    Rank = Convert.ToInt32(values["rank"]),
-                    UserId = Convert.ToInt32(values["userId"])
+                    CreateTime = Convert.ToDateTime(values["createTime"]),
+                    Money = Convert.ToDecimal(values["money"]),
+                    OrderSn = values["orderSn"].ToString(),
+                    OrderType = Convert.ToInt32(values["orderType"]),
+                    PayStatus = Convert.ToInt32(values["payStatus"]),
+                    PayTime = Convert.ToDateTime(values["payTime"]),
+                    Status = Convert.ToInt32(values["status"]),
+                    VenueId = Convert.ToInt32(values["venueId"])
                 })
             };
             return Json(res);
         }
 
         [HttpDelete("{id}")]
-        public JsonResult DeleteById(dynamic[] ids)
+        public JsonResult DeleteById(int id)
         {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.DeleteById(ids)
+                Obj = bll.DeleteById(id)
             });
         }
     }

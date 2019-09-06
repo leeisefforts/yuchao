@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -42,6 +43,7 @@ namespace yuchao.Controllers.Admin
                 Obj = bll.GetById(id)
             });
         }
+
         // POST api/<controller>
         [HttpPost]
         public JsonResult Post(int id, [FromBody]JObject values)
@@ -73,6 +75,7 @@ namespace yuchao.Controllers.Admin
                 Obj = result
             });
         }
+
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         public JsonResult Update(int id, [FromBody]JObject values)
@@ -92,10 +95,9 @@ namespace yuchao.Controllers.Admin
                     Status = Convert.ToInt32(values["status"])
                 })
             };
-
-
             return Json(res);
         }
+
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult DeleteById(dynamic[] ids)

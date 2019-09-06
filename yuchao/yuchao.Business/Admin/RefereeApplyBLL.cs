@@ -21,18 +21,16 @@ namespace yuchao.Business.Admin
 
         public bool Update(RefereeApply refereeApply)
         {
-            RefereeApply refereeApply1 = IService.GetById(refereeApply.Id);
+            RefereeApply refereeApply1 = IService.Get(refereeApply.Id);
             refereeApply1.ApplyDate = refereeApply.ApplyDate;
             refereeApply1.ApplyResult = refereeApply.ApplyResult;
             refereeApply1.ApplyUserId = refereeApply.ApplyUserId;
-
             return IService.Update(refereeApply);
         }
 
-        public object DeleteById(int id)
+        public object DeleteById(dynamic ids)
         {
-
-            return IService.Dels(id);
+            return IService.Dels(ids);
         }
     }
 }

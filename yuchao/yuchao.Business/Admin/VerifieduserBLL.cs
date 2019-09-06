@@ -33,8 +33,6 @@ namespace yuchao.Business.Admin
             verifieduser1.CardImg2 = verifieduser.CardImg2;
             verifieduser1.UserId = verifieduser.UserId;
             return IService.Update(verifieduser);
-        }
-
-      
+        }     
     }
 }

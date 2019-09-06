@@ -22,6 +22,7 @@ namespace yuchao.Controllers.Client
     public class ClubApiController : Controller
     {
         private ClubBLL bll = new ClubBLL();
+
         // POST api/<controller>
         [HttpPost]
         public JsonResult Post(int id, [FromBody]JObject values)

@@ -17,7 +17,7 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.Id == Id);
         }
         //增加
-        public bool Insert(Ranking entity)
+        public bool Add(Ranking entity)
         {
             return rdb.Insert(entity);
         }
@@ -33,9 +33,6 @@ namespace yuchao.Service
 
         }
 
-        public bool Add(Ranking entity)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
