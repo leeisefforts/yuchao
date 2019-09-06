@@ -34,7 +34,6 @@ namespace yuchao.Controllers.Admin
         [HttpPost]
         public JsonResult Insert([FromBody]JObject values)
         {
-
             ApiResult res = new ApiResult
             {
                 Status = 200,
@@ -43,8 +42,8 @@ namespace yuchao.Controllers.Admin
             };
             bool suc = bll.Insert(new Ranking()
             {
-                 Rank= Convert.ToInt32(values["rank"]),
-                  UserId =Convert.ToInt32(values["userId"])
+                Rank = Convert.ToInt32(values["rank"]),
+                UserId = Convert.ToInt32(values["userId"])
             });
             if (suc) res.Obj = true;
             else
@@ -52,7 +51,6 @@ namespace yuchao.Controllers.Admin
                 res.Status = -1;
                 res.Obj = false;
             }
-
             return Json(res);
         }
 
@@ -70,8 +68,6 @@ namespace yuchao.Controllers.Admin
                     UserId = Convert.ToInt32(values["userId"])
                 })
             };
-
-
             return Json(res);
         }
 
@@ -84,7 +80,6 @@ namespace yuchao.Controllers.Admin
                 Error = "Success",
                 Obj = bll.DeleteById(ids)
             });
-
         }
     }
 }

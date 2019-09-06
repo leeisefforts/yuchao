@@ -15,6 +15,11 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.ApplyUserId == id);
         }
 
+        public RefereeApply GetById(int id)
+        {
+            return rdb.GetById(id);
+        }
+
         public bool Add(RefereeApply entity)
         {
             return rdb.Insert(entity);
@@ -25,24 +30,19 @@ namespace yuchao.Service
             return rdb.Update(entity);
         }
 
-        public bool Dels(dynamic[] ids)
+        public bool Update()
         {
-            return rdb.DeleteByIds(ids);
+            return rdb.Update();
         }
 
         public object Dels(int id)
         {
-            throw new NotImplementedException();
+            return rdb.DeleteById(id);
         }
 
-        public bool Update()
+        bool IRefereeApply.Dels(dynamic[] ids)
         {
-            throw new NotImplementedException();
-        }
-
-        public RefereeApply GetById(int id)
-        {
-            throw new NotImplementedException();
+            return rdb.DeleteById(ids);
         }
     }
 }

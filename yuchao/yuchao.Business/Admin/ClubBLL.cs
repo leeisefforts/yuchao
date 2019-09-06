@@ -31,7 +31,7 @@ namespace yuchao.Business.Admin
         /// </summary>
        public bool Update(Club club)
         {
-            Club club1 = IService.GetById(club.Id);
+            Club club1 = IService.Get(club.Id);
             club1.ClubName = club.ClubName;
             club1.ClubCity = club.ClubCity;
             club1.ClubArea = club.ClubArea;

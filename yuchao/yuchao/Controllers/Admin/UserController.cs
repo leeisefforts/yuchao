@@ -19,6 +19,7 @@ namespace yuchao.Controllers.Admin
     public class UserController : Controller
     {
         private UserBLL bll = new UserBLL();
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -62,15 +63,12 @@ namespace yuchao.Controllers.Admin
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
         }
 
         // PUT api/<controller>/5
@@ -90,9 +88,7 @@ namespace yuchao.Controllers.Admin
                     Language = values["language"].ToString(),
                     NickName = values["nickName"].ToString(),
                      Province=values["province"].ToString()
-
                 })
-
             };
              return Json(res);
         }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {}
+    "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {}
   },
   "projects": {
-    "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
+    "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
       "version": "5.0.0.9",
       "restore": {
-        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj",
+        "projectUniqueName": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj",
         "projectName": "SqlSugar",
-        "projectPath": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\obj\\",
+        "projectPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj",
+        "packagesPath": "C:\\Users\\bryant.lee\\.nuget\\packages\\",
+        "outputPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bryant.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,20 +88,20 @@
         }
       }
     },
-    "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
+    "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
+        "projectUniqueName": "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
         "projectName": "yuchao.Model",
-        "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Model\\obj\\",
+        "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\yuchao.Model.csproj",
+        "packagesPath": "C:\\Users\\bryant.lee\\.nuget\\packages\\",
+        "outputPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bryant.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,8 +114,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
-                "projectPath": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
+              "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
+                "projectPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
               }
             }
           }

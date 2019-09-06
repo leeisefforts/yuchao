@@ -17,7 +17,7 @@ namespace yuchao.Business.Admin
         // 增加
         public bool Insert(Ranking entity)
         {
-            return IService.Insert(entity);
+            return IService.Add(entity);
         }
         // 删除
         public object DeleteById(dynamic[] ids)

@@ -22,6 +22,7 @@ namespace yuchao.Controllers.Client
     public class VerifieduserApiController : Controller
     {
         private VerifieduserBLL bll = new VerifieduserBLL();
+
         // POST api/<controller>
         [HttpPost]
         public JsonResult Post(int id, [FromBody]JObject values)
@@ -44,16 +45,12 @@ namespace yuchao.Controllers.Client
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
-
         }
     }
 }

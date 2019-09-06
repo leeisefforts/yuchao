@@ -43,7 +43,6 @@ namespace yuchao.Controllers.Admin
         {
             RefereeApply obj = new RefereeApply()
             {
-
                 ApplyUserId = Convert.ToInt32(values["applyUserId"]),
                 ApplyResult = Convert.ToInt32(values["applyResult"]),
                 ApplyDate = Convert.ToDateTime(values["applyDate"])
@@ -58,16 +57,12 @@ namespace yuchao.Controllers.Admin
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
-
         }
 
         // PUT api/<controller>/5
@@ -80,7 +75,7 @@ namespace yuchao.Controllers.Admin
                 Error = "success",
                 Obj = bll.Update(new RefereeApply()
                 {
-                     Id=id,
+                    Id = id,
                     ApplyDate = Convert.ToDateTime(values["applyDate"]),
                     ApplyResult = Convert.ToInt32(values["applyResult"]),
                     ApplyUserId = Convert.ToInt32(values["applyUserId"])

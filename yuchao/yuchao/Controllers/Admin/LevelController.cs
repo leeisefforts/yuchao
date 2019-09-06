@@ -37,8 +37,7 @@ namespace yuchao.Controllers.Admin
             ApiResult res = new ApiResult
             {
                 Status = 200,
-                Error = "Success"
-         
+                Error = "Success"        
             };
             bool suc = bll.Insert(new Level() {
                 LevelName = values["levelName"].ToString(),
@@ -50,7 +49,6 @@ namespace yuchao.Controllers.Admin
                 res.Status = -1;
                 res.Obj = false;
             }
-
             return Json(res);
         }
 
@@ -66,8 +64,6 @@ namespace yuchao.Controllers.Admin
                     LevelSort = Convert.ToInt32(values["levelSort"])
                 })
             };
-          
-
             return Json(res);
         }
 
@@ -79,7 +75,6 @@ namespace yuchao.Controllers.Admin
                 Error = "Success",
                 Obj = bll.DeleteById(id)
             });
-
         }
     }
 }

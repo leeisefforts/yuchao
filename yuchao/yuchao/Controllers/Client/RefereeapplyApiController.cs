@@ -22,13 +22,13 @@ namespace yuchao.Controllers.Client
     public class RefereeapplyApiController : Controller
     {
         private RefereeApplyBLL bll = new RefereeApplyBLL();
+
         // POST api/<controller>
         [HttpPost]
         public JsonResult Post(int id, [FromBody]JObject values)
         {
             RefereeApply obj = new RefereeApply()
             {
-
                 ApplyUserId = Convert.ToInt32(values["applyUserId"]),
                 ApplyResult = Convert.ToInt32(values["applyResult"]),
                 ApplyDate = Convert.ToDateTime(values["applyDate"])
@@ -43,16 +43,12 @@ namespace yuchao.Controllers.Client
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
-
         }
     }
 }

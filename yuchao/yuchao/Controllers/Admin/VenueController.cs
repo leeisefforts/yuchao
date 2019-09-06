@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
@@ -18,6 +19,7 @@ namespace yuchao.Controllers.Admin
     public class VenueController : Controller
     {
         private VenueBLL bll = new VenueBLL();
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -39,7 +41,7 @@ namespace yuchao.Controllers.Admin
 
         // POST api/<controller>
         [HttpPost]
-        public JsonResult Post(int id,[FromBody]JObject values)
+        public JsonResult Post(int id, [FromBody]JObject values)
         {
             Venue obj = new Venue()
             {
@@ -49,10 +51,8 @@ namespace yuchao.Controllers.Admin
                 VenueName = values["venueName"].ToString(),
                 AvePrice = Convert.ToDecimal(values["avePrice"]),
                 Status = Convert.ToInt32(values["status"])
-
             };
-
-                bool result = false;
+            bool result = false;
             if (id != 0)
             {
                 obj.Id = id;
@@ -62,8 +62,6 @@ namespace yuchao.Controllers.Admin
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
@@ -88,9 +86,7 @@ namespace yuchao.Controllers.Admin
                     VenueName = values["venueName"].ToString(),
                     AvePrice = Convert.ToDecimal(values["avePrice"]),
                     Status = Convert.ToInt32(values["status"])
-
                 })
-
             };
             return Json(res);
         }

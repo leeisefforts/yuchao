@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -18,6 +19,7 @@ namespace yuchao.Controllers.Admin
     public class VerifieduserController : Controller
     {
         private VerifieduserBLL bll = new VerifieduserBLL();
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -46,8 +48,7 @@ namespace yuchao.Controllers.Admin
                 UserId = Convert.ToInt32(values["userId"]),
                 Card = values["card"].ToString(),
                 CardImg1 = values["cardImg1"].ToString(),
-                CardImg2 = values["cardImg2"].ToString()
-                 
+                CardImg2 = values["cardImg2"].ToString()                
             };
             bool result = false;
             if (id!= 0)
@@ -59,16 +60,12 @@ namespace yuchao.Controllers.Admin
             {
                 result = bll.Insert(obj);
             }
-
-
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
             });
-
-
         }
 
         // PUT api/<controller>/5
@@ -81,14 +78,11 @@ namespace yuchao.Controllers.Admin
                 Error = "success",
                 Obj = bll.Update(new Verifieduser
                 {
-
                     UserId = Convert.ToInt32(values["userId"]),
                     Card = values["card"].ToString(),
                     CardImg1 = values["cardImg1"].ToString(),
                     CardImg2 = values["cardImg2"].ToString()
-
                 })
-
             };
             return Json(res);
         }
