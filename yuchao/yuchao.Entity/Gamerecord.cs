@@ -14,14 +14,5 @@ namespace yuchao.Entity
         public int RefereeId { get; set; }
         public int IsTeamGame { get; set; }
         public int Statue { get; set; }
-      
-
-
-
-
-
-
-
-
     }
 }

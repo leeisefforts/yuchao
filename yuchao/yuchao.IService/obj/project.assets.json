@@ -4201,23 +4201,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bryant.lee\\.nuget\\packages\\": {},
+    "C:\\Users\\acer\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
+      "projectUniqueName": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
       "projectName": "yuchao.IService",
-      "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
-      "packagesPath": "C:\\Users\\bryant.lee\\.nuget\\packages\\",
-      "outputPath": "G:\\code\\yc_admin\\yuchao\\yuchao.IService\\obj\\",
+      "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\yuchao.IService.csproj",
+      "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+      "outputPath": "E:\\code\\yc_admin\\yuchao\\yuchao.IService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bryant.lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4230,11 +4230,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
-              "projectPath": "G:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
+            "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj": {
+              "projectPath": "E:\\code\\yc_admin\\yuchao\\SqlSugar\\SqlSugar.csproj"
             },
-            "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
-              "projectPath": "G:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
+            "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj": {
+              "projectPath": "E:\\code\\yc_admin\\yuchao\\yuchao.Entity\\yuchao.Entity.csproj"
             }
           }
         }

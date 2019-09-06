@@ -9,6 +9,7 @@ namespace yuchao.Business.Admin
    public class OrderBLL
     {
         private IOrder IService = new Service.OrderService();
+        private object order;
 
         public List<Order> GetAll()
         {
@@ -25,13 +26,21 @@ namespace yuchao.Business.Admin
             return IService.DeleteById(id);
         }
 
-        public bool Update(Order Order)
+        public bool Update(Order order)
         {
-           
-            //Level l = IService.GetById(level.Id);
-            //l.LevelName = level.LevelName;
-            //l.LevelSort = level.LevelSort;
-            return IService.Update(Order);
+
+            Order order1 = IService.GetById(order.Id);
+            order1.CreateTime = order.CreateTime;
+            order1.GameTime = order.GameTime;
+            order1.Money = order.Money;
+            order1.OrderSn = order.OrderSn;
+            order1.OrderType = order.OrderType;
+            order1.PayStatus = order.PayStatus;
+            order1.PayTime = order.PayTime;
+            order1.Status = order.Status;
+            order1.VenueId = order.VenueId;
+
+            return IService.Update(order);
 
         }
     }
