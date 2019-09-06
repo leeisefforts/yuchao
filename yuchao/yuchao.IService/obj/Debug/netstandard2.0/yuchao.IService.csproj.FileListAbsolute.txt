@@ -26,3 +26,17 @@ E:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService
 E:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.csproj.CopyComplete
 E:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.dll
 E:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.pdb
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\yuchao.IService.deps.json
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\yuchao.IService.dll
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\yuchao.IService.pdb
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\SqlSugar.dll
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\yuchao.Entity.dll
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\SqlSugar.pdb
+G:\code\yc_admin\yuchao\yuchao.IService\bin\Debug\netstandard2.0\yuchao.Entity.pdb
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.csprojAssemblyReference.cache
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.csproj.CoreCompileInputs.cache
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.AssemblyInfoInputs.cache
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.AssemblyInfo.cs
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.csproj.CopyComplete
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.dll
+G:\code\yc_admin\yuchao\yuchao.IService\obj\Debug\netstandard2.0\yuchao.IService.pdb

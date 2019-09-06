@@ -4858,7 +4858,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "SqlSugar": "5.0.0.9"
+          "SqlSugar": "5.0.0.9",
+          "yuchao.Entity": "1.0.0"
         },
         "compile": {
           "bin/placeholder/yuchao.Model.dll": {}

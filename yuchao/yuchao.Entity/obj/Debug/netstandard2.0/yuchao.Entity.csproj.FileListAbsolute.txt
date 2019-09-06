@@ -35,3 +35,16 @@ E:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.Ass
 E:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csproj.CopyComplete
 E:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.dll
 E:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.pdb
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\yuchao.Entity.deps.json
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\yuchao.Entity.dll
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\yuchao.Entity.pdb
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\EntityHelp.xml
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\SqlSugar.dll
+G:\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\SqlSugar.pdb
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csprojAssemblyReference.cache
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csproj.CoreCompileInputs.cache
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.AssemblyInfoInputs.cache
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.AssemblyInfo.cs
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csproj.CopyComplete
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.dll
+G:\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.pdb
