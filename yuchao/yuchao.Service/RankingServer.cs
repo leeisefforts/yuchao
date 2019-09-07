@@ -32,7 +32,10 @@ namespace yuchao.Service
             return rdb.DeleteByIds(ids);
 
         }
+        public Ranking GetByUserId(string userId)
+        {
+            return rdb.GetSingle(p => p.UserId.Equals(userId));
+        }
 
-       
     }
 }

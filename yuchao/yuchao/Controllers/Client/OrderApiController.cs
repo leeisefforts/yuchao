@@ -15,14 +15,15 @@ namespace yuchao.Controllers.Client
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
-    public class UserApiController : Controller
+    public class OrderApiController : Controller
     {
-        private UserApiBLL bll = new UserApiBLL();
+        private OrderApiBLL bll = new OrderApiBLL();
 
-        [HttpGet("{openId}")]
-        public JsonResult GetUserInfo(string openId) {
+        [HttpGet("{VenueId}")]
+        public JsonResult GetOrderInfo(string venueId)
+        {
 
-            UserExtends user = bll.GetUserInfoByOpenId(openId);
+            OrderExtends user = bll.GetOrderInfoByVenueId(venueId);
 
             return Json(new ApiResult()
             {

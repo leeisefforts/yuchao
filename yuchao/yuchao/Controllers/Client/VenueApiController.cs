@@ -13,7 +13,7 @@ namespace yuchao.Controllers.Client
     /// <summary>
     /// 场地信息
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/client/[controller]")]
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]

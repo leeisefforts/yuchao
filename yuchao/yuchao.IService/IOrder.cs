@@ -17,6 +17,9 @@ namespace yuchao.IService
         bool DeleteById(int id);
 
         bool Update(Order order);
+
         Order GetById(object id);
+
+        Order GetByVenueId(string venueId);
     }
 }

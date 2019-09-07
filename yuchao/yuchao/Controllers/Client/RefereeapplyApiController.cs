@@ -15,7 +15,7 @@ namespace yuchao.Controllers.Client
     /// <summary>
     /// 申请裁判
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/client/[controller]")]
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]

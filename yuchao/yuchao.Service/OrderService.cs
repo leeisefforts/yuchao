@@ -22,7 +22,7 @@ namespace yuchao.Service
             return rdb.Insert(order);
         }
 
-        public Order GetById(int id)
+        public Order GetById(object id)
         {
             return rdb.GetById(id);
         }
@@ -35,11 +35,15 @@ namespace yuchao.Service
         public bool Update(Order order)
         {
             return rdb.Update(order);
-        }      
-
-        public Order GetById(object id)
+        }
+        public Order GetByVenueId(string venueId)
         {
-            throw new NotImplementedException();
+            return rdb.GetSingle(p => p.VenueId.Equals(venueId));
+        }
+
+        public Order GetById(int id)
+        {
+            return rdb.GetById(id);
         }
     }
 }

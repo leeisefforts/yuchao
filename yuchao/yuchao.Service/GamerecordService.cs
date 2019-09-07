@@ -36,5 +36,9 @@ namespace yuchao.Service
         {
             return rdb.Update(gamerecord);
         }
+        public Gamerecord GetByVenueId(string venueId)
+        {
+            return rdb.GetSingle(p => p.VenueId.Equals(venueId));
+        }
     }
 }

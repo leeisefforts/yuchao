@@ -6,30 +6,33 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using yuchao.Business.Admin;
+using yuchao.Business.Client;
 using yuchao.Entity;
 using yuchao.Model;
+using yuchao.Model.Extends;
 
 namespace yuchao.Controllers.Client
 {
     /// <summary>
     /// 比赛排名
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/client/[controller]")]
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
     public class RankingApiController : Controller
     {
-        private RankingBLL bll = new RankingBLL();
+        private RankingApiBLL bll = new RankingApiBLL();
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public JsonResult Insert(Ranking entity)
+        [HttpGet("{userId}")]
+        public JsonResult GetRankingInfo(string userId)
         {
+            RankingExtends ranking = bll.GetRankingInfoByUserId(userId);
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.Insert(entity)
+                Obj = ranking
             });
         }
     }

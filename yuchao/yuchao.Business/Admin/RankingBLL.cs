@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
+using yuchao.Model.Extends;
 using yuchao.Service;
 
 namespace yuchao.Business.Admin
@@ -34,5 +35,7 @@ namespace yuchao.Business.Admin
             ranking1.Rank = ranking.Rank;
             return IService.Update(ranking);
         }
+
+       
     }
 }

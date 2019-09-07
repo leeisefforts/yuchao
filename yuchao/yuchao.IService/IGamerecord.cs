@@ -20,5 +20,6 @@ namespace yuchao.IService
         bool DeleteById(int id);
 
         bool Update(Gamerecord gamerecord);
+        Gamerecord GetByVenueId(string venueId);
     }
 }

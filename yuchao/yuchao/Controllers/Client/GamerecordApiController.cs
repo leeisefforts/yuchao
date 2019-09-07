@@ -15,20 +15,21 @@ namespace yuchao.Controllers.Client
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
-    public class UserApiController : Controller
+    public class GamerecordApiController : Controller
     {
-        private UserApiBLL bll = new UserApiBLL();
+        private GamerecordApiBLL bll = new GamerecordApiBLL();
 
-        [HttpGet("{openId}")]
-        public JsonResult GetUserInfo(string openId) {
+        [HttpGet("{venueId}")]
+        public JsonResult GetGamerecordInfo(string venueId)
+        {
 
-            UserExtends user = bll.GetUserInfoByOpenId(openId);
+            GamerecordExtends gamerecord = bll.GetGamerecordInfoByVenueId(venueId);
 
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = "Success",
-                Obj = user
+                Obj = gamerecord
             });
         }
     }
