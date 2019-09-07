@@ -36,3 +36,5 @@ G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.dll
 G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.pdb
 G:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\yuchao.Entity.dll
 G:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\yuchao.Entity.pdb
+E:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\yuchao.Entity.dll
+E:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\yuchao.Entity.pdb
