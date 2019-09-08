@@ -36,5 +36,10 @@ namespace yuchao.Service
         {
             return rdb.Update(venue);
         }
+
+        public object GetById(object userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

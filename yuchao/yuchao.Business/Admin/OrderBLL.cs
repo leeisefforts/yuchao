@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
+using yuchao.Model.Extends;
+using yuchao.Service;
 
 namespace yuchao.Business.Admin
 {
    public class OrderBLL
     {
         private IOrder IService = new Service.OrderService();
-        private object order;
 
         public List<Order> GetAll()
         {
@@ -42,6 +43,33 @@ namespace yuchao.Business.Admin
 
             return IService.Update(order);
 
+        }
+        //预约管理
+        private UserServer LService = new UserServer();
+        public OrderExtends GetOrderInfoByUserId(string userId)
+        {
+            // 根据userId获取Order
+            Order order = IService.GetByUserId(userId);
+            OrderExtends orderInfo = new OrderExtends();
+            if (order != null)
+            {
+                orderInfo.Id = order.Id;
+                orderInfo.CreateTime = order.CreateTime;
+                orderInfo.GameTime = order.GameTime;
+                orderInfo.Money = order.Money;
+                orderInfo.OrderSn = order.OrderSn;
+                orderInfo.OrderType = order.OrderType;
+                orderInfo.PayStatus = order.PayStatus;
+                orderInfo.PayTime = order.PayTime;
+                orderInfo.Status = order.Status;
+                orderInfo.VenueId = order.VenueId;
+                orderInfo.UserId = order.UserId;
+
+                
+                orderInfo.NickName = LService.GetById(order.UserId).NickName;
+
+            }
+            return orderInfo;
         }
     }
 }

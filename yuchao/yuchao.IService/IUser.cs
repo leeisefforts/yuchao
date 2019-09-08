@@ -36,5 +36,7 @@ namespace yuchao.IService
         bool Dels(dynamic[] ids);
 
         User GetByOpenId(string openId);
+      
+
     }
 }

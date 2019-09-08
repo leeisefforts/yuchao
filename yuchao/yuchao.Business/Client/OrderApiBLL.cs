@@ -11,15 +11,15 @@ namespace yuchao.Business.Client
     {
         private OrderService IService = new OrderService();
         private VenueService LService = new VenueService();
+       
 
         public OrderExtends GetOrderInfoByVenueId(string venueId)
         {
-            // 根据OpenId获取User
+            // 根据VenueId获取Order
             Order order = IService.GetByVenueId(venueId);
             OrderExtends orderInfo = new OrderExtends();
             if (order != null)
             {
-
                 orderInfo.Id = order.Id;
                 orderInfo.CreateTime = order.CreateTime;
                 orderInfo.GameTime = order.GameTime;
@@ -39,5 +39,6 @@ namespace yuchao.Business.Client
             }
             return orderInfo;
         }
+       
     }
 }

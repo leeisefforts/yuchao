@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
 using yuchao.Entity;
 using yuchao.Model;
+using yuchao.Model.Extends;
 
 namespace yuchao.Controllers.Admin
 {
@@ -28,6 +29,18 @@ namespace yuchao.Controllers.Admin
                 Status = 200,
                 Error = "Success",
                 Obj = bll.GetAll()
+            });
+        }
+        //预约管理
+        [HttpGet("{userId}")]
+        public JsonResult GetOrderInfo(string userId)
+        {
+            OrderExtends ranking = bll.GetOrderInfoByUserId(userId);
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = ranking
             });
         }
 
