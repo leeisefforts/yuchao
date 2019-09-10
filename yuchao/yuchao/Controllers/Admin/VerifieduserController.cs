@@ -39,19 +39,19 @@ namespace yuchao.Controllers.Admin
             });
         }
 
-        // POST api/<controller>
+       // POST api/<controller>
         [HttpPost]
-        public JsonResult Post(int id,[FromBody]JObject values)
+        public JsonResult Post(int id, [FromBody]JObject values)
         {
             Verifieduser obj = new Verifieduser()
             {
                 UserId = Convert.ToInt32(values["userId"]),
                 Card = values["card"].ToString(),
                 CardImg1 = values["cardImg1"].ToString(),
-                CardImg2 = values["cardImg2"].ToString()                
+                CardImg2 = values["cardImg2"].ToString()
             };
             bool result = false;
-            if (id!= 0)
+            if (id != 0)
             {
                 obj.Id = id;
                 result = bll.Update(obj);
@@ -69,7 +69,7 @@ namespace yuchao.Controllers.Admin
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
+        //[HttpPut("{id}")]
         public JsonResult Update(int id, [FromBody]JObject values)
         {
             ApiResult res = new ApiResult

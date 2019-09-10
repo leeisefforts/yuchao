@@ -33,7 +33,7 @@ namespace yuchao.Business.Client
                 gamerecordInfo.Score = LService.GetById(gamerecord.VenueId).Score;
                 gamerecordInfo.VenueAddress = LService.GetById(gamerecord.VenueId).VenueAddress;
                 gamerecordInfo.VenueImg = LService.GetById(gamerecord.VenueId).VenueImg;
-            
+
             }
             return gamerecordInfo;
         }

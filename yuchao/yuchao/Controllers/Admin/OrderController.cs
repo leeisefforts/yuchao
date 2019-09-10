@@ -63,7 +63,6 @@ namespace yuchao.Controllers.Admin
                 PayTime = Convert.ToDateTime(values["payTime"]),
                 Status = Convert.ToInt32(values["status"]),
                 VenueId = Convert.ToInt32(values["venueId"])
-
             });
             if (suc) res.Obj = true;
             else

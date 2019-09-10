@@ -45,10 +45,17 @@ namespace yuchao.Service
         {
             return rdb.GetById(id);
         }
-        //预约管理
+
         public Order GetByUserId(string userId)
         {
-            return rdb.GetSingle(p => p.UserId.Equals(userId));
+
+            return rdb.GetSingle(P => P.UserId.Equals(userId));
         }
+        
+        ////预约管理
+        //public Order GetByUserId(string userId)
+        //{
+        //    return rdb.GetSingle(p => p.UserId.Equals(userId));
+        //}
     }
 }

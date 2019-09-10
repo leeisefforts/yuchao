@@ -27,6 +27,7 @@ namespace yuchao.Controllers.Admin
         /// </summary>
         /// <returns></returns>
         // GET: api/<controller>
+        
         [HttpGet]
         public IEnumerable<string> Get()
         {

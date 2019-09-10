@@ -8,7 +8,7 @@ using yuchao.Service;
 
 namespace yuchao.Business.Admin
 {
-  public  class ClubBLL
+    public class ClubBLL
     {
         public ClubServer IService = new Service.ClubServer();
         // 查询      
@@ -16,20 +16,21 @@ namespace yuchao.Business.Admin
         {
             return IService.Get(id);
         }
+
         // 增加
         public bool Insert(Club entity)
         {
             return IService.Add(entity);
         }
+
         // 删除
-         public object DeleteById(dynamic[] ids)
+        public object DeleteById(dynamic[] ids)
         {
             return IService.Dels(ids);
         }
-        /// <summary>
-        /// 修改
-        /// </summary>
-       public bool Update(Club club)
+
+        //修改
+        public bool Update(Club club)
         {
             Club club1 = IService.Get(club.Id);
             club1.ClubName = club.ClubName;
@@ -41,9 +42,5 @@ namespace yuchao.Business.Admin
             club1.Status = club.Status;
             return IService.Update(club);
         }
-
-      
-
-       
     }
 }

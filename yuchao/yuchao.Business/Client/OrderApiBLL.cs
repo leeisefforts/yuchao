@@ -11,7 +11,7 @@ namespace yuchao.Business.Client
     {
         private OrderService IService = new OrderService();
         private VenueService LService = new VenueService();
-       
+
 
         public OrderExtends GetOrderInfoByVenueId(string venueId)
         {
@@ -35,10 +35,10 @@ namespace yuchao.Business.Client
                 orderInfo.VenueAddress = LService.GetById(order.VenueId).VenueAddress;
                 orderInfo.VenueImg = LService.GetById(order.VenueId).VenueImg;
                 orderInfo.AvePrice = LService.GetById(order.VenueId).AvePrice;
-         
+
             }
             return orderInfo;
         }
-       
+
     }
 }

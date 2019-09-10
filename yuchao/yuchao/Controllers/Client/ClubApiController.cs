@@ -21,6 +21,7 @@ namespace yuchao.Controllers.Client
     [ApiController]
     public class ClubApiController : Controller
     {
+
         private ClubBLL bll = new ClubBLL();
 
         // POST api/<controller>
