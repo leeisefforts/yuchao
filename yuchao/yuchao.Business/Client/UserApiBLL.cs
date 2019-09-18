@@ -9,6 +9,7 @@ namespace yuchao.Business.Client
 {
     public class UserApiBLL
     {
+        //个人基本信息
         private UserServer IService = new UserServer();
         private LevelService LService = new LevelService();
 
@@ -16,7 +17,7 @@ namespace yuchao.Business.Client
             // 根据OpenId获取User
             User user = IService.GetByOpenId(openId);
             UserExtends userInfo = new UserExtends();
-            if (user != null)
+            if (user!= null)
             {
 
                 userInfo.Id = user.Id;

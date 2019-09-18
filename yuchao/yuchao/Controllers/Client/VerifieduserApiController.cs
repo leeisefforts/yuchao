@@ -29,6 +29,7 @@ namespace yuchao.Controllers.Client
         {
             Verifieduser obj = new Verifieduser()
             {
+               
                 UserId = Convert.ToInt32(values["userId"]),
                 Card = values["card"].ToString(),
                 CardImg1 = values["cardImg1"].ToString(),

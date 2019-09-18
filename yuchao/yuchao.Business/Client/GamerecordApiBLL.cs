@@ -9,6 +9,7 @@ namespace yuchao.Business.Client
 {
   public  class GamerecordApiBLL
     {
+        //比赛
         private GamerecordService IService = new GamerecordService();
         private VenueService LService = new VenueService();
 

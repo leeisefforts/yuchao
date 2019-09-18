@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using yuchao.Entity;
 
 namespace yuchao.IService
@@ -11,7 +12,8 @@ namespace yuchao.IService
         /// <param name="id"></param>
         /// <returns></returns>
         RefereeApply Get(int id);
-      
+        List<RefereeApply> GetAll();
+
 
         /// <summary>
         /// 添加

@@ -1,5 +1,6 @@
 ﻿using SqlSugar;
 using System;
+using System.Collections.Generic;
 using yuchao.Entity;
 using yuchao.IService;
 using yuchao.Model;
@@ -43,6 +44,11 @@ namespace yuchao.Service
         bool IRefereeApply.Dels(dynamic[] ids)
         {
             return rdb.DeleteById(ids);
+        }
+
+        public List<RefereeApply> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

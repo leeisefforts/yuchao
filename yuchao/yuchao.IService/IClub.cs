@@ -34,5 +34,7 @@ namespace yuchao.IService
         /// <param name="ids"></param>
         /// <returns></returns>
         bool Dels(dynamic[] ids);
+
+      
     }
 }

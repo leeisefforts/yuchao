@@ -26,7 +26,7 @@ namespace yuchao.Controllers.Client
         {
             return new string[] { "value1", "value2" };
         }
-
+   
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public JsonResult GetAll()

@@ -9,6 +9,7 @@ namespace yuchao.Business.Client
 {
     public class RankingApiBLL
     {
+        //排名
         private RankingServer IService = new RankingServer();
         private UserServer LService = new UserServer();
 

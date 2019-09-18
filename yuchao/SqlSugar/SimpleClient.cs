@@ -37,6 +37,9 @@ namespace SqlSugar
         {
             return Context.Insertable<T>(insertObj);
         }
+
+       
+
         public IInsertable<T> AsInsertable(T[] insertObjs) 
         {
             return Context.Insertable<T>(insertObjs);
@@ -46,6 +49,8 @@ namespace SqlSugar
         {
             throw new NotImplementedException();
         }
+
+       
 
         public IInsertable<T> AsInsertable(List<T> insertObjs)
         {

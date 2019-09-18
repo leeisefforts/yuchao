@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using yuchao.Model.Extends;
+using yuchao.Service;
+
+namespace yuchao.Business.Client
+{
+   public class ClubApiBLL
+    {
+        //添加俱乐部
+        private ClubServer  clubServer= new ClubServer();
+
+        public void addClub(Entity.Club club)
+        {
+            clubServer.Add(club);
+        }
+    }
+}

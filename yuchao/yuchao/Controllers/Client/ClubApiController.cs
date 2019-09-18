@@ -11,7 +11,7 @@ using yuchao.Entity;
 using yuchao.Model;
 
 namespace yuchao.Controllers.Client
-{
+{ 
     /// <summary>
     /// 创建俱乐部
     /// </summary>
@@ -21,12 +21,12 @@ namespace yuchao.Controllers.Client
     [ApiController]
     public class ClubApiController : Controller
     {
-
+        
         private ClubBLL bll = new ClubBLL();
 
         // POST api/<controller>
         [HttpPost]
-        public JsonResult Post(int id, [FromBody]JObject values)
+        public JsonResult Add(int id, [FromBody]JObject values)
         {
             Club obj = new Club()
             {
