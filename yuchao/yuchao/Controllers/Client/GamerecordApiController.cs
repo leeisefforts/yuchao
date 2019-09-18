@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
 using yuchao.Business.Client;
 using yuchao.Model;
@@ -19,7 +20,8 @@ namespace yuchao.Controllers.Client
     public class GamerecordApiController : Controller
     {
         private GamerecordApiBLL bll = new GamerecordApiBLL();
-       
+        private GamerecordBLL bll2 = new GamerecordBLL();
+
         [HttpGet("{venueId}")]
         public JsonResult GetGamerecordInfo(string venueId)
         {
@@ -33,15 +35,26 @@ namespace yuchao.Controllers.Client
                 Obj = gamerecord
             });
         }
-        private GamerecordBLL bll2 = new GamerecordBLL();
-        [HttpGet]
-        public JsonResult GetAll()
+
+        [HttpGet("{openId}")]
+        public JsonResult GetAll(string openId)
         {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetAll()
+                Obj = bll.GetAll(openId)
+            });
+        }
+
+        [HttpPost("{openId}")]
+        public JsonResult GameCreate(string openId , [FromBody]JObject values) {
+
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.CreateGame(openId, values)
             });
         }
     }

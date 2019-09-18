@@ -20,14 +20,14 @@ namespace yuchao.Controllers.Admin
     {
         private GamerecordBLL bll = new GamerecordBLL();
 
-        [HttpGet]
-        public JsonResult GetAll()
+        [HttpGet("{openId}")]
+        public JsonResult GetAll(string openId)
         {
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetAll()
+                Obj = bll.GetAll(openId)
             });
         }
 
@@ -43,7 +43,7 @@ namespace yuchao.Controllers.Admin
             bool suc = bll.Insert(new Gamerecord()
             {
                 WinId = Convert.ToInt32(values["levelSort"]),
-                Statue = Convert.ToInt32(values["levelSort"]),
+                Status = Convert.ToInt32(values["levelSort"]),
                 RefereeId = Convert.ToInt32(values["levelSort"]),
                 LoseId = Convert.ToInt32(values["levelSort"]),
                 IsTeamGame = Convert.ToInt32(values["levelSort"]),
@@ -70,7 +70,7 @@ namespace yuchao.Controllers.Admin
                 {
                     Id = id,
                     WinId = Convert.ToInt32(values["levelSort"]),
-                    Statue = Convert.ToInt32(values["levelSort"]),
+                    Status = Convert.ToInt32(values["levelSort"]),
                     RefereeId = Convert.ToInt32(values["levelSort"]),
                     LoseId = Convert.ToInt32(values["levelSort"]),
                     IsTeamGame = Convert.ToInt32(values["levelSort"]),

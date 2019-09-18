@@ -38,8 +38,8 @@ namespace yuchao.Controllers.Client
                 ClubDesc = values["clubDesc"].ToString(),
                 ClubLogo = values["clubLogo"].ToString(),
                 ClubName = values["clubName"].ToString(),
-                Status = Convert.ToInt32(values["status"]),
-                CreateTime = Convert.ToDateTime(values["createTime"])
+                Status = 1,
+                CreateTime = DateTime.Now
             };
             bool result = false;
             if (id != 0)
@@ -59,10 +59,11 @@ namespace yuchao.Controllers.Client
             });
         }
 
-        [HttpGet]
-        public JsonResult GetList() {
+        [HttpPost]
+        public JsonResult GetList([FromBody]JObject values) {
 
-            List<Club> result = cbll.GetList();
+
+            List<Club> result = cbll.GetList(values["keyword"].ToString());
             return Json(new ApiResult()
             {
                 Status = 200,

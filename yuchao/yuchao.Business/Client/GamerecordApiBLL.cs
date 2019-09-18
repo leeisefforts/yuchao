@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
@@ -13,6 +14,7 @@ namespace yuchao.Business.Client
         //比赛
         private GamerecordService IService = new GamerecordService();
         private VenueService LService = new VenueService();
+        private ScheduleRecordService SrService = new ScheduleRecordService();
 
         public GamerecordExtends GetGamerecordInfoByVenueId(string venueId)
         {
@@ -27,7 +29,7 @@ namespace yuchao.Business.Client
                 gamerecordInfo.IsTeamGame = gamerecord.IsTeamGame;
                 gamerecordInfo.LoseId = gamerecord.LoseId;
                 gamerecordInfo.RefereeId = gamerecord.RefereeId;
-                gamerecordInfo.Statue = gamerecord.Statue;
+                gamerecordInfo.Status = gamerecord.Status;
                 gamerecordInfo.VenueId = gamerecord.VenueId;
                 gamerecordInfo.WinId = gamerecord.WinId;
                 gamerecordInfo.AvePrice = LService.GetById(gamerecord.VenueId).AvePrice;
@@ -40,9 +42,47 @@ namespace yuchao.Business.Client
             return gamerecordInfo;
         }
 
-        public List<Gamerecord> GetAll()
+        public List<GamerecordExtends> GetAll(string openId)
         {
-            return IService.GetAll();
+            List<GamerecordExtends> list = new List<GamerecordExtends>();
+            List < Gamerecord > res = IService.GetAll(openId);
+            foreach (var item in res)
+            {
+                GamerecordExtends gamerecordInfo = new GamerecordExtends();
+                Venue venue = LService.GetById(item.VenueId);
+                gamerecordInfo.Id = item.Id;
+                gamerecordInfo.CreateTime = item.CreateTime;
+                gamerecordInfo.GameTime = item.GameTime;
+                gamerecordInfo.IsTeamGame = item.IsTeamGame;
+                gamerecordInfo.LoseId = item.LoseId;
+                gamerecordInfo.RefereeId = item.RefereeId;
+                gamerecordInfo.Status = item.Status;
+                gamerecordInfo.VenueId = item.VenueId;
+                gamerecordInfo.WinId = item.WinId;
+                gamerecordInfo.AvePrice = venue.AvePrice;
+                gamerecordInfo.VenueName = venue.VenueName;
+                gamerecordInfo.Score = venue.Score;
+                gamerecordInfo.VenueAddress = venue.VenueAddress;
+                gamerecordInfo.VenueImg = venue.VenueImg;
+                list.Add(gamerecordInfo);
+
+            }
+            return list;
+        }
+
+
+        public bool CreateGame(string openId , JObject values) {
+
+            int venueId = Convert.ToInt32(values["venueId"]);
+            int siteId = Convert.ToInt32(values["siteId"]);
+
+            List<ScheduledRecord> sr = SrService.GetByVenueId(venueId, siteId);
+            
+            foreach (var item in sr)
+            {
+
+            }
+            return false;
         }
     }
 }

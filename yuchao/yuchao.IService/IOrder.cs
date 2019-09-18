@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
@@ -23,5 +24,7 @@ namespace yuchao.IService
         Order GetByVenueId(string venueId);
         //预约管理
         Order GetByUserId(string userId);
+
+        bool CreateOrder(Order order);
     }
 }

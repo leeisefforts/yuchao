@@ -12,9 +12,9 @@ namespace yuchao.Service
     {
         public SimpleClient<Gamerecord> rdb = new SimpleClient<Gamerecord>(BaseDb.GetClient());
 
-        public List<Gamerecord> GetAll()
+        public List<Gamerecord> GetAll(string openId)
         {
-            return rdb.GetList();
+            return rdb.GetList(p=>p.CreateId.Equals(openId));
         }
 
         public bool Insert(Gamerecord gamerecord)

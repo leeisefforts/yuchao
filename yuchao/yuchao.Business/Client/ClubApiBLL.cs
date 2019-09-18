@@ -17,8 +17,8 @@ namespace yuchao.Business.Client
             clubServer.Add(club);
         }
 
-        public List<Club> GetList() {
-            return clubServer.GetList();
+        public List<Club> GetList(string keyword) {
+            return clubServer.GetList(keyword);
         }
     }
 }

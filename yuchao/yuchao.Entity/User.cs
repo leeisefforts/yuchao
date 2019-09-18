@@ -37,5 +37,13 @@ namespace yuchao.Entity
 
         public int Status { get; set; }
 
+        public int LevelCount { get; set; }
+
+        public string Tel { get; set; }
+
+        public int WinCount { get; set; }
+
+        public int LosCount { get; set; }
+
     }
 }

@@ -41,35 +41,40 @@ namespace yuchao.Controllers.Client
 
 
         // POST api/<controller>
-        [HttpPost("{id}")]
-        public JsonResult Post(int id, [FromBody]JObject values)
+        [HttpPost("{openId}")]
+        public JsonResult Post(string openId, [FromBody]JObject values)
         {
-            User obj = new User()
-            {
-                NickName = values["nickName"].ToString(),
-                Language = values["language"].ToString(),
-                Gender = Convert.ToInt32(values["gender"]),
-                AvatarUrl = values["avatarUrl"].ToString(),
-                Country = values["country"].ToString(),
-                City = values["city"].ToString(),
-                Province = values["province"].ToString()
-            };
-            bool result = false;
-            if (id != 0)
-            {
-                obj.Id = id;
-                result = bull.Update(obj);
-            }
-            else
-            {
-                result = bull.Insert(obj);
-            }
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = result
-            });
+                Obj = bll.OpsUserInfo(openId, values)
+            }); ; ;
+        }
+    }
+
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class UserPhoneController : Controller
+    {
+        private UserApiBLL bll = new UserApiBLL();
+
+
+        private UserBLL bull = new UserBLL();
+
+        // POST api/<controller>
+        [HttpPost("{openId}")]
+        public JsonResult Post(string openId, [FromBody]JObject values)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.SaveTel(openId, values["tel"].ToString())
+            }); ; ;
         }
     }
 }

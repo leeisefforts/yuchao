@@ -24,16 +24,27 @@ namespace yuchao.Controllers.Client
     {
         private RankingApiBLL bll = new RankingApiBLL();
         // GET api/<controller>/5
-        [HttpGet("{userId}")]
-        public JsonResult GetRankingInfo(string userId)
+        [HttpGet("{openId}")]
+        public JsonResult GetRankingInfo(string openId)
         {
-            RankingExtends ranking = bll.GetRankingInfoByUserId(userId);
+            RankingExtends ranking = bll.GetRankingInfoByUserId(openId);
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
                 Obj = ranking
             });
+        }
+
+        [HttpGet]
+        public JsonResult GetAll() {
+
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetAllRanking()
+        });
         }
     }
 }

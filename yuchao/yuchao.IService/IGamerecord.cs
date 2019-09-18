@@ -7,11 +7,7 @@ namespace yuchao.IService
 {
    public interface IGamerecord
     {
-        /// <summary>
-        /// 获取全部段位
-        /// </summary>
-        /// <returns></returns>
-        List<Gamerecord> GetAll();
+        List<Gamerecord> GetAll(string openId);
 
         bool Insert(Gamerecord gamerecord);
 
@@ -20,6 +16,7 @@ namespace yuchao.IService
         bool DeleteById(int id);
 
         bool Update(Gamerecord gamerecord);
+
         Gamerecord GetByVenueId(string venueId);
     }
 }

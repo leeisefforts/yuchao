@@ -43,7 +43,7 @@ namespace yuchao.Controllers.Admin
             bool suc = bll.Insert(new Ranking()
             {
                 Rank = Convert.ToInt32(values["rank"]),
-                UserId = Convert.ToInt32(values["userId"])
+                UserId = values["openId"].ToString()
             });
             if (suc) res.Obj = true;
             else
@@ -65,7 +65,7 @@ namespace yuchao.Controllers.Admin
                 {
                     Id = id,
                     Rank = Convert.ToInt32(values["rank"]),
-                    UserId = Convert.ToInt32(values["userId"])
+                    UserId = values["openId"].ToString()
                 })
             };
             return Json(res);

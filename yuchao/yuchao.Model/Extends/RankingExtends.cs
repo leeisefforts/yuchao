@@ -9,9 +9,6 @@ namespace yuchao.Model.Extends
     {
         public string NickName { get; set; }
 
-        public string Language { get; set; }
-        public int Gender { get; set; }
-
         public string AvatarUrl { get; set; }
 
         public string Country { get; set; }
@@ -22,15 +19,7 @@ namespace yuchao.Model.Extends
 
         public string OpenId { get; set; }
 
-        public int LevelId { get; set; }
-
-        public int CoinNum { get; set; }
-
-        public int TotalGame { get; set; }
-
-        public int Reputation { get; set; }
-
-        public int IsReferee { get; set; }
+        public string LevelName { get; set; }
 
         public int Status { get; set; }
     }

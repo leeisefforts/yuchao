@@ -10,9 +10,9 @@ namespace yuchao.Business.Admin
     {
         private IGamerecord IService = new Service.GamerecordService();
 
-        public List<Gamerecord> GetAll()
+        public List<Gamerecord> GetAll(string openId)
         {
-            return IService.GetAll();
+            return IService.GetAll(openId);
         }
 
         public bool Insert(Gamerecord gamerecord)
@@ -33,8 +33,9 @@ namespace yuchao.Business.Admin
             gamerecord1.IsTeamGame = gamerecord.IsTeamGame;
             gamerecord1.LoseId = gamerecord.LoseId;
             gamerecord1.RefereeId = gamerecord.RefereeId;
-            gamerecord1.Statue = gamerecord.Statue;
+            gamerecord1.Status = gamerecord.Status;
             gamerecord1.WinId = gamerecord.WinId;            
+            gamerecord1.CreateId = gamerecord.CreateId;            
             return IService.Update(gamerecord);
 
         }

@@ -37,5 +37,10 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.UserId.Equals(userId));
         }
 
+        public List<Ranking> GetList() {
+
+            return rdb.GetList();
+        }
+
     }
 }

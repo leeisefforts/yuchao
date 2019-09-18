@@ -33,9 +33,14 @@ namespace yuchao.Service
             
         }
 
-        public List<Club> GetList()
+        public List<Club> GetList(string keyword)
         {
-            return rdb.GetList(p => p.Status == 1);
+            List<Club> list = rdb.GetList(p => p.Status == 1);
+            if (string.IsNullOrEmpty(keyword))
+            {
+                list = list.FindAll(p => p.ClubName.Contains(keyword));
+            }
+            return list;
         }
     }
 }

@@ -17,6 +17,11 @@ namespace yuchao.Service
         {
             return rdb.GetSingle(p => p.Id == Id);
         }
+
+        //查询数量
+        public int GetAllCount() {
+            return rdb.Count(p=>p.Status == 1);
+        }
         public User GetById(int id)
         {
             return rdb.GetById(id);
@@ -47,5 +52,9 @@ namespace yuchao.Service
         }
         //预约管理
 
+
+        public bool Insert(User user) {
+            return rdb.Insert(user);
+        }
     }
 }
