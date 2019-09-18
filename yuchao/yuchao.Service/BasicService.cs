@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Xml.Serialization;
 using yuchao.Entity;
@@ -48,6 +49,21 @@ namespace yuchao.Service
             reader.Close();
             reader.Dispose();
 
+            return result;
+        }
+
+        public static string GetOpenId(string url) {
+            string result = string.Empty;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage response = httpClient.GetAsync(url).Result;
+                string statusCode = response.StatusCode.ToString();
+              
+                if (response.IsSuccessStatusCode)
+                {
+                    result = response.Content.ReadAsStringAsync().Result;
+                }
+            }
             return result;
         }
     }

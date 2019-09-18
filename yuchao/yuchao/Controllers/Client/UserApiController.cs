@@ -11,9 +11,12 @@ using yuchao.Business.Client;
 using yuchao.Entity;
 using yuchao.Model;
 using yuchao.Model.Extends;
+using yuchao.Service;
 
 namespace yuchao.Controllers.Client
 {
+
+
     [Route("api/client/[controller]")]
     [EnableCors("AllowCors")]
     [Produces("application/json")]
@@ -24,7 +27,6 @@ namespace yuchao.Controllers.Client
 
 
         private UserBLL bull = new UserBLL();
-
 
         [HttpGet("{openId}")]
         public JsonResult GetUserInfo(string openId) {
@@ -75,6 +77,26 @@ namespace yuchao.Controllers.Client
                 Error = string.Empty,
                 Obj = bll.SaveTel(openId, values["tel"].ToString())
             }); ; ;
+        }
+    }
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class UserBindController : Controller
+    {
+        // POST api/<controller>
+        [HttpGet("{code}")]
+        public JsonResult GetOpenId(string code)
+        {
+            string url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx78eab72a6ea9581d&secret=2a01de89252d7b4f2c23434ecbe5d862&js_code=" + code + "&grant_type=authorization_code";
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = BasicService.GetOpenId(url)
+            });
         }
     }
 }
