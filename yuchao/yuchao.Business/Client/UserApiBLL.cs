@@ -74,7 +74,8 @@ namespace yuchao.Business.Client
                     AvatarUrl = values["avatarUrl"].ToString(),
                     Country = values["country"].ToString(),
                     City = values["city"].ToString(),
-                    Province = values["province"].ToString()
+                    Province = values["province"].ToString(),
+                    LevelId = 1
                 };
                 result = IService.Insert(obj);
 
