@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
+using yuchao.IService;
 using yuchao.Model.Extends;
 using yuchao.Service;
 
@@ -37,6 +38,11 @@ namespace yuchao.Business.Client
 
             }
             return gamerecordInfo;
+        }
+
+        public List<Gamerecord> GetAll()
+        {
+            return IService.GetAll();
         }
     }
 }
