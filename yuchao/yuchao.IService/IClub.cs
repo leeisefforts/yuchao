@@ -35,6 +35,7 @@ namespace yuchao.IService
         /// <returns></returns>
         bool Dels(dynamic[] ids);
 
+        List<Club> GetList();
       
     }
 }

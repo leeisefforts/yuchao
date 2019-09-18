@@ -40,7 +40,7 @@ namespace yuchao.Controllers.Admin
         }
 
         // POST api/<controller>
-        [HttpPost]
+        [HttpPost("{id}")]
         public JsonResult Post(int id, [FromBody]JObject values)
         {
             User obj = new User()

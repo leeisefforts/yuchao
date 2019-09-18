@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using yuchao.Business.Admin;
+using yuchao.Business.Client;
 using yuchao.Entity;
 using yuchao.Model;
 
@@ -23,6 +24,8 @@ namespace yuchao.Controllers.Client
     {
         
         private ClubBLL bll = new ClubBLL();
+
+        private ClubApiBLL cbll = new ClubApiBLL();
 
         // POST api/<controller>
         [HttpPost]
@@ -48,6 +51,18 @@ namespace yuchao.Controllers.Client
             {
                 result = bll.Insert(obj);
             }
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = result
+            });
+        }
+
+        [HttpGet]
+        public JsonResult GetList() {
+
+            List<Club> result = cbll.GetList();
             return Json(new ApiResult()
             {
                 Status = 200,

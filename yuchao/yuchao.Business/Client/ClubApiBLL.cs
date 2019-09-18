@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using yuchao.Entity;
 using yuchao.Model.Extends;
 using yuchao.Service;
 
@@ -14,6 +15,10 @@ namespace yuchao.Business.Client
         public void addClub(Entity.Club club)
         {
             clubServer.Add(club);
+        }
+
+        public List<Club> GetList() {
+            return clubServer.GetList();
         }
     }
 }

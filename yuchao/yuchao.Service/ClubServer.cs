@@ -33,6 +33,9 @@ namespace yuchao.Service
             
         }
 
-        
+        public List<Club> GetList()
+        {
+            return rdb.GetList(p => p.Status == 1);
+        }
     }
 }
