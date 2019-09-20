@@ -16,7 +16,6 @@ namespace yuchao.Service
         {
             return rdb.GetList(p=>p.CreateId.Equals(openId));
         }
-
         public bool Insert(Gamerecord gamerecord)
         {
             return rdb.Insert(gamerecord);
@@ -26,12 +25,10 @@ namespace yuchao.Service
         {
             return rdb.GetById(id);
         }
-
         public bool DeleteById(int id)
         {
             return rdb.DeleteById(id);
         }
-
         public bool Update(Gamerecord gamerecord)
         {
             return rdb.Update(gamerecord);

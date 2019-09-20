@@ -29,7 +29,6 @@ namespace yuchao.Controllers.Client
         [HttpGet("{pid}")]
         public JsonResult GetAllPro(int pid)
         {
-
             return Json(new ApiResult
             {
                 Status = 200,

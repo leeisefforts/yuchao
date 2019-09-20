@@ -25,7 +25,6 @@ namespace yuchao.Controllers.Client
         [HttpGet("{venueId}")]
         public JsonResult GetGamerecordInfo(string venueId)
         {
-
             GamerecordExtends gamerecord = bll.GetGamerecordInfoByVenueId(venueId);
 
             return Json(new ApiResult()

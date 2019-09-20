@@ -49,12 +49,9 @@ namespace yuchao.Business.Client
                 orderInfo.VenueAddress = LService.GetById(order.VenueId).VenueAddress;
                 orderInfo.VenueImg = LService.GetById(order.VenueId).VenueImg;
                 orderInfo.AvePrice = LService.GetById(order.VenueId).AvePrice;
-
             }
             return orderInfo;
         }
-
-
         public Order CreateOrder(JObject values) {
             Order order = new Order();
 

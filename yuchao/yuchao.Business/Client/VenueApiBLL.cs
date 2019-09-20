@@ -15,6 +15,10 @@ namespace yuchao.Business.Client
             return IService.GetAll();
         }
 
+        public Venue GetById(int id)
+        {
+            return IService.GetById(id);
+        }
         public bool Insert(Venue venue)
         {
             return IService.Insert(venue);

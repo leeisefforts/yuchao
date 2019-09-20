@@ -34,7 +34,6 @@ namespace yuchao.Business.Client
             }
             return rankingInfo;
         }
-
         public List<RankingExtends> GetAllRanking() {
             List<Ranking> list = IService.GetList();
             List<RankingExtends> result = new List<RankingExtends>();

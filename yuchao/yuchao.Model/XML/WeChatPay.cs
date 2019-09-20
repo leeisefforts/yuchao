@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 
 namespace yuchao.Model.XML
 {
+    //微信支付
     [XmlType("XML")]
     public class WeChatPay
     {

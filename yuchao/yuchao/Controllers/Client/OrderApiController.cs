@@ -24,9 +24,7 @@ namespace yuchao.Controllers.Client
         [HttpGet("{VenueId}")]
         public JsonResult GetOrderInfo(string venueId)
         {
-
             OrderExtends user = bll.GetOrderInfoByVenueId(venueId);
-
             return Json(new ApiResult()
             {
                 Status = 200,
@@ -37,10 +35,7 @@ namespace yuchao.Controllers.Client
 
         [HttpPost()]
         public JsonResult CreateOrder([FromBody]JObject values) {
-
             Order order = bll.CreateOrder(values);
-
-
             return Json(new ApiResult()
             {
                 Status = order == null ? 500 : 200,

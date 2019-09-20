@@ -21,12 +21,10 @@ namespace yuchao.Controllers.Client
     [Produces("application/json")]
     [ApiController]
     public class ClubApiController : Controller
-    {
-        
+    {       
         private ClubBLL bll = new ClubBLL();
 
         private ClubApiBLL cbll = new ClubApiBLL();
-
         // POST api/<controller>
         [HttpPost]
         public JsonResult Add(int id, [FromBody]JObject values)
@@ -61,8 +59,6 @@ namespace yuchao.Controllers.Client
 
         [HttpPost]
         public JsonResult GetList([FromBody]JObject values) {
-
-
             List<Club> result = cbll.GetList(values["keyword"].ToString());
             return Json(new ApiResult()
             {

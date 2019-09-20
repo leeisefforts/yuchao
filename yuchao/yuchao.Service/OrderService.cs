@@ -52,13 +52,6 @@ namespace yuchao.Service
 
             return rdb.GetSingle(P => P.UserId.Equals(userId));
         }
-
-        ////预约管理
-        //public Order GetByUserId(string userId)
-        //{
-        //    return rdb.GetSingle(p => p.UserId.Equals(userId));
-        //}
-
         public bool CreateOrder(Order order) {
 
             return rdb.Insert(order);

@@ -21,15 +21,25 @@ namespace yuchao.Controllers.Client
     {
         private VenueBLL bll = new VenueBLL();
         // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
    
         // GET api/<controller>/5
-        [HttpGet("{id}")]
+        [HttpGet]
         public JsonResult GetAll()
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetAll()
+            });            
+        }
+        [HttpGet("{id}")]
+        public JsonResult GetById()
         {
             return Json(new ApiResult
             {
@@ -38,6 +48,5 @@ namespace yuchao.Controllers.Client
                 Obj = bll.GetAll()
             });
         }
-
     }
 }

@@ -38,7 +38,6 @@ namespace yuchao.Service
         }
 
         public List<Ranking> GetList() {
-
             return rdb.GetList();
         }
 

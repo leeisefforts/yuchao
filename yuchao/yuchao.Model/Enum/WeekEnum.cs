@@ -5,7 +5,7 @@ using System.Text;
 
 namespace yuchao.Model.Enum
 {
-    
+    //日期枚举
     public enum WeekEnum
     {
         [Description("星期一")]

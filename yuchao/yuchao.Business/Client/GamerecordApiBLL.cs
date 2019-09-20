@@ -18,7 +18,7 @@ namespace yuchao.Business.Client
 
         public GamerecordExtends GetGamerecordInfoByVenueId(string venueId)
         {
-            // 根据OpenId获取User
+            // 根据venueId获取Gamerecord
             Gamerecord gamerecord = IService.GetByVenueId(venueId);
             GamerecordExtends gamerecordInfo = new GamerecordExtends();
             if (gamerecord != null)
@@ -37,11 +37,10 @@ namespace yuchao.Business.Client
                 gamerecordInfo.Score = LService.GetById(gamerecord.VenueId).Score;
                 gamerecordInfo.VenueAddress = LService.GetById(gamerecord.VenueId).VenueAddress;
                 gamerecordInfo.VenueImg = LService.GetById(gamerecord.VenueId).VenueImg;
-
             }
             return gamerecordInfo;
         }
-
+        //查询全部
         public List<GamerecordExtends> GetAll(string openId)
         {
             List<GamerecordExtends> list = new List<GamerecordExtends>();
@@ -69,8 +68,6 @@ namespace yuchao.Business.Client
             }
             return list;
         }
-
-
         public bool CreateGame(string openId , JObject values) {
 
             int venueId = Convert.ToInt32(values["venueId"]);
