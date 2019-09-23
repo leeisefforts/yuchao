@@ -36,6 +36,7 @@ namespace yuchao.IService
         bool Dels(dynamic[] ids);
 
         List<Club> GetList(string keyword);
-      
+
+        Club GetByOpenId(string openId);
     }
 }

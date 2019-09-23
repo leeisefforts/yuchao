@@ -16,6 +16,11 @@ namespace yuchao.Service
         {
             return rdb.GetSingle(p => p.Id == Id);
         }
+
+        public Club GetByOpenId(string openId)
+        {
+            return rdb.GetSingle(p => p.OpenId.Equals(openId));
+        }
         //增加
         public bool Add(Club entity)
         {
@@ -42,5 +47,7 @@ namespace yuchao.Service
             }
             return list;
         }
+
+
     }
 }

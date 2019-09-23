@@ -58,6 +58,28 @@ namespace yuchao.Controllers.Client
                 Obj = result
             });
         }
+
+        [HttpPost("{id}")]
+        public JsonResult GetById(int id)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.GetById(id)
+            });
+        }
+
+        [HttpGet("{openId}")]
+        public JsonResult GetByOpenId(string openId)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.GetByOpenId(openId)
+            });
+        }
     }
 
 
@@ -82,7 +104,8 @@ namespace yuchao.Controllers.Client
                 ClubLogo = values["clubLogo"].ToString(),
                 ClubName = values["clubName"].ToString(),
                 Status = 1,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                OpenId = openId
             };
 
             return Json(new ApiResult()
@@ -90,6 +113,21 @@ namespace yuchao.Controllers.Client
                 Status = 200,
                 Error = string.Empty,
                 Obj = bll.Insert(Request.Path.Value, obj)
+            });
+        }
+
+        [HttpPost]
+        public JsonResult Apply([FromBody]JObject values)
+        {
+
+            int clubid = Convert.ToInt32(values["clubId"]);
+            string  openId = values["openId"].ToString();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.Apply(clubid, openId)
             });
         }
     }

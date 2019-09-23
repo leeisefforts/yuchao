@@ -41,6 +41,8 @@ namespace yuchao.Business.Client
                 userInfo.Province = user.Province;
                 userInfo.Reputation = user.Reputation;
                 userInfo.TotalGame = user.TotalGame;
+                userInfo.Tel = user.Tel;
+                userInfo.ClubId = user.ClubId;
 
             }
             return userInfo;

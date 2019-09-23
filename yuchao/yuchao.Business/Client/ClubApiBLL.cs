@@ -12,12 +12,31 @@ namespace yuchao.Business.Client
         //添加俱乐部
         private ClubServer  clubServer= new ClubServer();
 
+        private UserServer uServer = new UserServer();
+
         public void addClub(Entity.Club club)
         {
             clubServer.Add(club);
         }
         public List<Club> GetList(string keyword) {
             return clubServer.GetList(keyword);
+        }
+
+        public Club GetById(int id) {
+            return clubServer.Get(id);
+        }
+
+        public Club GetByOpenId(string openId)
+        {
+            return clubServer.GetByOpenId(openId);
+        }
+
+        
+        public bool Apply(int clubId, string openId) {
+            User user = uServer.GetByOpenId(openId);
+            user.ClubId = clubId;
+            return uServer.Update(user);
+
         }
     }
 }

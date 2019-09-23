@@ -23,8 +23,9 @@ namespace yuchao.Business.Admin
             bool isAdd =  IService.Add(entity);
             if (isAdd)
             {
-                string url = string.Format("{0}/api/clubApplyApi/{1}/{2}", path, entity.Id);
-                return BasicService.InitQrCode(url);
+                //string url = string.Format("{0}/api/clubApplyApi/{1}/{2}", path, entity.Id);
+                //return BasicService.InitQrCode(url);
+                return "true";
             }
             else {
                 return "false";
