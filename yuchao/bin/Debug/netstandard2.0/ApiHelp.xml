@@ -48,6 +48,11 @@
             申请裁判
             </summary>
         </member>
+        <member name="T:yuchao.Controllers.Client.ScheduleRecordApiController">
+            <summary>
+            场地信息
+            </summary>
+        </member>
         <member name="T:yuchao.Controllers.Client.VenueApiController">
             <summary>
             场地信息

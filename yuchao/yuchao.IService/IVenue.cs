@@ -9,6 +9,8 @@ namespace yuchao.IService
     {
         List<Venue> GetAll();
 
+        List<Site> GetSiteById(int id);
+
         bool Insert(Venue level);
 
         Venue GetById(int id);

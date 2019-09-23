@@ -1,6 +1,8 @@
-﻿using SqlSugar;
+﻿using QRCoder;
+using SqlSugar;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
@@ -65,6 +67,24 @@ namespace yuchao.Service
                 }
             }
             return result;
+        }
+
+        public static int GetInt() {
+            Random random = new Random();
+           
+            return random.Next(1000, 9999);
+        }
+
+        public static string InitQrCode(string url) {
+            var imgType = Base64QRCode.ImageType.Jpeg;
+
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
+            Base64QRCode qrCode = new Base64QRCode(qrCodeData);
+            string qrCodeImageAsBase64 = qrCode.GetGraphic(5, Color.Black, Color.White, true, imgType);
+
+            return qrCodeImageAsBase64;
+
         }
     }
 }

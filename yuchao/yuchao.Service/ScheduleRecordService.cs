@@ -36,9 +36,19 @@ namespace yuchao.Service
         {
             return rdb.Update(record);
         }
-        public List<ScheduledRecord> GetByVenueId(int venueId , int siteId)
+        public List<ScheduledRecord> GetByVenueId(int venueId)
         {
-            return rdb.GetList(p => p.VenueId ==venueId && p.SiteId ==siteId);
+            return rdb.GetList(p => p.VenueId ==venueId);
+        }
+
+        public List<ScheduledRecord> GetByVId(int venueId)
+        {
+            return rdb.GetList(p => p.VenueId == venueId);
+        }
+
+        public List<ScheduledRecord> GetList(int venueId, string date)
+        {
+            return rdb.GetList(p => p.VenueId == venueId && p.UseTime.Equals(date));
         }
     }
 }

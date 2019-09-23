@@ -18,9 +18,17 @@ namespace yuchao.Business.Admin
         }
 
         // 增加
-        public bool Insert(Club entity)
+        public string Insert(string path ,Club entity)
         {
-            return IService.Add(entity);
+            bool isAdd =  IService.Add(entity);
+            if (isAdd)
+            {
+                string url = string.Format("{0}/api/clubApplyApi/{1}/{2}", path, entity.Id);
+                return BasicService.InitQrCode(url);
+            }
+            else {
+                return "false";
+            }
         }
 
         // 删除

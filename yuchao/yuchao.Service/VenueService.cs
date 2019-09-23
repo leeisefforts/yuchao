@@ -11,12 +11,16 @@ namespace yuchao.Service
     public class VenueService : BaseDb, IVenue
     {
         public SimpleClient<Venue> rdb = new SimpleClient<Venue>(BaseDb.GetClient());
+        public SimpleClient<Site> sdb = new SimpleClient<Site>(BaseDb.GetClient());
 
         public List<Venue> GetAll()
         {
             return rdb.GetList();
         }
-
+        public List<Site> GetSiteById(int id)
+        {
+            return sdb.GetList(p=>p.VenueId == id);
+        }
         public bool Insert(Venue venue)
         {
             return rdb.Insert(venue);
@@ -37,6 +41,6 @@ namespace yuchao.Service
             return rdb.Update(venue);
         }
 
-       
+
     }
 }

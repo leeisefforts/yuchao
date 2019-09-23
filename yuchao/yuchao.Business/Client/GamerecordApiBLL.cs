@@ -73,7 +73,7 @@ namespace yuchao.Business.Client
             int venueId = Convert.ToInt32(values["venueId"]);
             int siteId = Convert.ToInt32(values["siteId"]);
 
-            List<ScheduledRecord> sr = SrService.GetByVenueId(venueId, siteId);
+            List<ScheduledRecord> sr = SrService.GetByVenueId(venueId);
             
             foreach (var item in sr)
             {

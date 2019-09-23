@@ -37,6 +37,8 @@ namespace yuchao.Business.Client
             l.VenueAddress = venue.VenueAddress;
             return IService.Update(venue);
 
-        } 
+        }
+
+
     }
 }

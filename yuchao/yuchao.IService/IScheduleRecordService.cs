@@ -17,8 +17,9 @@ namespace yuchao.IService
 
         bool Update(ScheduledRecord record);
 
-        List<ScheduledRecord> GetByVenueId(int venueId ,int siteId);
+        List<ScheduledRecord> GetByVenueId(int venueId);
 
+        List<ScheduledRecord> GetList(int venueId, string date);
 
     }
 }

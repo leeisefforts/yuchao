@@ -98,5 +98,31 @@ namespace yuchao.Controllers.Client
                 Obj = BasicService.GetOpenId(url)
             });
         }
+
+        [HttpPost]
+        public JsonResult GetCode([FromBody]JObject values) {
+
+            int code = BasicService.GetInt();
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = DxService.SendMsg(code, values["phone"].ToString(), values["openId"].ToString())
+            });
+
+        }
+
+        [HttpPost("{code}")]
+        public JsonResult GetCode(int code, [FromBody]JObject values)
+        {
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = DxService.ValidCode(code, values["openId"].ToString(), values["phone"].ToString())
+            });
+
+        }
     }
 }

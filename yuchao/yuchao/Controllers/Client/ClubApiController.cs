@@ -26,8 +26,8 @@ namespace yuchao.Controllers.Client
 
         private ClubApiBLL cbll = new ClubApiBLL();
         // POST api/<controller>
-        [HttpPost]
-        public JsonResult Add(int id, [FromBody]JObject values)
+        [HttpPost("{openId}")]
+        public JsonResult Add(string openId, [FromBody]JObject values)
         {
             Club obj = new Club()
             {
@@ -37,23 +37,14 @@ namespace yuchao.Controllers.Client
                 ClubLogo = values["clubLogo"].ToString(),
                 ClubName = values["clubName"].ToString(),
                 Status = 1,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                OpenId = openId
             };
-            bool result = false;
-            if (id != 0)
-            {
-                obj.Id = id;
-                result = bll.Update(obj);
-            }
-            else
-            {
-                result = bll.Insert(obj);
-            }
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = result
+                Obj = bll.Insert(HttpContext.Request.Host.ToString(),obj)
             });
         }
 
@@ -65,6 +56,40 @@ namespace yuchao.Controllers.Client
                 Status = 200,
                 Error = string.Empty,
                 Obj = result
+            });
+        }
+    }
+
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class ClubApplyApiController : Controller
+    {
+        private ClubBLL bll = new ClubBLL();
+
+        private ClubApiBLL cbll = new ClubApiBLL();
+        // POST api/<controller>
+        [HttpPost("{openId}")]
+        public JsonResult Add(string openId, [FromBody]JObject values)
+        {
+            Club obj = new Club()
+            {
+                ClubArea = values["clubArea"].ToString(),
+                ClubCity = values["clubCity"].ToString(),
+                ClubDesc = values["clubDesc"].ToString(),
+                ClubLogo = values["clubLogo"].ToString(),
+                ClubName = values["clubName"].ToString(),
+                Status = 1,
+                CreateTime = DateTime.Now
+            };
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.Insert(Request.Path.Value, obj)
             });
         }
     }

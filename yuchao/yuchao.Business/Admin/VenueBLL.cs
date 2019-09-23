@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
@@ -15,6 +16,14 @@ namespace yuchao.Business.Admin
             return IService.GetAll();
         }
 
+        public List<Site> GetSiteById(int id)
+        {
+            return IService.GetSiteById(id);
+        }
+        public Venue GetById(int id)
+        {
+            return IService.GetById(id);
+        }
         public bool Insert(Venue venue)
         {
             return IService.Insert(venue);
@@ -33,5 +42,6 @@ namespace yuchao.Business.Admin
             l.VenueAddress = venue.VenueAddress;
             return IService.Update(venue);
         }
+
     }
 }

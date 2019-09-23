@@ -45,37 +45,6 @@ namespace yuchao.Controllers.Admin
             });
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public JsonResult Post(int id, [FromBody]JObject values)
-        {
-            Club obj = new Club()
-            {
-                ClubArea = values["clubArea"].ToString(),
-                ClubCity = values["clubCity"].ToString(),
-                ClubDesc = values["clubDesc"].ToString(),
-                ClubLogo = values["clubLogo"].ToString(),
-                ClubName = values["clubName"].ToString(),
-                Status = Convert.ToInt32(values["status"]),
-                CreateTime = Convert.ToDateTime(values["createTime"])
-            };
-            bool result = false;
-            if (id != 0)
-            {
-                obj.Id = id;
-                result = bll.Update(obj);
-            }
-            else
-            {
-                result = bll.Insert(obj);
-            }
-            return Json(new ApiResult()
-            {
-                Status = 200,
-                Error = string.Empty,
-                Obj = result
-            });
-        }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]

@@ -36,7 +36,6 @@ G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb
 E:\code\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.deps.json
 E:\code\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.dll
 E:\code\code\yc_admin\yuchao\SqlSugar\bin\Debug\netstandard2.0\SqlSugar.pdb
-E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csprojAssemblyReference.cache
 E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csproj.CoreCompileInputs.cache
 E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfoInputs.cache
 E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.AssemblyInfo.cs

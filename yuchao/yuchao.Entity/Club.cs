@@ -15,6 +15,6 @@ namespace yuchao.Entity
         public int Status { get; set; }
         public DateTime CreateTime { get; set; }
 
-
+        public string OpenId { get; set; }
     }
 }

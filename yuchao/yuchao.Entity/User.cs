@@ -45,5 +45,7 @@ namespace yuchao.Entity
 
         public int LosCount { get; set; }
 
+        public int ClubId { get; set; }
+
     }
 }

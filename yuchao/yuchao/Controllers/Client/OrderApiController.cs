@@ -33,14 +33,14 @@ namespace yuchao.Controllers.Client
             });
         }
 
-        [HttpPost()]
-        public JsonResult CreateOrder([FromBody]JObject values) {
-            Order order = bll.CreateOrder(values);
+        [HttpPost("{openId}")]
+        public JsonResult CreateOrder(string openId, [FromBody]JObject values) {
+            
             return Json(new ApiResult()
             {
-                Status = order == null ? 500 : 200,
-                Error = order == null ? "创建订单失败" :"Success",
-                Obj = bll.CreateOrder(values)
+                Status =  200,
+                Error = "Success",
+                Obj = bll.CreateOrder(openId, values)
             });
         }
     }

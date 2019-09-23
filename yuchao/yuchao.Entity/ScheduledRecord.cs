@@ -18,7 +18,6 @@ namespace yuchao.Entity
 
         public int Week { get; set; }
 
-        public int IsTeamGame { get; set; }
 
         public string OpenId { get; set; }
 
@@ -27,6 +26,8 @@ namespace yuchao.Entity
         public int Status { get; set; }
 
         public int IsGame { get; set; }
+
+        public string UseTime { get; set; }
 
     }
 }
