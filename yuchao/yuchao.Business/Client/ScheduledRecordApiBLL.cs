@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
+using yuchao.Service;
 
 namespace yuchao.Business.Client
 {
@@ -12,7 +13,7 @@ namespace yuchao.Business.Client
     {
         private IScheduleRecordService IService = new Service.ScheduleRecordService();
 
-        public bool CreateSc(string openId, JObject values)
+        public Order CreateSc(string openId, JObject values)
         {
 
             foreach (var item in values["list"])
@@ -85,6 +86,7 @@ namespace yuchao.Business.Client
                 sr.SiteId = siteId;
                 sr.StartTime = start;
                 sr.EndTime = end;
+                sr.TimeId = Convert.ToInt32(item["timeId"]);
                 sr.VenueId = Convert.ToInt32(values["venueId"]);
                 sr.UseTime = values["useTime"].ToString();
                 switch (values["week"].ToString())
@@ -116,9 +118,9 @@ namespace yuchao.Business.Client
                 
                 IService.Insert(sr);
             }
+            Order order =BasicService.CreateOrder(openId, Convert.ToDecimal(values["total_fee"]) ,Convert.ToInt32(values["venueId"]));
 
-
-           return true;
+           return order;
 
         }
 

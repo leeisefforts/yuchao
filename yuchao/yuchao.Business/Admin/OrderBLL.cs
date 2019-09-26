@@ -65,8 +65,6 @@ namespace yuchao.Business.Admin
                 orderInfo.VenueId = order.VenueId;
                 orderInfo.UserId = order.UserId;
 
-                
-                orderInfo.NickName = LService.GetById(order.UserId).NickName;
 
             }
             return orderInfo;

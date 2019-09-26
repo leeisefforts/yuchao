@@ -27,6 +27,8 @@ namespace yuchao.Entity
 
         public int IsGame { get; set; }
 
+        public int TimeId { get; set; }
+
         public string UseTime { get; set; }
 
     }

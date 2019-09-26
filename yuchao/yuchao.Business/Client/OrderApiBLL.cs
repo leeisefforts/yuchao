@@ -22,7 +22,7 @@ namespace yuchao.Business.Client
 
         private static string AppId = "wx78eab72a6ea9581d";
         private static string mch_id = "1547699641";
-        private static string notify_url = "https://fragmenttime.com:8081/api/client/payRedirect";
+        private static string notify_url = "https://fragmenttime.com:8081/api/client/payRedirectApi";
         private static string trade_type = "JSAPI";
         private static string spbill_create_ip = "106.54.146.85";
         private static string key = "RvpZU2lvoDO6ZTlRuywc1sS85qdPNlau";
@@ -52,7 +52,7 @@ namespace yuchao.Business.Client
             }
             return orderInfo;
         }
-        public string CreateOrder(string openId, JObject values) {
+        public Order CreateOrder(string openId, JObject values) {
             Order order = new Order();
             order.OrderSn = BasicService.InitOrderSn();
             string nonce_str = Guid.NewGuid().ToString("N");
@@ -81,13 +81,11 @@ namespace yuchao.Business.Client
             //所有字符转为大写
             string result = sb.ToString().ToUpper();
 
-            pay.sign = result;
-
-            
+            pay.sign = result;          
 
 
             string xml = BasicService.Serialize<WeChatPay>(pay);
-
+            WeChatResult rxml = new WeChatResult ();
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/xml"));
@@ -98,16 +96,22 @@ namespace yuchao.Business.Client
                 if (response.IsSuccessStatusCode)
                 {
                     result = response.Content.ReadAsStringAsync().Result;
+                    rxml = BasicService.Deserialize<WeChatResult>(result);
                 }
             }
-            //order.Money = Convert.ToDecimal(values["money"]);
-            //order.OrderType = Convert.ToInt32(values["orderType"]);
-            //order.CreateTime = DateTime.Now;
-            //order.VenueId = Convert.ToInt32(values["venueId"]);
-            //order.UserId = Convert.ToInt32(values["userId"]);
-            //order.PayStatus = 0;
+            order.Money = Convert.ToDecimal(values["total_fee"]);
+            order.OrderType = 1;
+            order.CreateTime = DateTime.Now;
+            order.VenueId = Convert.ToInt32(values["venueId"]);
+            order.UserId = openId;
+            order.PayStatus = 0;
+            order.Status = 1;
+            order.PrepayId = rxml.prepay_id;
+            order.NonceStr = nonce_str;
+            order.OrderXml = result;
 
-            return result;
+            IService.Insert(order);
+            return order;
         }
 
     }

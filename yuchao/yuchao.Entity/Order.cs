@@ -28,7 +28,17 @@ namespace yuchao.Entity
 
         public DateTime GameTime { get; set; }
 
-        public int UserId { get; set; }
+
+        public string UserId { get; set; }
+
+        public string PrepayId { get; set; }
+
+        public string NonceStr { get; set; }
+        public string OrderXml { get; set; }
+
+        public long TimeStamp { get; set; }
+
+        public string Sign { get; set; }
 
     }
 }
