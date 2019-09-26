@@ -105,7 +105,7 @@ namespace yuchao.Service
             {
                 appid = AppId,
                 body = "VenueOrder",
-                total_fee = 1,
+                total_fee = total_fee,
                 spbill_create_ip = spbill_create_ip,
                 nonce_str = nonce_str,
                 mch_id = mch_id,

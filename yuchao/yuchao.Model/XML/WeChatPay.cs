@@ -35,7 +35,7 @@ namespace yuchao.Model.XML
         public string spbill_create_ip { get; set; }
 
         [XmlElement("total_fee")]
-        public int total_fee { get; set; }
+        public decimal total_fee { get; set; }
 
 
         [XmlElement("trade_type")]
