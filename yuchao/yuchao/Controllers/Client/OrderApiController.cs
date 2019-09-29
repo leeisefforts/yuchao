@@ -21,10 +21,10 @@ namespace yuchao.Controllers.Client
     {
         private OrderApiBLL bll = new OrderApiBLL();
 
-        [HttpGet("{VenueId}")]
-        public JsonResult GetOrderInfo(string venueId)
+        [HttpGet("{openId}")]
+        public JsonResult GetOrderInfo(string openId)
         {
-            OrderExtends user = bll.GetOrderInfoByVenueId(venueId);
+            OrderExtends user = bll.GetByOpenId(openId);
             return Json(new ApiResult()
             {
                 Status = 200,

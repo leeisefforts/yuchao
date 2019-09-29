@@ -27,10 +27,10 @@ namespace yuchao.Business.Client
         private static string spbill_create_ip = "106.54.146.85";
         private static string key = "RvpZU2lvoDO6ZTlRuywc1sS85qdPNlau";
 
-        public OrderExtends GetOrderInfoByVenueId(string venueId)
+        public OrderExtends GetByOpenId(string openId)
         {
             // 根据VenueId获取Order
-            Order order = IService.GetByVenueId(venueId);
+            Order order = IService.GetByOpenId(openId);
             OrderExtends orderInfo = new OrderExtends();
             if (order != null)
             {

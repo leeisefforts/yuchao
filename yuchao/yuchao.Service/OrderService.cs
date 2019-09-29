@@ -42,6 +42,12 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.VenueId.Equals(venueId));
         }
 
+        public Order GetByOpenId(string openId)
+        {
+            return rdb.GetSingle(p => p.UserId.Equals(openId));
+        }
+
+        
         public Order GetById(int id)
         {
             return rdb.GetById(id);
