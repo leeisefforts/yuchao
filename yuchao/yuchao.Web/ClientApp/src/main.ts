@@ -12,9 +12,13 @@ import { hmrBootstrap } from './hmr';
 if (environment.production) {
   enableProdMode();
 }
+export function getBaseUrl() {
+  return document.getElementsByTagName('base')[0].href;
+}
 
+const providers = [{ provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }];
 const bootstrap = () => {
-  return platformBrowserDynamic()
+  return platformBrowserDynamic(providers)
     .bootstrapModule(AppModule, {
       defaultEncapsulation: ViewEncapsulation.Emulated,
       preserveWhitespaces: false,

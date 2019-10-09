@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "Alain",
-    "description": "Ng-zorro admin panel front-end framework"
+    "description": ""
   },
   "user": {
     "name": "Bryant",
@@ -43,7 +43,8 @@
           ]
         }
       ]
-    },{
+    }
+    ,{
       "text": "主导航",
       "i18n": "menu.main",
       "group": true,

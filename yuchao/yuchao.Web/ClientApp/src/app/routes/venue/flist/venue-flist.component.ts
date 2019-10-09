@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Inject } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
@@ -36,14 +36,16 @@ export class VenueListComponent implements OnInit {
   st: STComponent;
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
-    { title: '规则编号', index: 'no' },
-    { title: '描述', index: 'description' },
+    { title: '场馆名称', index: 'venueName' },
+    { title: '场馆地址', index: 'venueAddress' },
     {
-      title: '服务调用次数',
-      index: 'callNo',
+      title: '场馆均价',
+      index: 'avePrice',
       type: 'number',
-      format: (item: any) => `${item.callNo} 万`,
-      sorter: (a: any, b: any) => a.callNo - b.callNo,
+    },
+    {
+      title: '场馆评分',
+      index: 'score',
     },
     {
       title: '状态',
@@ -55,22 +57,14 @@ export class VenueListComponent implements OnInit {
       },
     },
     {
-      title: '更新时间',
-      index: 'updatedAt',
-      type: 'date',
-      sort: {
-        compare: (a: any, b: any) => a.updatedAt - b.updatedAt,
-      },
-    },
-    {
       title: '操作',
       buttons: [
         {
-          text: '配置',
+          text: '详情',
           click: (item: any) => this.msg.success(`配置${item.no}`),
         },
         {
-          text: '订阅警报',
+          text: '删除',
           click: (item: any) => this.msg.success(`订阅警报${item.no}`),
         },
       ],
@@ -80,15 +74,19 @@ export class VenueListComponent implements OnInit {
   description = '';
   totalCallNo = 0;
   expandForm = false;
-
+  baseUrl: string;
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
     private cdr: ChangeDetectorRef,
-  ) {}
+    @Inject('BASE_URL') baseUrl: string,
+  ) {
+    this.baseUrl = baseUrl;
+  }
 
   ngOnInit() {
+    console.log(this.baseUrl);
     this.getData();
   }
 
@@ -99,13 +97,10 @@ export class VenueListComponent implements OnInit {
       this.q.statusList.push(this.q.status);
     }
     this.http
-      .get('/rule', this.q)
+      .get(this.baseUrl + '/api/admin/venue/1', this.q)
       .pipe(
-        map((list: any[]) =>
-          list.map(i => {
-            const statusItem = this.status[i.status];
-            i.statusText = statusItem.text;
-            i.statusType = statusItem.type;
+        map((res: any) =>
+          res.obj.map(i => {
             return i;
           }),
         ),
@@ -139,17 +134,6 @@ export class VenueListComponent implements OnInit {
 
   approval() {
     this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
-  }
-
-  add(tpl: TemplateRef<{}>) {
-    this.modalSrv.create({
-      nzTitle: '新建规则',
-      nzContent: tpl,
-      nzOnOk: () => {
-        this.loading = true;
-        this.http.post('/rule', { description: this.description }).subscribe(() => this.getData());
-      },
-    });
   }
 
   reset() {
