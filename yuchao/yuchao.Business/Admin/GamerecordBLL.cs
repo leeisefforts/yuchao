@@ -35,7 +35,7 @@ namespace yuchao.Business.Admin
             gamerecord1.RefereeId = gamerecord.RefereeId;
             gamerecord1.Status = gamerecord.Status;
             gamerecord1.WinId = gamerecord.WinId;            
-            gamerecord1.CreateId = gamerecord.CreateId;            
+            gamerecord1.OpenId = gamerecord.OpenId;            
             return IService.Update(gamerecord);
 
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
+using yuchao.Model.Extends;
 using yuchao.Service;
 
 namespace yuchao.Business.Client
@@ -12,6 +13,7 @@ namespace yuchao.Business.Client
     public class ScheduledRecordApiBLL
     {
         private IScheduleRecordService IService = new Service.ScheduleRecordService();
+        private IVenue VService = new Service.VenueService();
 
         public Order CreateSc(string openId, JObject values)
         {
@@ -132,6 +134,36 @@ namespace yuchao.Business.Client
 
         public List<ScheduledRecord> GetList(int venueId, string date) {
             return IService.GetList(venueId, date);
+        }
+
+        public List<ScheduledRecordExtends> GetListByOpenId(string openId, int isGame)
+        {
+            List<ScheduledRecord> list =  IService.GetListByOpenId(openId, isGame);
+            List<ScheduledRecordExtends> res = new List<ScheduledRecordExtends>();
+            foreach (var item in list)
+            {
+                ScheduledRecordExtends se = new ScheduledRecordExtends()
+                {
+                    CreateTime = item.CreateTime,
+                    EndTime = item.EndTime,
+                    VenueId = item.VenueId,
+                    VenueName = VService.GetById(item.VenueId).VenueName,
+                    SiteId = item.SiteId,
+                    SiteName = VService.GetSiteBySId(item.SiteId).SiteName,
+                    Id = item.Id,
+                    StartTime = item.StartTime,
+                    Status = item.Status,
+                    IsGame = item.IsGame,
+                    OpenId = item.OpenId,
+                    TimeId =item.TimeId,
+                    UseTime = item.UseTime,
+                    Week = item.Week
+
+                };
+                res.Add(se);
+            }
+
+            return res;
         }
     }
 }

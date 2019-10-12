@@ -50,5 +50,34 @@ namespace yuchao.Service
         {
             return rdb.GetList(p => p.VenueId == venueId && p.UseTime.Equals(date));
         }
+
+        public List<ScheduledRecord> GetListByOpenId(string openid, int isGame)
+        {
+            return rdb.GetList(p => p.OpenId.Equals(openid)&& p.IsGame == isGame);
+        }
+
+        public List<ScheduledRecord> MatchGame(int venueId, string useTime, int days) {
+
+            int min = 0;
+            int max = 1;
+            switch (days)
+            {
+                case 1:
+                    min = 1;
+                    max = 3;
+                    break;
+                case 2:
+                    min = 4;
+                    max = 8;
+                    break;
+                case 3:
+                    min = 9;
+                    max = 13;
+                    break;
+                default:
+                    break;
+            }
+            return rdb.GetList(p=>p.VenueId == venueId && p.UseTime.Equals(useTime) && (p.TimeId > min || p.TimeId< max ) && p.Status == 1);
+        }
     }
 }

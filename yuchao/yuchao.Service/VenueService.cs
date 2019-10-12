@@ -41,6 +41,9 @@ namespace yuchao.Service
             return rdb.Update(venue);
         }
 
-
+        public Site GetSiteBySId(int id)
+        {
+            return sdb.GetById(id);
+        }
     }
 }

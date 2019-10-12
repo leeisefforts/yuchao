@@ -47,7 +47,7 @@ namespace yuchao.Controllers.Admin
                 RefereeId = Convert.ToInt32(values["levelSort"]),
                 LoseId = Convert.ToInt32(values["levelSort"]),
                 IsTeamGame = Convert.ToInt32(values["levelSort"]),
-                GameTime = Convert.ToDateTime(values["levelSort"]),
+                GameTime = values["levelSort"].ToString(),
                 CreateTime = Convert.ToDateTime(values["levelSort"])
             });
             if (suc) res.Obj = true;
@@ -74,7 +74,7 @@ namespace yuchao.Controllers.Admin
                     RefereeId = Convert.ToInt32(values["levelSort"]),
                     LoseId = Convert.ToInt32(values["levelSort"]),
                     IsTeamGame = Convert.ToInt32(values["levelSort"]),
-                    GameTime = Convert.ToDateTime(values["levelSort"]),
+                    GameTime = values["levelSort"].ToString(),
                     CreateTime = Convert.ToDateTime(values["levelSort"])
                 })
             };

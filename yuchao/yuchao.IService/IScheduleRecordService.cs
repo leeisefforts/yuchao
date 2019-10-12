@@ -21,5 +21,7 @@ namespace yuchao.IService
 
         List<ScheduledRecord> GetList(int venueId, string date);
 
+        List<ScheduledRecord> GetListByOpenId(string openId, int isGame);
+
     }
 }

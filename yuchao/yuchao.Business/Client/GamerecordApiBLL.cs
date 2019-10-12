@@ -15,6 +15,9 @@ namespace yuchao.Business.Client
         private GamerecordService IService = new GamerecordService();
         private VenueService LService = new VenueService();
         private ScheduleRecordService SrService = new ScheduleRecordService();
+        private UserServer UService = new UserServer();
+
+        private OrderApiBLL orderApiBLL = new OrderApiBLL();
 
         public GamerecordExtends GetGamerecordInfoByVenueId(string venueId)
         {
@@ -63,6 +66,7 @@ namespace yuchao.Business.Client
                 gamerecordInfo.Score = venue.Score;
                 gamerecordInfo.VenueAddress = venue.VenueAddress;
                 gamerecordInfo.VenueImg = venue.VenueImg;
+                gamerecordInfo.OpenId = item.OpenId;
                 list.Add(gamerecordInfo);
 
             }
@@ -71,15 +75,72 @@ namespace yuchao.Business.Client
         public bool CreateGame(string openId , JObject values) {
 
             int venueId = Convert.ToInt32(values["venueId"]);
-            int siteId = Convert.ToInt32(values["siteId"]);
+            int days = Convert.ToInt32(values["days"]);
+            string matchTime = values["matchTime"].ToString();
 
-            List<ScheduledRecord> sr = SrService.GetByVenueId(venueId);
-            
-            foreach (var item in sr)
+            User user = UService.GetByOpenId(openId);
+
+            Order order = orderApiBLL.CreateOrder(openId, values);
+            // 获取场馆下所有的场地
+
+
+            // 判断当前是否存在正在匹配的人
+            List<MatchGame> list = IService.GetMatchUser(matchTime, venueId);
+            if (list.Count == 0)
+            {
+                MatchGame mg = new MatchGame() {
+                    MatchDays = days,
+                    MatchStatus = 1,
+                    CreateTime =DateTime.Now,
+                    MatchTime = matchTime ,
+                    OpenId = openId,
+                    VenueId = venueId
+                };
+                IService.AddMatchGame(mg);
+                return false;
+            }
+
+            // 选择全天随机匹配
+            if (days == 4)
+            {
+                Random r = new Random();
+                int i = r.Next(0, list.Count);
+                MatchGame mm = list[i];
+
+                int siteId = GetMatchSite(venueId, days , matchTime);
+                if (siteId == -1) return false;
+
+                return true;
+            }
+            foreach (var item in list)
             {
 
             }
+
             return false;
+        }
+
+        public int GetMatchSite(int venueId, int days, string useTime) {
+            List<Site> slist = LService.GetSiteById(venueId);
+            List<ScheduledRecord> sr = SrService.MatchGame(venueId, useTime, days);
+            foreach (var item in slist)
+            {
+                // 按时间顺序优先匹配
+                switch (days)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return -1;
         }
     }
 }

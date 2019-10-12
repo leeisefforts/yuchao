@@ -11,10 +11,11 @@ namespace yuchao.Service
     public class GamerecordService : BaseDb, IGamerecord
     {
         public SimpleClient<Gamerecord> rdb = new SimpleClient<Gamerecord>(BaseDb.GetClient());
+        public SimpleClient<MatchGame> mdb = new SimpleClient<MatchGame>(BaseDb.GetClient());
 
         public List<Gamerecord> GetAll(string openId)
         {
-            return rdb.GetList(p=>p.CreateId.Equals(openId));
+            return rdb.GetList(p=>p.OpenId.Equals(openId));
         }
         public bool Insert(Gamerecord gamerecord)
         {
@@ -36,6 +37,19 @@ namespace yuchao.Service
         public Gamerecord GetByVenueId(string venueId)
         {
             return rdb.GetSingle(p => p.VenueId.Equals(venueId));
+        }
+
+        public List<Gamerecord> GetAllByGameTime(string gameTime, int venueId)
+        {
+            return rdb.GetList(p => p.GameTime.Equals(gameTime) && p.VenueId == venueId);
+        }
+
+        public List<MatchGame> GetMatchUser(string gameTime, int venueId) {
+            return mdb.GetList(p => p.MatchTime.Equals(gameTime) && p.VenueId == venueId);
+        }
+
+        public bool AddMatchGame(MatchGame mg) {
+            return mdb.Insert(mg);
         }
     }
 }

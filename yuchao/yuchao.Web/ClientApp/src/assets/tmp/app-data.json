@@ -48,6 +48,7 @@
       "text": "主导航",
       "i18n": "menu.main",
       "group": true,
+      "hide": true,
       "hideInBreadcrumb": true,
       "children": [
         {
@@ -97,6 +98,7 @@
       "text": "Alain",
       "i18n": "menu.alain",
       "group": true,
+      "hide": false,
       "hideInBreadcrumb": true,
       "children": [
         {
@@ -192,6 +194,8 @@
       "text": "Pro",
       "i18n": "menu.pro",
       "group": true,
+      
+      "hide": false,
       "hideInBreadcrumb": true,
       "children": [
         {
@@ -343,6 +347,8 @@
     {
       "text": "More",
       "i18n": "menu.more",
+      
+      "hide": false,
       "group": true,
       "hideInBreadcrumb": true,
       "children": [

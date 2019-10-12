@@ -12,7 +12,7 @@ namespace yuchao.Entity
 
         public int LoseId { get; set; }
 
-        public DateTime GameTime { get; set; }
+        public string GameTime { get; set; }
 
         public DateTime CreateTime { get; set; }
 
@@ -26,7 +26,7 @@ namespace yuchao.Entity
 
         public int SiteId { get; set; }
 
-        public string CreateId { get; set; }
+        public string OpenId { get; set; }
 
         public int ScheduleRecordId { get; set; }
     }
