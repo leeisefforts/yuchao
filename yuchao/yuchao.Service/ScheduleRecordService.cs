@@ -22,6 +22,12 @@ namespace yuchao.Service
             return rdb.Insert(record);
         }
 
+        public int InsertRId(ScheduledRecord record)
+        {
+            return rdb.InsertReturnIdentity(record);
+        }
+
+
         public ScheduledRecord GetById(int id)
         {
             return rdb.GetById(id);

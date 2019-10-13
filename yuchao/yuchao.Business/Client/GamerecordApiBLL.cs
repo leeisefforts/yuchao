@@ -72,75 +72,162 @@ namespace yuchao.Business.Client
             }
             return list;
         }
-        public bool CreateGame(string openId , JObject values) {
+        public Order CreateGame(string openId , JObject values) {
 
             int venueId = Convert.ToInt32(values["venueId"]);
             int days = Convert.ToInt32(values["days"]);
             string matchTime = values["matchTime"].ToString();
-
+            string openId2 = string.Empty;
             User user = UService.GetByOpenId(openId);
 
             Order order = orderApiBLL.CreateOrder(openId, values);
-            // 获取场馆下所有的场地
 
+            MatchGame mg = new MatchGame()
+            {
+                MatchDays = days,
+                MatchStatus = 1,
+                CreateTime = DateTime.Now,
+                MatchTime = matchTime,
+                OpenId = openId,
+                VenueId = venueId
+
+            };
 
             // 判断当前是否存在正在匹配的人
-            List<MatchGame> list = IService.GetMatchUser(matchTime, venueId);
+            List<MatchGame> list = IService.GetMatchUser(matchTime, venueId, openId);
             if (list.Count == 0)
             {
-                MatchGame mg = new MatchGame() {
-                    MatchDays = days,
-                    MatchStatus = 1,
-                    CreateTime =DateTime.Now,
-                    MatchTime = matchTime ,
-                    OpenId = openId,
-                    VenueId = venueId
-                };
                 IService.AddMatchGame(mg);
-                return false;
+                return order;
             }
-
+            List<int> ilist = new List<int>();
             // 选择全天随机匹配
             if (days == 4)
             {
                 Random r = new Random();
                 int i = r.Next(0, list.Count);
                 MatchGame mm = list[i];
+                mg.MatchStatus = 2;
+                mm.MatchStatus = 2;
+                IService.AddMatchGame(mg);
+                IService.UpdateMatchGame(mm);
+                openId2 = mm.OpenId;
 
-                int siteId = GetMatchSite(venueId, days , matchTime);
-                if (siteId == -1) return false;
-
-                return true;
             }
-            foreach (var item in list)
+            else
             {
+                foreach (var item in list)
+                {
+                    if (days == item.MatchDays)
+                    {
+                        mg.MatchStatus = 2;
+                        item.MatchStatus = 2;
+                        IService.AddMatchGame(mg);
+                        IService.UpdateMatchGame(item);
 
+                        openId2 = item.OpenId;
+                        break;
+                    }
+
+                }
             }
 
-            return false;
+            ilist = GetMatchSite(venueId, days, matchTime);
+            if (ilist.Count == 0) return order;
+
+            ScheduledRecord scheduledRecord = new ScheduledRecord()
+            {
+                OpenId = openId,
+                CreateTime = DateTime.Now,
+                SiteId = ilist[0],
+                TimeId = ilist[1],
+                UseTime = matchTime,
+                VenueId = venueId,
+                Week = 0,
+                IsGame = 1
+            };
+            int c = SrService.InsertRId(scheduledRecord);
+
+            Gamerecord gr = new Gamerecord()
+            {
+                ScheduleRecordId = c,
+                CreateTime = DateTime.Now,
+                SiteId = scheduledRecord.SiteId,
+                VenueId = venueId,
+                Status = 1,
+                IsTeamGame = 0,
+                OpenId = openId,
+                OpenId2 = openId2,
+                GameTime = matchTime
+            };
+
+
+            IService.Insert(gr);
+
+            return order;
         }
 
-        public int GetMatchSite(int venueId, int days, string useTime) {
+        public List<int> GetMatchSite(int venueId, int days, string useTime) {
+
+            List<int> list = new List<int>();
             List<Site> slist = LService.GetSiteById(venueId);
             List<ScheduledRecord> sr = SrService.MatchGame(venueId, useTime, days);
+
             foreach (var item in slist)
             {
+                if (list.Count >= 2) break;
                 // 按时间顺序优先匹配
                 switch (days)
                 {
                     case 1:
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            if (sr.FindIndex(ss => ss.TimeId == i) == -1)
+                            {
+                                list.Add(item.Id);
+                                list.Add(i);
+                                break;
+                            }
+                        }
                         break;
                     case 2:
+                        for (int i = 4; i <= 8; i++)
+                        {
+                            if (sr.FindIndex(ss => ss.TimeId == i) == -1)
+                            {
+                                list.Add(item.Id);
+                                list.Add(i);
+                                break;
+                            }
+                        }
                         break;
                     case 3:
+                        for (int i = 9; i <= 13; i++)
+                        {
+                            if (sr.FindIndex(ss => ss.TimeId == i) == -1)
+                            {
+                                list.Add(item.Id);
+                                list.Add(i);
+                                break;
+                            }
+                        }
                         break;
                     case 4:
+                        for (int i = 1; i <= 13; i++)
+                        {
+                            if (sr.FindIndex(ss => ss.TimeId == i) == -1)
+                            {
+                                list.Add(item.Id);
+                                list.Add(i);
+                                break;
+                            }
+                        }
                         break;
                     default:
                         break;
                 }
             }
-            return -1;
+            return list;
         }
     }
 }

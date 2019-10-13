@@ -44,12 +44,17 @@ namespace yuchao.Service
             return rdb.GetList(p => p.GameTime.Equals(gameTime) && p.VenueId == venueId);
         }
 
-        public List<MatchGame> GetMatchUser(string gameTime, int venueId) {
-            return mdb.GetList(p => p.MatchTime.Equals(gameTime) && p.VenueId == venueId);
+        public List<MatchGame> GetMatchUser(string gameTime, int venueId, string openId) {
+            return mdb.GetList(p => p.MatchTime.Equals(gameTime) && p.VenueId == venueId && p.MatchStatus == 1 && !p.OpenId.Equals(openId));
         }
 
         public bool AddMatchGame(MatchGame mg) {
             return mdb.Insert(mg);
+        }
+
+        public bool UpdateMatchGame(MatchGame mg)
+        {
+            return mdb.Update(mg);
         }
     }
 }

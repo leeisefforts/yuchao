@@ -60,7 +60,7 @@ namespace yuchao.Business.Client
             {
                 appid = AppId,
                 body = "VenueOrder",
-                total_fee = 1,
+                total_fee = Convert.ToDecimal(values["total_fee"]),
                 spbill_create_ip = spbill_create_ip,
                 nonce_str = nonce_str,
                 mch_id = mch_id,
@@ -109,7 +109,7 @@ namespace yuchao.Business.Client
             order.PrepayId = rxml.prepay_id;
             order.NonceStr = nonce_str;
             order.OrderXml = result;
-
+            order.Sign = pay.sign;
             IService.Insert(order);
             return order;
         }

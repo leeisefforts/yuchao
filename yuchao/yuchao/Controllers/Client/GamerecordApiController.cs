@@ -49,12 +49,25 @@ namespace yuchao.Controllers.Client
         [HttpPost("{openId}")]
         public JsonResult GameCreate(string openId , [FromBody]JObject values) {
 
-            return Json(new ApiResult
+            try
             {
-                Status = 200,
-                Error = "Success",
-                Obj = bll.CreateGame(openId, values)
-            });
+                return Json(new ApiResult
+                {
+                    Status = 200,
+                    Error = "Success",
+                    Obj = bll.CreateGame(openId, values)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new ApiResult
+                {
+                    Status = 200,
+                    Error = "Success",
+                    Obj = ex.Message
+                });
+            }
+
         }
     }
 }

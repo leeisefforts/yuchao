@@ -16,7 +16,7 @@ namespace yuchao.Controllers.Client
 {
     [Route("api/client/[controller]")]
     [EnableCors("AllowCors")]
-    [Produces("application/json")]
+    [Produces("application/xml")]
     [ApiController]
     public class PayRedirectApiController : Controller
     {

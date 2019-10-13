@@ -44,7 +44,7 @@ namespace yuchao.Model.XML
 
 
         [XmlElement("sign")]
-        public string sign { get; set; }
+        public string sign { get; set; } 
 
     }
 }
