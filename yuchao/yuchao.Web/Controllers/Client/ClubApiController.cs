@@ -130,5 +130,31 @@ namespace yuchao.Controllers.Client
                 Obj = cbll.Apply(clubid, openId)
             });
         }
+
+
+    }
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class ClubMsgApiController : Controller
+    {
+        private ClubBLL bll = new ClubBLL();
+
+        private ClubApiBLL cbll = new ClubApiBLL();
+
+        // POST api/<controller>
+        [HttpGet("{id}")]
+        public JsonResult GetById(int id)
+        {
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.GetClubUser(id)
+            });
+        }
     }
 }
