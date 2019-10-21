@@ -30,5 +30,7 @@ namespace yuchao.Entity
         public string OpenId2 { get; set; }
 
         public int ScheduleRecordId { get; set; }
+
+        public int ClubId { get; set; }
     }
 }

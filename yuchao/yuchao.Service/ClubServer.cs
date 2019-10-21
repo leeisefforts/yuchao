@@ -11,6 +11,7 @@ namespace yuchao.Service
    public class ClubServer: BaseDb, IClub
     {
         public SimpleClient<Club> rdb = new SimpleClient<Club>(BaseDb.GetClient());
+        public SimpleClient<ClubTotal> tdb = new SimpleClient<ClubTotal>(BaseDb.GetClient());
         //查询
         public Club Get(int Id)
         {
@@ -20,6 +21,11 @@ namespace yuchao.Service
         public Club GetByOpenId(string openId)
         {
             return rdb.GetSingle(p => p.OpenId.Equals(openId));
+        }
+
+        public ClubTotal GetClubTotalByClubId(int clubId)
+        {
+            return tdb.GetSingle(p => p.ClubId == clubId);
         }
         //增加
         public bool Add(Club entity)

@@ -39,6 +39,11 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.VenueId.Equals(venueId));
         }
 
+        public List<Gamerecord> GetByClubId(int clubId)
+        {
+            return rdb.GetList(p => p.ClubId == clubId);
+        }
+
         public List<Gamerecord> GetAllByGameTime(string gameTime, int venueId)
         {
             return rdb.GetList(p => p.GameTime.Equals(gameTime) && p.VenueId == venueId);
