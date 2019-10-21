@@ -26,7 +26,7 @@ namespace yuchao.Controllers.Client
 
         private ClubApiBLL cbll = new ClubApiBLL();
         // POST api/<controller>
-        [HttpPost("{openId}")]
+        [HttpPost("create/{openId}")]
         public JsonResult Add(string openId, [FromBody]JObject values)
         {
             Club obj = new Club()

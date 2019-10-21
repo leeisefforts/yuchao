@@ -26,6 +26,11 @@ namespace yuchao.Service
         {
             return rdb.GetById(id);
         }
+
+        public List<User> GetByClubId(int clubId)
+        {
+            return rdb.GetList(p=>p.ClubId == clubId);
+        }
         //增加
         public bool Add(User entity)
         {

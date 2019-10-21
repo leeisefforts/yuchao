@@ -26,6 +26,11 @@ namespace yuchao.Service
         {
             return rdb.Insert(entity);
         }
+
+        public int AddReturnId(Club entity)
+        {
+            return rdb.InsertReturnIdentity(entity);
+        }
         //修改
         public bool Update(Club entity)
         {

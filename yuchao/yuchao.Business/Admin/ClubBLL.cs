@@ -11,6 +11,7 @@ namespace yuchao.Business.Admin
     public class ClubBLL
     {
         public ClubServer IService = new Service.ClubServer();
+        public UserServer Uervice = new Service.UserServer();
         // 查询      
         public Club GetById(int id)
         {
@@ -18,20 +19,18 @@ namespace yuchao.Business.Admin
         }
 
         // 增加
-        public string Insert(string path ,Club entity)
+        public bool Insert(string path ,Club entity)
         {
-            bool isAdd =  IService.Add(entity);
-            if (isAdd)
-            {
-                //string url = string.Format("{0}/api/clubApplyApi/{1}/{2}", path, entity.Id);
-                //return BasicService.InitQrCode(url);
-                return "true";
-            }
-            else {
-                return "false";
-            }
+            int id =  IService.AddReturnId(entity);
+            User user = Uervice.GetByOpenId(entity.OpenId);
+            user.ClubId = id;
+            return Uervice.Update(user);
         }
-
+        public List<User> GetClubUser(int clubId)
+        {
+            List<User> list = Uervice.GetByClubId(clubId);
+            return list;
+        }
         // 删除
         public object DeleteById(dynamic[] ids)
         {

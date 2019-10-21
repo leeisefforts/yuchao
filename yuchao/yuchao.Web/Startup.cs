@@ -20,6 +20,8 @@ namespace yuchao.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(_options => _options.AddPolicy("AllowCors", _builder => _builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -41,7 +43,7 @@ namespace yuchao.Web
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
+            app.UseCors("AllowCors");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
