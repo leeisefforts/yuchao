@@ -8,6 +8,7 @@ import {
   OnDestroy,
   ElementRef,
   Renderer2,
+  HostListener,
   Inject,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';

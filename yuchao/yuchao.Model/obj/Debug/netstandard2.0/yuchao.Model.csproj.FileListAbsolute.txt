@@ -28,7 +28,6 @@ G:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\yuchao.Model.pdb
 G:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\SqlSugar.dll
 G:\code\yc_admin\yuchao\yuchao.Model\bin\Debug\netstandard2.0\SqlSugar.pdb
 G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.csprojAssemblyReference.cache
-G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.csproj.CoreCompileInputs.cache
 G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.AssemblyInfoInputs.cache
 G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.AssemblyInfo.cs
 G:\code\yc_admin\yuchao\yuchao.Model\obj\Debug\netstandard2.0\yuchao.Model.csproj.CopyComplete

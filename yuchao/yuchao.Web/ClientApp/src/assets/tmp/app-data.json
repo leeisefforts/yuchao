@@ -29,16 +29,6 @@
               "text": "场地列表",
               "link": "/venue/list",
               "i18n": "menu.venueManage.list"
-            },
-            {
-              "text": "添加场馆",
-              "link": "/venue/fadd",
-              "i18n": "menu.venueManage.fadd"
-            },
-            {
-              "text": "添加场地",
-              "link": "/venue/add",
-              "i18n": "menu.venueManage.add"
             }
           ]
         }
@@ -194,7 +184,7 @@
       "text": "Pro",
       "i18n": "menu.pro",
       "group": true,
-      
+
       "hide": false,
       "hideInBreadcrumb": true,
       "children": [
@@ -347,7 +337,7 @@
     {
       "text": "More",
       "i18n": "menu.more",
-      
+
       "hide": false,
       "group": true,
       "hideInBreadcrumb": true,

@@ -3,7 +3,7 @@ import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
 import { SFSchema } from '@delon/form';
 
 @Component({
-  selector: 'app-basic-list-edit',
+  selector: 'flist-edit',
   templateUrl: './edit.component.html',
 })
 export class ProBasicListEditComponent {

@@ -1,8 +1,20 @@
-import { Component, ViewChild, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Inject } from '@angular/core';
+import { Component, ViewChild, OnInit, ChangeDetectionStrategy, ChangeDetectorRef,HostListener, Inject,ElementRef } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
-import { _HttpClient } from '@delon/theme';
+import { _HttpClient, ModalHelper } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
+import { NzInputDirective } from 'ng-zorro-antd/input';
+import { flistEditComponent } from './edit/edit.component';
+interface ItemData {
+  id: string,
+  venueName: string,
+  venueAddress: string,
+  avePrice: string,
+  score: string,
+  venueImg: string,
+  lng: string,
+  lat: string
+}
 
 @Component({
   selector: 'app-venue-flist',
@@ -10,66 +22,36 @@ import { STComponent, STColumn, STData, STChange } from '@delon/abc';
   styleUrls: ['./venue-flist.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VenueListComponent implements OnInit {
+export class VenueFlistComponent implements OnInit {
+  editCache: { [key: string]: { edit: boolean; data: ItemData } } = {};
+  listOfData: ItemData[] = [];
+
+  isAllDisplayDataChecked = false;
+  isOperating = false;
+  isIndeterminate = false;
+  listOfDisplayData: ItemData[] = [];
+  mapOfCheckedId: { [key: string]: boolean } = {};
+  numberOfChecked = 0;
+
+  defaultFileList = [
+    {
+      uid: -1,
+      name: 'xxx.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+    }
+  ]
+  fileList = [...this.defaultFileList];
+
   q: any = {
     pi: 1,
     ps: 10,
     sorter: '',
-    status: null,
-    statusList: [],
   };
-  data: any[] = [];
+
   loading = false;
-  status = [
-    { index: 0, text: '关闭', value: false, type: 'default', checked: false },
-    {
-      index: 1,
-      text: '运行中',
-      value: false,
-      type: 'processing',
-      checked: false,
-    },
-    { index: 2, text: '已上线', value: false, type: 'success', checked: false },
-    { index: 3, text: '异常', value: false, type: 'error', checked: false },
-  ];
-  @ViewChild('st', { static: true })
-  st: STComponent;
-  columns: STColumn[] = [
-    { title: '', index: 'key', type: 'checkbox' },
-    { title: '场馆名称', index: 'venueName' },
-    { title: '场馆地址', index: 'venueAddress' },
-    {
-      title: '场馆均价',
-      index: 'avePrice',
-      type: 'number',
-    },
-    {
-      title: '场馆评分',
-      index: 'score',
-    },
-    {
-      title: '状态',
-      index: 'status',
-      render: 'status',
-      filter: {
-        menus: this.status,
-        fn: (filter: any, record: any) => record.status === filter.index,
-      },
-    },
-    {
-      title: '操作',
-      buttons: [
-        {
-          text: '详情',
-          click: (item: any) => this.msg.success(`配置${item.no}`),
-        },
-        {
-          text: '删除',
-          click: (item: any) => this.msg.success(`订阅警报${item.no}`),
-        },
-      ],
-    },
-  ];
+
   selectedRows: STData[] = [];
   description = '';
   totalCallNo = 0;
@@ -79,25 +61,26 @@ export class VenueListComponent implements OnInit {
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
+     private modal: ModalHelper,
     private cdr: ChangeDetectorRef,
     @Inject('BASE_URL') baseUrl: string,
   ) {
-    this.baseUrl = baseUrl;
+    // this.baseUrl = baseUrl;
+    this.baseUrl = "https://fragmenttime.com:8081"
   }
 
-  ngOnInit() {
-    console.log(this.baseUrl);
+  ngOnInit(): void {
+    console.log("url",this.baseUrl);
     this.getData();
   }
-
+  /**
+   * 获取列表数据
+   */
   getData() {
     this.loading = true;
-    this.q.statusList = this.status.filter(w => w.checked).map(item => item.index);
-    if (this.q.status !== null && this.q.status > -1) {
-      this.q.statusList.push(this.q.status);
-    }
+
     this.http
-      .get(this.baseUrl + '/api/admin/venue/1', this.q)
+      .get(this.baseUrl + '/api/admin/venue/VenueApi', this.q)
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -107,37 +90,36 @@ export class VenueListComponent implements OnInit {
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
-        this.data = res;
+         console.log("res",res);
+        this.listOfData = res;
         this.cdr.detectChanges();
       });
   }
-
-  stChange(e: STChange) {
-    switch (e.type) {
-      case 'checkbox':
-        this.selectedRows = e.checkbox!;
-        this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
-        this.cdr.detectChanges();
-        break;
-      case 'filter':
-        this.getData();
-        break;
-    }
+  //选择行
+  refreshStatus(): void {
+    this.isAllDisplayDataChecked = this.listOfDisplayData.every(item => this.mapOfCheckedId[item.id]);
+    this.isIndeterminate = this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) && !this.isAllDisplayDataChecked;
   }
-
-  remove() {
-    this.http.delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') }).subscribe(() => {
-      this.getData();
-      this.st.clearCheck();
+ /**
+  * 全选
+  */
+  checkAll(value: boolean): void {
+    this.listOfDisplayData.forEach(item => (this.mapOfCheckedId[item.id] = value));
+    this.refreshStatus();
+  }
+  /**
+   * 编辑行
+   */
+  openEdit(record: any = {}) {
+    this.modal.create(flistEditComponent, { record }, { size: 'md' }).subscribe(res => {
+      if (record.id) {
+        record = { ...record, id: 'mock_id', percent: 0, ...res };
+         console.log("record",record)
+      } else {
+        this.listOfData.splice(0, 0, res);
+        this.listOfData = [...this.listOfData];
+      }
+      this.cdr.detectChanges();
     });
-  }
-
-  approval() {
-    this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
-  }
-
-  reset() {
-    // wait form reset updated finished
-    setTimeout(() => this.getData());
   }
 }

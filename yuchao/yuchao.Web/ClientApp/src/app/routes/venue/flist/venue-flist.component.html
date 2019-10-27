@@ -1,88 +1,100 @@
-<page-header [title]="'查询表格'"></page-header>
+<page-header [title]="'场管列表'"></page-header>
 <nz-card [nzBordered]="false">
   <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" class="search__form">
     <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
       <div nz-col nzMd="8" nzSm="24">
         <nz-form-item>
-          <nz-form-label nzFor="no">场馆名称</nz-form-label>
+          <nz-form-label nzFor="venueName">场馆名称</nz-form-label>
           <nz-form-control>
             <input nz-input [(ngModel)]="q.no" name="no" placeholder="请输入" id="no" />
           </nz-form-control>
         </nz-form-item>
       </div>
-      <div nz-col nzMd="8" nzSm="24">
-        <nz-form-item>
-          <nz-form-label nzFor="status">使用状态</nz-form-label>
-          <nz-form-control>
-            <nz-select [(ngModel)]="q.status" name="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
-        <nz-form-item>
-          <nz-form-label nzFor="callNo">调用次数</nz-form-label>
-          <nz-form-control>
-            <input nz-input id="callNo" />
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
-        <nz-form-item>
-          <nz-form-label nzFor="updatedAt">更新日期</nz-form-label>
-          <nz-form-control> </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
-        <nz-form-item>
-          <nz-form-label nzFor="status2">使用状态</nz-form-label>
-          <nz-form-control>
-            <nz-select [nzPlaceHolder]="'请选择'" nzId="status2" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <div nz-col nzMd="8" nzSm="24" *ngIf="expandForm">
-        <nz-form-item>
-          <nz-form-label nzFor="status3">使用状态</nz-form-label>
-          <nz-form-control>
-            <nz-select [nzPlaceHolder]="'请选择'" nzId="status3" [nzShowSearch]="true">
-              <nz-option *ngFor="let i of status; let idx = index" [nzLabel]="i.text" [nzValue]="idx"></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
       <div nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm">
         <button nz-button type="submit" [nzType]="'primary'" [nzLoading]="loading">查询</button>
-        <button nz-button type="reset" (click)="reset()" class="mx-sm">重置</button>
-
+        <button nz-button [nzType]="'primary'" (click)="openEdit()">
+          <i nz-icon nzType="plus"></i>
+          <span>新增</span>
+        </button>
+        <button nz-button type="submit" *ngIf="selectedRows.length > 0">批量操作</button>
       </div>
+
     </div>
   </form>
-  <button nz-button [nzType]="'primary'">
-    <i nz-icon nzType="plus"></i>
-    <span>新建</span>
-  </button>
-  <ng-container *ngIf="selectedRows.length > 0">
-    <button nz-button>批量操作</button>
-    <button nz-button nz-dropdown [nzDropdownMenu]="batchMenu" nzPlacement="bottomLeft">
-      更多操作
-      <i nz-icon nzType="down"></i>
-    </button>
-    <nz-dropdown-menu #batchMenu="nzDropdownMenu">
-      <ul nz-menu>
-        <li nz-menu-item (click)="remove()">删除</li>
-        <li nz-menu-item (click)="approval()">批量审批</li>
-      </ul>
-    </nz-dropdown-menu>
-  </ng-container>
-  <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
-    <ng-template st-row="status" let-i>
-      <nz-badge [nzStatus]="i.statusType" [nzText]="i.statusText"></nz-badge>
-    </ng-template>
-  </st>
+
+  <nz-table #editRowTable nzBordered [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th
+          nzWidth="5%"
+          nzShowCheckbox
+          [(nzChecked)]="isAllDisplayDataChecked"
+          [nzIndeterminate]="isIndeterminate"
+          (nzCheckedChange)="checkAll($event)"
+        ></th>
+        <th nzWidth="15%">场馆名称</th>
+        <th nzWidth="25%">馆场地址</th>
+        <th nzWidth="10%">场馆均价</th>
+        <th nzWidth="10%">场馆评分</th>
+        <th nzWidth="15%">场馆图片</th>
+        <th nzWidth="8%">经度</th>
+        <th nzWidth="8%">纬度</th>
+        <th nzWidth="40%">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of editRowTable.data">
+        <td nzShowCheckbox
+          [(nzChecked)]="mapOfCheckedId[data.id]"
+          (nzCheckedChange)="refreshStatus()">
+        </td>
+        <td>
+          <ng-container>
+            {{ data.venueName }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+           {{ data.venueAddress}}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.avePrice }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container >
+            {{ data.score }}
+          </ng-container>
+        </td>
+
+        <td>
+          <ng-container>
+            <img src="../../../../assets/logo-color.svg"/>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.lng }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.lat }}
+          </ng-container>
+        </td>
+        <td>
+          <div class="editable-row-operations">
+            <ng-container>
+              <a (click)="openEdit(data)">编辑</a>
+              <a (click)="startEdit(data.id)">删除</a>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
 </nz-card>
 <ng-template #modalContent>
   <nz-form-item>

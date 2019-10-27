@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { VenueListComponent } from './flist/venue-flist.component';
+import { VenueFlistComponent } from './flist/venue-flist.component';
+import { VenueListComponent } from './list/venue-list.component';
 
 const routes: Routes = [
   //   {
@@ -17,12 +18,28 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: VenueFlistComponent,
+        children: [
+          // { path: 'basic-list', component: ProBasicListComponent },
+          // { path: 'articles', component: ProListArticlesComponent },
+          // { path: 'projects', component: ProListProjectsComponent },
+          // { path: 'applications', component: ProListApplicationsComponent },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'list',
+    children: [
+      {
+        path: '',
         component: VenueListComponent,
-        // children: [
-        //   { path: 'articles', component: ProListArticlesComponent },
-        //   { path: 'projects', component: ProListProjectsComponent },
-        //   { path: 'applications', component: ProListApplicationsComponent },
-        // ],
+        children: [
+          // { path: 'basic-list', component: ProBasicListComponent },
+          // { path: 'articles', component: ProListArticlesComponent },
+          // { path: 'projects', component: ProListProjectsComponent },
+          // { path: 'applications', component: ProListApplicationsComponent },
+        ],
       },
     ],
   },
