@@ -29,9 +29,24 @@ namespace yuchao.Business.Admin
             return IService.Insert(venue);
         }
 
+        public bool InsertSite(Site site)
+        {
+            return IService.InsertSite(site);
+        }
+
+        public bool UpdateSite(Site site)
+        {
+            return IService.UpdateSite(site);
+        }
+
         public bool DeleteById(int id)
         {
             return IService.DeleteById(id);
+        }
+
+        public bool DeleteSite(int id)
+        {
+            return IService.DeleteSite(id);
         }
 
         public bool Update(Venue venue)

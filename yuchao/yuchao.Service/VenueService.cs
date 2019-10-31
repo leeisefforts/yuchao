@@ -26,6 +26,16 @@ namespace yuchao.Service
             return rdb.Insert(venue);
         }
 
+        public bool InsertSite(Site Site)
+        {
+            return sdb.Insert(Site);
+        }
+
+        public bool UpdateSite(Site site)
+        {
+            return sdb.Update(site);
+        }
+
         public Venue GetById(int id)
         {
             return rdb.GetById(id);
@@ -44,6 +54,10 @@ namespace yuchao.Service
         public Site GetSiteBySId(int id)
         {
             return sdb.GetById(id);
+        }
+
+        public bool DeleteSite(int id) {
+            return sdb.DeleteById(id);
         }
     }
 }

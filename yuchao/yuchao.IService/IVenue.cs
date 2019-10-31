@@ -15,9 +15,15 @@ namespace yuchao.IService
 
         bool Insert(Venue level);
 
+        bool InsertSite(Site site);
+
+        bool UpdateSite(Site site);
+
         Venue GetById(int id);
 
         bool DeleteById(int id);
+
+        bool DeleteSite(int id);
 
         bool Update(Venue level);
     }

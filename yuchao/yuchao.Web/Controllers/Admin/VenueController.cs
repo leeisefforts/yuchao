@@ -41,16 +41,19 @@ namespace yuchao.Controllers.Admin
 
         // POST api/<controller>
         [HttpPost]
-        public JsonResult Post(int id, [FromBody]JObject values)
+        public JsonResult Post([FromBody]JObject values)
         {
+            int id = Convert.ToInt32(values["id"]);
             Venue obj = new Venue()
             {
-                Score = values["score"].ToString(),
+                Score = "",
                 VenueAddress = values["venueAddress"].ToString(),
                 VenueImg = values["venueImg"].ToString(),
                 VenueName = values["venueName"].ToString(),
                 AvePrice = Convert.ToDecimal(values["avePrice"]),
-                Status = Convert.ToInt32(values["status"])
+                Lng = values["lng"].ToString(),
+                Lat = values["lat"].ToString(),
+                Status = 1
             };
             bool result = false;
             if (id != 0)
@@ -100,6 +103,79 @@ namespace yuchao.Controllers.Admin
                 Status = 200,
                 Error = "Success",
                 Obj = bll.DeleteById(id)
+            });
+        }
+    }
+
+
+    [Route("api/admin/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class SiteApiController : Controller
+    {
+        private VenueBLL bll = new VenueBLL();
+
+        // GET api/<controller>/5
+        [HttpGet]
+        public JsonResult GetAll()
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetAll()
+            });
+        }
+        [HttpGet("{venueId}")]
+        public JsonResult GetSite(int venueId)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetSiteById(venueId)
+            });
+        }
+
+        [HttpPost]
+        public JsonResult Post([FromBody]JObject values)
+        {
+            int id = Convert.ToInt32(values["id"]);
+            Site obj = new Site()
+            {
+                CreateTime = DateTime.Now,
+                VenueId = Convert.ToInt32(values["venueId"]),
+                Price = Convert.ToDecimal(values["price"]),
+                SiteName = values["siteName"].ToString(),
+            };
+            bool result = false;
+            if (id != 0)
+            {
+                obj.Id = id;
+                result = bll.UpdateSite(obj);
+            }
+            else
+            {
+                result = bll.InsertSite(obj);
+            }
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = result
+            });
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteSite(id)
             });
         }
     }
