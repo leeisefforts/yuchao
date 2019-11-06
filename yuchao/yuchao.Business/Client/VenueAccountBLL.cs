@@ -12,7 +12,7 @@ namespace yuchao.Business.Client
         private IVenueAccount IService = new Service.VenueAccountService();
 
         private IScheduleRecordService RService = new Service.ScheduleRecordService();
-
+        private IUser UService = new Service.UserServer();
         private IVenue VService = new Service.VenueService();
         public VenueAccount Login (string loginName, string loginPwd)
         {
@@ -24,6 +24,22 @@ namespace yuchao.Business.Client
             Dictionary<string, object> dic = new Dictionary<string, object>();
             Venue venue = VService.GetById(venueId);
             List<ScheduledRecord> list = RService.GetByVenueId(venueId);
+
+            
+            list = list.FindAll(p=> DateTime.Compare(DateTime.Parse(p.UseTime), DateTime.Now) >= 0);
+            foreach (var item in list)
+            {
+                if (!string.IsNullOrEmpty(item.OpenId))
+                {
+                    User user = UService.GetByOpenId(item.OpenId);
+                    if (user != null)
+                    {
+                        item.Tel = user.Tel;
+                        item.NickName = user.NickName;
+                    }
+
+                }
+            }
             dic.Add("1", venue);
             dic.Add("2", list);
             return dic;
