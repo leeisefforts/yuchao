@@ -11,7 +11,6 @@ E:\code\code\yc_admin\yuchao\yuchao.Token\bin\Release\netstandard2.0\yuchao.Toke
 E:\code\code\yc_admin\yuchao\yuchao.Token\bin\Release\netstandard2.0\yuchao.Token.dll
 E:\code\code\yc_admin\yuchao\yuchao.Token\bin\Release\netstandard2.0\yuchao.Token.pdb
 E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Release\netstandard2.0\yuchao.Token.csprojAssemblyReference.cache
-E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Release\netstandard2.0\yuchao.Token.csproj.CoreCompileInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Release\netstandard2.0\yuchao.Token.AssemblyInfoInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Release\netstandard2.0\yuchao.Token.AssemblyInfo.cs
 E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Release\netstandard2.0\yuchao.Token.dll

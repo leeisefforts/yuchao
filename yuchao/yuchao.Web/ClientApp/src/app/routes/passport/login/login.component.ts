@@ -15,7 +15,7 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-
+  baseUrl = "https://fragmenttime.com:8081";
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
@@ -108,29 +108,43 @@ export class UserLoginComponent implements OnDestroy {
 
     // 默认配置中对所有HTTP请求都会强制 [校验](https://ng-alain.com/auth/getting-started) 用户 Token
     // 然一般来说登录请求不需要校验，因此可以在请求URL加上：`/login?_allow_anonymous=true` 表示不触发用户 Token 校验
-    this.http
-      .post('/login/account?_allow_anonymous=true', {
+    let params =  {
         type: this.type,
         userName: this.userName.value,
         password: this.password.value,
-      })
+      }
+    this.http
+      .get(this.baseUrl + '/api/admin/user?_allow_anonymous=true',params)
       .subscribe((res: any) => {
-        if (res.msg !== 'ok') {
-          this.error = res.msg;
-          return;
-        }
-        // 清空路由复用信息
+        console.log(res)
         this.reuseTabService.clear();
-        // 设置用户Token信息
-        this.tokenService.set(res.user);
-        // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
+        let user = {
+          email: "admin@qq.com",
+          id: 10000,
+          name: "admin",
+          time: 1572429456978,
+          token: "123456789",
+        }
+        this.tokenService.set(user);
         this.startupSrv.load().then(() => {
-          let url = this.tokenService.referrer!.url || '/';
-          if (url.includes('/passport')) {
-            url = '/';
-          }
-          this.router.navigateByUrl(url);
+          this.router.navigateByUrl('/venue/flist');
         });
+        // if (res.msg !== 'ok') {
+        //   this.error = res.msg;
+        //   return;
+        // }
+        // 清空路由复用信息
+        // this.reuseTabService.clear();
+        // 设置用户Token信息
+        // this.tokenService.set(res.user);
+        // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
+        // this.startupSrv.load().then(() => {
+        //   let url = this.tokenService.referrer!.url || '/';
+        //   if (url.includes('/passport')) {
+        //     url = '/';
+        //   }
+        //   this.router.navigateByUrl(url);
+        // });
       });
   }
 

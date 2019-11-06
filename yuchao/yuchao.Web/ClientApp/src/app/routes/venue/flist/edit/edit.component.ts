@@ -13,31 +13,25 @@ export class flistEditComponent  {
       showRemoveIcon: true,
       hidePreviewIconInNonImage: true
     };
-    fileList = [
-      {
-        uid: -1,
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-      }
-    ];
+    fileList: any = [];
     previewImage: string | undefined = '';
     previewVisible = false;
-  record: any = {};
-  schema: SFSchema = {
+    record: any = {};
+    schema: SFSchema = {
     properties: {
-      venueName: { type: 'string', title: '场馆名称', maxLength: 50 },
+      venueName: { type: 'string', title: '馆场名称', maxLength: 50 },
       venueAddress: {
         type: 'string',
-        title: '场馆地址',
+        title: '馆场地址',
         ui: {
           widget: 'textarea',
           autosize: { minRows: 1, maxRows: 4 },
         },
       },
-      avePrice: { type: 'string', title: '场馆均价', maxLength: 50 },
-      lng: { type: 'string', title: '经度', maxLength: 50 },
-      lat: { type: 'string', title: '纬度', maxLength: 50 },
+      avePrice: { type: 'number', title: '馆场均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      lng: { type: 'string', title: '经度'},
+      lat: { type: 'string', title: '纬度'},
+
     },
     required: ['venueName','venueAddress', 'avePrice','lng','lat'],
     ui: {
@@ -47,17 +41,34 @@ export class flistEditComponent  {
   };
 
   constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}
-
+  ngOnInit(): void {
+    let {venueImg} = this.record
+    if(!!venueImg){
+      let file = {
+        url:venueImg,
+      }
+      this.fileList.push(file)
+    }
+  }
   save(value: any) {
     this.msgSrv.success('保存成功');
     this.modal.close(value);
   }
 
   close() {
-    this.modal.destroy();
+    this.modal.close();
   }
-  handlePreview = (file: UploadFile) => {
-      this.previewImage = file.url || file.thumbUrl;
-      this.previewVisible = true;
-    };
+  handleBefore =  (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        console.log("venueImg",reader.result)
+        this.record.venueImg = reader.result
+      };
+      return true
+  }
+  handlePreview = (file: UploadFile): void => {
+    this.previewImage = file.url || file.thumbUrl;
+    this.previewVisible = true;
+  };
 }

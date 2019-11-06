@@ -6,14 +6,9 @@ import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { listEditComponent } from './edit/edit.component';
 interface ItemData {
-  id: string,
-  venueName: string,
-  venueAddress: string,
-  avePrice: string,
-  score: string,
-  venueImg: string,
-  lng: string,
-  lat: string
+  venueId: string;
+  siteName:string;
+  Price: string;
 }
 
 @Component({
@@ -23,46 +18,29 @@ interface ItemData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VenueListComponent implements OnInit {
-  editCache: { [key: string]: { edit: boolean; data: ItemData } } = {};
   listOfData: ItemData[] = [];
-
-  isAllDisplayDataChecked = false;
-  isOperating = false;
-  isIndeterminate = false;
+  selectList: ItemData[] = [];
+  venueId: string;
+  loading = false;
+  baseUrl: string;
+  //选择行
   listOfDisplayData: ItemData[] = [];
-  mapOfCheckedId: { [key: string]: boolean } = {};
-  numberOfChecked = 0;
-
-  defaultFileList = [
-    {
-      uid: -1,
-      name: 'xxx.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    }
-  ]
-  fileList = [...this.defaultFileList];
-
+  isAllDisplayDataChecked = false;
+  isIndeterminate = false;
+  //页码
   q: any = {
     pi: 1,
     ps: 10,
     sorter: '',
   };
-
-  loading = false;
-
   selectedRows: STData[] = [];
-  description = '';
-  totalCallNo = 0;
-  expandForm = false;
-  baseUrl: string;
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
-     private modal: ModalHelper,
+    private modal: ModalHelper,
     private cdr: ChangeDetectorRef,
+    private msgSrv: NzMessageService,
     @Inject('BASE_URL') baseUrl: string,
   ) {
     // this.baseUrl = baseUrl;
@@ -70,8 +48,8 @@ export class VenueListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("url",this.baseUrl);
-    this.getData();
+    this.getSelectData()
+
   }
   /**
    * 获取列表数据
@@ -80,7 +58,7 @@ export class VenueListComponent implements OnInit {
     this.loading = true;
 
     this.http
-      .get(this.baseUrl + '/api/admin/venue/SiteApi', this.q)
+      .get(this.baseUrl + '/api/admin/SiteApi/'+ this.venueId, this.q)
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -90,36 +68,59 @@ export class VenueListComponent implements OnInit {
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
-         console.log("res",res);
         this.listOfData = res;
         this.cdr.detectChanges();
       });
   }
-  //选择行
-  refreshStatus(): void {
-    this.isAllDisplayDataChecked = this.listOfDisplayData.every(item => this.mapOfCheckedId[item.id]);
-    this.isIndeterminate = this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) && !this.isAllDisplayDataChecked;
-  }
- /**
-  * 全选
-  */
-  checkAll(value: boolean): void {
-    this.listOfDisplayData.forEach(item => (this.mapOfCheckedId[item.id] = value));
-    this.refreshStatus();
+  /**
+   * 获取馆场选择列表
+   */
+  getSelectData() {
+    this.loading = true;
+    this.http
+      .get(this.baseUrl + '/api/admin/venue/VenueApi',{})
+      .pipe(
+        map((res: any) =>
+          res.obj.map(i => {
+            return i;
+          }),
+        ),
+        tap(() => (this.loading = false)),
+      )
+      .subscribe(res => {
+        this.selectList = res;
+        this.venueId = !!res[0]?res[0].id:''
+        this.getData();
+      });
   }
   /**
    * 编辑行
    */
+  editHttp(params){
+    this.http.post(this.baseUrl +'/api/admin/SiteApi', params).subscribe(res => {
+      this.getData()
+    });
+  }
+  currentPageDataChange($event: ItemData[]): void {
+    this.listOfDisplayData = $event;
+  }
   openEdit(record: any = {}) {
     this.modal.create(listEditComponent, { record }, { size: 'md' }).subscribe(res => {
-      if (record.id) {
-        record = { ...record, id: 'mock_id', percent: 0, ...res };
-         console.log("record",record)
-      } else {
-        this.listOfData.splice(0, 0, res);
-        this.listOfData = [...this.listOfData];
+      if (!record.id) {
+        res.id = 0
+        res.venueId = this.venueId
       }
+      this.editHttp(res)
       this.cdr.detectChanges();
     });
   }
-}
+  /**
+   * 删除行
+   */
+  handleDel(id){
+    this.http.delete(this.baseUrl +'/api/admin/SiteApi/'+id).subscribe(res => {
+      this.msgSrv.success('删除成功');
+      this.getData()
+    });
+  }
+  }

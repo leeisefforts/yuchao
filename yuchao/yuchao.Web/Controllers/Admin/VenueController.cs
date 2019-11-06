@@ -167,6 +167,39 @@ namespace yuchao.Controllers.Admin
             });
         }
 
+        [HttpPost("setPrice/{id}")]
+        public JsonResult SetPrice(int id, [FromBody]JObject values)
+        {
+            Venue obj = bll.GetById(id);
+            List<Site> list = bll.GetSiteById(id);
+            bool result = false;
+            if (id != 0)
+            {
+                obj.MPrice = Convert.ToDecimal(values["mPrice"]);
+                obj.NPrice = Convert.ToDecimal(values["nPrice"]);
+                obj.APrice = Convert.ToDecimal(values["aPrice"]);
+
+                foreach (var item in list)
+                {
+                    //if (item.)
+                    //{
+
+                    //}
+                }
+               // result = bll.UpdateSite(obj);
+            }
+            else
+            {
+              //  result = bll.InsertSite(obj);
+            }
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = result
+            });
+        }
+
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)

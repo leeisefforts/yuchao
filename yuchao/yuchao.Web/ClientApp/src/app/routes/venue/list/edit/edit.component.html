@@ -2,36 +2,7 @@
   <div class="modal-title">场地信息</div>
 </div>
 <sf #sf mode="edit" [schema]="schema" [formData]="record" button="none">
-     <nz-form-item nzFlex>
-       <nz-form-label [ngStyle]="{ width: '150px' }">图片</nz-form-label>
-       <nz-form-control>
-         <div class="clearfix">
-        <nz-upload
-            nzAction="https://jsonplaceholder.typicode.com/posts/"
-            nzListType="picture-card"
-            [nzLimit]='1'
-            [(nzFileList)]="fileList"
-            [nzShowButton]="fileList.length < 3"
-            [nzShowUploadList]="showUploadList"
-            [nzPreview]="handlePreview"
-          >
-            <i nz-icon nzType="plus"></i>
-            <div class="ant-upload-text">Upload</div>
-          </nz-upload>
-          <nz-modal
-            [nzVisible]="previewVisible"
-            [nzContent]="modalContent"
-            [nzFooter]="null"
-            (nzOnCancel)="previewVisible = false"
-          >
-            <ng-template #modalContent>
-              <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-            </ng-template>
-          </nz-modal>
-        </div>
-       </nz-form-control>
-     </nz-form-item>
-
+    
   <div class="modal-footer">
     <button nz-button type="button" (click)="close()">关闭</button>
     <button nz-button type="submit" [nzType]="'primary'" (click)="save(sf.value)" [disabled]="!sf.valid">保存</button>

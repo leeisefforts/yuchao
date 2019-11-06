@@ -54,7 +54,6 @@ E:\code\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.
 E:\code\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\SqlSugar.dll
 E:\code\code\yc_admin\yuchao\yuchao.Entity\bin\Debug\netstandard2.0\netcoreapp2.1\netstandard2.0\SqlSugar.pdb
 E:\code\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csprojAssemblyReference.cache
-E:\code\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csproj.CoreCompileInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.AssemblyInfoInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.AssemblyInfo.cs
 E:\code\code\yc_admin\yuchao\yuchao.Entity\obj\Debug\netstandard2.0\yuchao.Entity.csproj.CopyComplete

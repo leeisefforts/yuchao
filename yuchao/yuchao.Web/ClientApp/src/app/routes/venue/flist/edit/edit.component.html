@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <div class="modal-title">场馆信息</div>
+  <div class="modal-title">馆场信息</div>
 </div>
 <sf #sf mode="edit" [schema]="schema" [formData]="record" button="none">
      <nz-form-item nzFlex>
@@ -7,12 +7,13 @@
        <nz-form-control>
          <div class="clearfix">
         <nz-upload
-            nzAction="https://jsonplaceholder.typicode.com/posts/"
+            nzAction="http://baidu.com"
             nzListType="picture-card"
             [nzLimit]='1'
             [(nzFileList)]="fileList"
-            [nzShowButton]="fileList.length < 3"
+            [nzShowButton]="fileList.length < 1"
             [nzShowUploadList]="showUploadList"
+            [nzBeforeUpload]="handleBefore"
             [nzPreview]="handlePreview"
           >
             <i nz-icon nzType="plus"></i>

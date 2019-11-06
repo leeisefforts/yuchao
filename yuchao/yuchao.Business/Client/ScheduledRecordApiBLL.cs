@@ -91,6 +91,7 @@ namespace yuchao.Business.Client
                 sr.TimeId = Convert.ToInt32(item["timeId"]);
                 sr.VenueId = Convert.ToInt32(values["venueId"]);
                 sr.UseTime = values["useTime"].ToString();
+                sr.IsOnline = 1;
                 switch (values["week"].ToString())
                 {
                     case "周一":

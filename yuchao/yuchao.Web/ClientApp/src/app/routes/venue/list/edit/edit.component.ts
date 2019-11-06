@@ -9,55 +9,34 @@ import { UploadFile } from 'ng-zorro-antd/upload';
 })
 export class listEditComponent  {
    showUploadList = {
-      showPreviewIcon: true,
-      showRemoveIcon: true,
-      hidePreviewIconInNonImage: true
-    };
-    fileList = [
-      {
-        uid: -1,
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-      }
-    ];
-    previewImage: string | undefined = '';
-    previewVisible = false;
-  record: any = {};
-  schema: SFSchema = {
-    properties: {
-      venueName: { type: 'string', title: '场馆名称', maxLength: 50 },
-      venueAddress: {
-        type: 'string',
-        title: '场馆地址',
-        ui: {
-          widget: 'textarea',
-          autosize: { minRows: 1, maxRows: 4 },
-        },
-      },
-      avePrice: { type: 'string', title: '场馆均价', maxLength: 50 },
-      lng: { type: 'string', title: '经度', maxLength: 50 },
-      lat: { type: 'string', title: '纬度', maxLength: 50 },
-    },
-    required: ['venueName','venueAddress', 'avePrice','lng','lat'],
-    ui: {
-      spanLabelFixed: 150,
-      grid: { span: 24 },
-    },
-  };
+         showPreviewIcon: true,
+         showRemoveIcon: true,
+         hidePreviewIconInNonImage: true
+       };
+       fileList: any = [];
+       previewImage: string | undefined = '';
+       previewVisible = false;
+       record: any = {};
+       schema: SFSchema = {
+       properties: {
+         siteName: { type: 'string', title: '场地名称', maxLength: 50 },
+         price: { type: 'number', title: '场地均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
 
-  constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}
+       },
+       required: ['siteName', 'price'],
+       ui: {
+         spanLabelFixed: 150,
+         grid: { span: 24 },
+       },
+     };
 
-  save(value: any) {
-    this.msgSrv.success('保存成功');
-    this.modal.close(value);
-  }
+     constructor(private modal: NzModalRef, private msgSrv: NzMessageService) {}
+     save(value: any) {
+       this.msgSrv.success('保存成功');
+       this.modal.close(value);
+     }
 
-  close() {
-    this.modal.destroy();
-  }
-  handlePreview = (file: UploadFile) => {
-      this.previewImage = file.url || file.thumbUrl;
-      this.previewVisible = true;
-    };
-}
+     close() {
+       this.modal.close();
+     }
+   }

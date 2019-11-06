@@ -5,15 +5,18 @@ import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { flistEditComponent } from './edit/edit.component';
+import { priceEditComponent } from './edit/price.component';
 interface ItemData {
-  id: string,
-  venueName: string,
-  venueAddress: string,
-  avePrice: string,
-  score: string,
-  venueImg: string,
-  lng: string,
-  lat: string
+  id: string;
+  venueName: string;
+  venueAddress: string;
+  avePrice: string;
+  score: string;
+  venueImg: string;
+  lng: string;
+  lat: string;
+  checked: boolean;
+  disabled?: boolean;
 }
 
 @Component({
@@ -23,46 +26,24 @@ interface ItemData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VenueFlistComponent implements OnInit {
-  editCache: { [key: string]: { edit: boolean; data: ItemData } } = {};
   listOfData: ItemData[] = [];
-
-  isAllDisplayDataChecked = false;
-  isOperating = false;
-  isIndeterminate = false;
+  loading = false;
+  baseUrl: string;
   listOfDisplayData: ItemData[] = [];
-  mapOfCheckedId: { [key: string]: boolean } = {};
-  numberOfChecked = 0;
-
-  defaultFileList = [
-    {
-      uid: -1,
-      name: 'xxx.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    }
-  ]
-  fileList = [...this.defaultFileList];
-
+  //页码
   q: any = {
     pi: 1,
     ps: 10,
     sorter: '',
+    venueName:''
   };
-
-  loading = false;
-
-  selectedRows: STData[] = [];
-  description = '';
-  totalCallNo = 0;
-  expandForm = false;
-  baseUrl: string;
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
     private modalSrv: NzModalService,
-     private modal: ModalHelper,
+    private modal: ModalHelper,
     private cdr: ChangeDetectorRef,
+    private msgSrv: NzMessageService,
     @Inject('BASE_URL') baseUrl: string,
   ) {
     // this.baseUrl = baseUrl;
@@ -70,7 +51,6 @@ export class VenueFlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("url",this.baseUrl);
     this.getData();
   }
   /**
@@ -90,35 +70,52 @@ export class VenueFlistComponent implements OnInit {
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
-         console.log("res",res);
         this.listOfData = res;
         this.cdr.detectChanges();
       });
   }
-  //选择行
-  refreshStatus(): void {
-    this.isAllDisplayDataChecked = this.listOfDisplayData.every(item => this.mapOfCheckedId[item.id]);
-    this.isIndeterminate = this.listOfDisplayData.some(item => this.mapOfCheckedId[item.id]) && !this.isAllDisplayDataChecked;
-  }
- /**
-  * 全选
-  */
-  checkAll(value: boolean): void {
-    this.listOfDisplayData.forEach(item => (this.mapOfCheckedId[item.id] = value));
-    this.refreshStatus();
-  }
+ currentPageDataChange($event: ItemData[]): void {
+   this.listOfDisplayData = $event;
+ }
   /**
    * 编辑行
    */
+  editHttp(params){
+    this.http.post(this.baseUrl +'/api/admin/Venue', params).subscribe(res => {
+      this.getData()
+    });
+  }
   openEdit(record: any = {}) {
     this.modal.create(flistEditComponent, { record }, { size: 'md' }).subscribe(res => {
-      if (record.id) {
-        record = { ...record, id: 'mock_id', percent: 0, ...res };
-         console.log("record",record)
-      } else {
-        this.listOfData.splice(0, 0, res);
-        this.listOfData = [...this.listOfData];
+      if (!record.id) {
+        res.id = 0
       }
+      res.venueImg = record.venueImg
+      res.score = !!record.score? record.score: 0
+      this.editHttp(res)
+      this.cdr.detectChanges();
+    });
+  }
+  /**
+   * 删除行
+   */
+  handleDel(id){
+    this.http.delete(this.baseUrl +'/api/admin/Venue/'+id).subscribe(res => {
+      this.getData()
+      this.msgSrv.success('删除成功');
+    });
+  }
+  /**
+   * 设置价格
+   */
+  priceHttp(params){
+    this.http.post(this.baseUrl +'/api/admin/Venue', params).subscribe(res => {
+      this.getData()
+    });
+  }
+  handlePrice(record: any = {}){
+    this.modal.create(priceEditComponent, { record }, { size: 'md' }).subscribe(res => {
+      this.priceHttp(res)
       this.cdr.detectChanges();
     });
   }

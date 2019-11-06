@@ -20,7 +20,6 @@ E:\code\code\yc_admin\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.E
 E:\code\code\yc_admin\yuchao\yuchao.IService\bin\Release\netstandard2.0\SqlSugar.pdb
 E:\code\code\yc_admin\yuchao\yuchao.IService\bin\Release\netstandard2.0\yuchao.Entity.pdb
 E:\code\code\yc_admin\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csprojAssemblyReference.cache
-E:\code\code\yc_admin\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csproj.CoreCompileInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.AssemblyInfoInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.AssemblyInfo.cs
 E:\code\code\yc_admin\yuchao\yuchao.IService\obj\Release\netstandard2.0\yuchao.IService.csproj.CopyComplete

@@ -31,5 +31,11 @@ namespace yuchao.Entity
 
         public string UseTime { get; set; }
 
+        public int IsOnline { get; set; }
+
+        public string Tel { get; set; }
+
+        public string NickName { get; set; }
+
     }
 }
