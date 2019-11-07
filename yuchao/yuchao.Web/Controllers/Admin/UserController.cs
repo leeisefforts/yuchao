@@ -20,12 +20,12 @@ namespace yuchao.Controllers.Admin
     {
         private UserBLL bll = new UserBLL();
 
-        //// GET: api/<controller>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        // GET: api/<controller>
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
