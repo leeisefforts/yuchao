@@ -21,9 +21,16 @@ namespace yuchao.Controllers.Admin
         private UserBLL bll = new UserBLL();
 
         // GET: api/<controller>
-        public IEnumerable<string> Get(int id)
+      
+        [HttpGet]
+        public JsonResult GetList()
         {
-            return new string[] { "value1", "value2" };
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetList()
+            });
         }
 
         [HttpGet("{id}")]

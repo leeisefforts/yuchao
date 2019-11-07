@@ -61,5 +61,9 @@ namespace yuchao.Service
         public bool Insert(User user) {
             return rdb.Insert(user);
         }
+
+        public List<User> GetAll() {
+            return rdb.GetList();
+        }
     }
 }

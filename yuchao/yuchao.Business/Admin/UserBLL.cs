@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
+using yuchao.IService;
 using yuchao.Service;
 
 namespace yuchao.Business.Admin
 {
    public class UserBLL
     {
-        public UserServer IService = new Service.UserServer();
+        public IUser IService = new Service.UserServer();
         // 查询      
         public object GetById(int id)
         {
@@ -39,6 +40,10 @@ namespace yuchao.Business.Admin
             user1.City = user.City;
             user1.Country = user.Country;
             return IService.Update(user);
+        }
+
+        public List<User> GetList() {
+            return IService.GetAll();
         }
 
       
