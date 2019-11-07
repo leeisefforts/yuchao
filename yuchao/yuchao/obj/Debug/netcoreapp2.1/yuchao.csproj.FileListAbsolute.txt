@@ -82,7 +82,6 @@ G:\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csproj.CopyComplet
 G:\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.dll
 G:\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.pdb
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csprojAssemblyReference.cache
-E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csproj.CoreCompileInputs.cache
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.RazorAssemblyInfo.cache
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.RazorAssemblyInfo.cs
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.AssemblyInfoInputs.cache
@@ -97,3 +96,6 @@ E:\code\code\yc_admin\yuchao\bin\Debug\netstandard2.0\netcoreapp2.1\yuchao.pdb
 E:\code\code\yc_admin\yuchao\bin\Debug\netstandard2.0\netcoreapp2.1\ApiHelp.xml
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.RazorTargetAssemblyInfo.cache
 E:\code\code\yc_admin\yuchao\yuchao\obj\Debug\netcoreapp2.1\yuchao.csproj.CopyComplete
+E:\code\code\yc_admin\yuchao\bin\Debug\netstandard2.0\netcoreapp2.1\appsettings.Development.json
+E:\code\code\yc_admin\yuchao\bin\Debug\netstandard2.0\netcoreapp2.1\appsettings.json
+E:\code\code\yc_admin\yuchao\bin\Debug\netstandard2.0\netcoreapp2.1\Properties\launchSettings.json

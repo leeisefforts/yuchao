@@ -51,10 +51,6 @@ namespace yuchao.Service
             return rdb.GetSingle(p=>p.OpenId.Equals(openId));
         }
 
-        public object GetById(object userId)
-        {
-            throw new NotImplementedException();
-        }
         //预约管理
 
 

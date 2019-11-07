@@ -38,5 +38,9 @@ namespace yuchao.IService
         User GetByOpenId(string openId);
 
         int GetAllCount();
+
+        User GetById(int id);
+
+        List<User> GetAll();
     }
 }

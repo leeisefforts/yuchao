@@ -51,4 +51,25 @@ namespace yuchao.Web.Controllers.Client
             });
         }
     }
+
+    [Route("api/client/set/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class VenueSetController : Controller
+    {
+
+        private VenueAccountBLL bll = new VenueAccountBLL();
+
+        [HttpPost("{id}")]
+        public JsonResult Login(int id,[FromBody]JObject values)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.SetAn(id, values["an"].ToString())
+            });
+        }
+    }
 }

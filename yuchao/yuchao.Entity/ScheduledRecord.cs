@@ -37,5 +37,7 @@ namespace yuchao.Entity
 
         public string NickName { get; set; }
 
+        public decimal Price { get; set; }
+
     }
 }

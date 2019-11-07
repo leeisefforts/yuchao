@@ -30,5 +30,7 @@ namespace yuchao.Entity
 
         public string Lng { get; set; }
 
+        public string Announcement { get; set; }
+
     }
 }

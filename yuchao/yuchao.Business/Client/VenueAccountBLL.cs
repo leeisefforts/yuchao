@@ -27,8 +27,35 @@ namespace yuchao.Business.Client
 
             
             list = list.FindAll(p=> DateTime.Compare(DateTime.Parse(p.UseTime), DateTime.Now) >= 0);
+            decimal day = 0;
+            decimal week = 0;
+            decimal month = 0;
             foreach (var item in list)
             {
+                if (item.CreateTime.Subtract(DateTime.Now).Days == 0)
+                {
+                    //如果是今天
+                    day += item.Price;
+                }
+                // 判断本周
+                DateTime dt1 = DateTime.Now;
+                DateTime dt2 = DateTime.Parse(item.UseTime);
+                DateTime temp1 = dt1.AddDays(-(int)dt1.DayOfWeek).Date;
+                DateTime temp2 = dt2.AddDays(-(int)dt2.DayOfWeek).Date;
+                bool result = temp1 == temp2;
+                if (result)
+                {
+                    week += item.Price;
+                }
+
+                DateTime nowMonth = dt1.AddDays(1 - dt1.Day);
+                DateTime endMonth = nowMonth.AddMonths(1).AddDays(-1);
+                TimeSpan ts1 = dt2 - nowMonth;
+                TimeSpan ts2 = endMonth - dt2;
+                if (ts1.Days >= 0 && ts2.Days >= 0)
+                {
+                    month += item.Price;
+                }
                 if (!string.IsNullOrEmpty(item.OpenId))
                 {
                     User user = UService.GetByOpenId(item.OpenId);
@@ -42,6 +69,9 @@ namespace yuchao.Business.Client
             }
             dic.Add("1", venue);
             dic.Add("2", list);
+            dic.Add("3", day);
+            dic.Add("4", week);
+            dic.Add("5", month);
             return dic;
         }
 
@@ -118,6 +148,7 @@ namespace yuchao.Business.Client
                 sr.UseTime = values["useTime"].ToString();
                 sr.Tel = values["tel"].ToString();
                 sr.NickName = values["nickName"].ToString();
+                sr.Price = Convert.ToDecimal(values["price"]);
                 sr.IsOnline = 0;
                 switch (values["week"].ToString())
                 {
@@ -148,6 +179,12 @@ namespace yuchao.Business.Client
 
            return  RService.Insert(sr);
 
+        }
+
+        public bool SetAn(int venueId, string an) {
+            Venue venue = VService.GetById(venueId);
+            venue.Announcement = an;
+            return VService.Update(venue);
         }
     }
 }
