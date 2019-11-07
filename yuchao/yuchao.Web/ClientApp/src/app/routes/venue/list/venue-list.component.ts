@@ -5,6 +5,7 @@ import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { listEditComponent } from './edit/edit.component';
+import { priceEditComponent } from '../flist/edit/price.component';
 interface ItemData {
   venueId: string;
   siteName:string;
@@ -73,7 +74,7 @@ export class VenueListComponent implements OnInit {
       });
   }
   /**
-   * 获取馆场选择列表
+   * 获取场馆选择列表
    */
   getSelectData() {
     this.loading = true;
@@ -121,6 +122,21 @@ export class VenueListComponent implements OnInit {
     this.http.delete(this.baseUrl +'/api/admin/SiteApi/'+id).subscribe(res => {
       this.msgSrv.success('删除成功');
       this.getData()
+    });
+  }
+  /**
+   * 设置价格
+   */
+  priceHttp(res){
+    let {id,mPrice,aPrice,nPrice} = res
+    this.http.post(this.baseUrl +'/api/admin/siteApi/setPrice/'+ id, {mPrice,aPrice,nPrice}).subscribe(res => {
+      this.getData()
+    });
+  }
+  handlePrice(record: any = {}){
+    this.modal.create(priceEditComponent, { record }, { size: 'md' }).subscribe(res => {
+      this.priceHttp(res)
+      this.cdr.detectChanges();
     });
   }
   }

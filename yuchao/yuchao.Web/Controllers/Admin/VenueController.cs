@@ -172,31 +172,23 @@ namespace yuchao.Controllers.Admin
         {
             Venue obj = bll.GetById(id);
             List<Site> list = bll.GetSiteById(id);
-            bool result = false;
-            if (id != 0)
-            {
-                obj.MPrice = Convert.ToDecimal(values["mPrice"]);
-                obj.NPrice = Convert.ToDecimal(values["nPrice"]);
-                obj.APrice = Convert.ToDecimal(values["aPrice"]);
 
-                foreach (var item in list)
-                {
-                    //if (item.)
-                    //{
-
-                    //}
-                }
-               // result = bll.UpdateSite(obj);
-            }
-            else
-            {
-              //  result = bll.InsertSite(obj);
-            }
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = result
+                Obj = bll.SetSite(id ,obj, list , values)
+            });
+        }
+
+        [HttpPost("setPrice/site/{id}")]
+        public JsonResult SetSitePrice(int id, [FromBody]JObject values)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.SetSitePrice(id, values)
             });
         }
 

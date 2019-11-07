@@ -40,3 +40,4 @@ E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.Assembly
 E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.dll
 E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.pdb
 G:\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csprojAssemblyReference.cache
+E:\code\code\yc_admin\yuchao\SqlSugar\obj\Debug\netstandard2.0\SqlSugar.csprojAssemblyReference.cache

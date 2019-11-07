@@ -6,15 +6,9 @@ import { environment } from '@env/environment';
 import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
-// dashboard pages
-import { DashboardV1Component } from './dashboard/v1/v1.component';
-import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
-import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
-import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
-import { UserRegisterComponent } from './passport/register/register.component';
-import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
@@ -26,26 +20,16 @@ const routes: Routes = [
     canActivate: [SimpleGuard],
     canActivateChild: [SimpleGuard],
     children: [
-      { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
+      { path: '', redirectTo: '/user/user', pathMatch: 'full' },
+      { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
       { path: 'venue', loadChildren: () => import('./venue/venue.module').then(m => m.VenueModule) },
-      { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-      { path: 'dashboard/v1', component: DashboardV1Component },
-      { path: 'dashboard/analysis', component: DashboardAnalysisComponent },
-      { path: 'dashboard/monitor', component: DashboardMonitorComponent },
-      { path: 'dashboard/workplace', component: DashboardWorkplaceComponent },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule),
-      },
+      { path: 'game', loadChildren: () => import('./game/game.module').then(m => m.GameModule) },
       { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },
-      { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
-      { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
       // Exception
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
     ],
   },
-  // 全屏布局
   {
     path: 'data-v',
     component: LayoutFullScreenComponent,
@@ -60,16 +44,6 @@ const routes: Routes = [
         path: 'login',
         component: UserLoginComponent,
         data: { title: '登录', titleI18n: 'app.login.login' },
-      },
-      {
-        path: 'register',
-        component: UserRegisterComponent,
-        data: { title: '注册', titleI18n: 'app.register.register' },
-      },
-      {
-        path: 'register-result',
-        component: UserRegisterResultComponent,
-        data: { title: '注册结果', titleI18n: 'app.register.register' },
       },
       {
         path: 'lock',

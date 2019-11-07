@@ -5,14 +5,6 @@ import { VenueFlistComponent } from './flist/venue-flist.component';
 import { VenueListComponent } from './list/venue-list.component';
 
 const routes: Routes = [
-  //   {
-  //     path: 'form',
-  //     children: [
-  //       { path: 'basic-form', component: BasicFormComponent },
-  //       { path: 'step-form', component: StepFormComponent },
-  //       { path: 'advanced-form', component: AdvancedFormComponent },
-  //     ],
-  //   },
   {
     path: 'flist',
     children: [
@@ -20,10 +12,6 @@ const routes: Routes = [
         path: '',
         component: VenueFlistComponent,
         children: [
-          // { path: 'basic-list', component: ProBasicListComponent },
-          // { path: 'articles', component: ProListArticlesComponent },
-          // { path: 'projects', component: ProListProjectsComponent },
-          // { path: 'applications', component: ProListApplicationsComponent },
         ],
       },
     ],
@@ -35,10 +23,6 @@ const routes: Routes = [
         path: '',
         component: VenueListComponent,
         children: [
-          // { path: 'basic-list', component: ProBasicListComponent },
-          // { path: 'articles', component: ProListArticlesComponent },
-          // { path: 'projects', component: ProListProjectsComponent },
-          // { path: 'applications', component: ProListApplicationsComponent },
         ],
       },
     ],

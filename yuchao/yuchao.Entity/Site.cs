@@ -14,6 +14,12 @@ namespace yuchao.Entity
 
         public decimal Price { get; set; }
 
+        public decimal MPrice { get; set; }
+
+        public decimal APrice { get; set; }
+
+        public decimal NPrice { get; set; }
+
         public DateTime CreateTime { get; set; }
     }
 }

@@ -70,6 +70,7 @@ export class VenueFlistComponent implements OnInit {
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
+        console.log("res",res)
         this.listOfData = res;
         this.cdr.detectChanges();
       });
@@ -108,8 +109,9 @@ export class VenueFlistComponent implements OnInit {
   /**
    * 设置价格
    */
-  priceHttp(params){
-    this.http.post(this.baseUrl +'/api/admin/Venue', params).subscribe(res => {
+  priceHttp(res){
+    let {id,mPrice,aPrice,nPrice} = res
+    this.http.post(this.baseUrl +'/api/admin/siteApi/setPrice/'+ id, {mPrice,aPrice,nPrice}).subscribe(res => {
       this.getData()
     });
   }
