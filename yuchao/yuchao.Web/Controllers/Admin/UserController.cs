@@ -97,7 +97,16 @@ namespace yuchao.Controllers.Admin
             };
              return Json(res);
         }
-
+        // DELETE api/<controller>
+        public JsonResult Delete(int id)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteById(id)
+            });
+        }
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult DeleteByIds(dynamic[] ids)

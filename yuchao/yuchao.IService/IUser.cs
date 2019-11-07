@@ -42,5 +42,7 @@ namespace yuchao.IService
         User GetById(int id);
 
         List<User> GetAll();
+
+        bool DeleteById(int id);
     }
 }

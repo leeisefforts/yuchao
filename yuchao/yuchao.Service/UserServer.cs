@@ -61,5 +61,10 @@ namespace yuchao.Service
         public List<User> GetAll() {
             return rdb.GetList();
         }
+
+        public bool DeleteById(int id)
+        {
+            return rdb.DeleteById(id);
+        }
     }
 }
