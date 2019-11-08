@@ -68,7 +68,7 @@ namespace yuchao.Web.Controllers.Client
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.SetAn(id, values["an"].ToString())
+                Obj = bll.SetAn(id, values)
             });
         }
     }

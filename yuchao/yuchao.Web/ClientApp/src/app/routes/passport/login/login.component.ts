@@ -87,7 +87,7 @@ export class UserLoginComponent implements OnDestroy {
         }
         this.tokenService.set(user);
         this.startupSrv.load().then(() => {
-          this.router.navigateByUrl('/venue/flist');
+          this.router.navigateByUrl('/user/user');
         });
         // if (res.msg !== 'ok') {
         //   this.error = res.msg;

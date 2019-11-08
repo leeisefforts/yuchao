@@ -233,9 +233,11 @@ namespace yuchao.Business.Client
 
         }
 
-        public bool SetAn(int venueId, string an) {
+        public bool SetAn(int venueId, JObject values ) {
             Venue venue = VService.GetById(venueId);
-            venue.Announcement = an;
+            venue.Announcement = values["an"].ToString();
+            venue.VenueAddress = values["venueAddress"].ToString();
+            venue.Desc = values["desc"].ToString();
             return VService.Update(venue);
         }
     }
