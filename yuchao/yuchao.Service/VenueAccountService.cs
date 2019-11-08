@@ -20,5 +20,14 @@ namespace yuchao.Service
         public bool Insert(VenueAccount venue) {
             return rdb.Insert(venue);
         }
+        public List<VenueAccount> GetAll()
+        {
+            return rdb.GetList();
+        }
+
+        public bool DeleteById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

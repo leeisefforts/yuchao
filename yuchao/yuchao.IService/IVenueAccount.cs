@@ -10,5 +10,9 @@ namespace yuchao.IService
         VenueAccount Login(string loginName, string loginPwd);
 
         bool Insert(VenueAccount venue);
+
+        List<VenueAccount> GetAll();
+
+        bool DeleteById(int id);
     }
 }
