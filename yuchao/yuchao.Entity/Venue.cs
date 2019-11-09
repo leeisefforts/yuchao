@@ -32,5 +32,7 @@ namespace yuchao.Entity
 
         public string Announcement { get; set; }
 
+        public string Desc { get; set; }
+
     }
 }

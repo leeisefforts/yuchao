@@ -10,9 +10,9 @@ export class priceEditComponent  {
   record: any = {};
   schema: SFSchema = {
     properties: {
-      mPrice: { type: 'number', title: '馆场均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
-      aPrice: { type: 'number', title: '馆场均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
-      nPrice: { type: 'number', title: '馆场均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      mPrice: { type: 'number', title: '上午场价格',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      aPrice: { type: 'number', title: '下午场价格',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      nPrice: { type: 'number', title: '晚场价格',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
     },
     required: ['mPrice','aPrice', 'nPrice'],
     ui: {

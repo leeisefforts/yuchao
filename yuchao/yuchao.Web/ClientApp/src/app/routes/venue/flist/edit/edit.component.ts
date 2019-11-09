@@ -19,16 +19,16 @@ export class flistEditComponent  {
     record: any = {};
     schema: SFSchema = {
     properties: {
-      venueName: { type: 'string', title: '馆场名称', maxLength: 50 },
+      venueName: { type: 'string', title: '场馆名称', maxLength: 50 },
       venueAddress: {
         type: 'string',
-        title: '馆场地址',
+        title: '场馆地址',
         ui: {
           widget: 'textarea',
           autosize: { minRows: 1, maxRows: 4 },
         },
       },
-      avePrice: { type: 'number', title: '馆场均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      avePrice: { type: 'number', title: '场馆均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
       lng: { type: 'string', title: '经度'},
       lat: { type: 'string', title: '纬度'},
 

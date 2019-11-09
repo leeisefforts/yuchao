@@ -10,18 +10,43 @@
   },
   "menu": [
     {
-      "text": "馆场模块",
+      "text": "用户管理",
+      "i18n": "menu.user",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "用户管理",
+          "i18n": "menu.userManage",
+          "icon": "anticon-user",
+          "children": [
+            {
+              "text": "用户列表",
+              "link": "/user/user",
+              "i18n": "menu.userManage.user"
+            },
+            {
+              "text": "记录列表",
+              "link": "/user/record",
+              "i18n": "menu.userManage.record"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "text": "场馆模块",
       "i18n": "menu.venue",
       "group": true,
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "馆场管理",
+          "text": "场馆管理",
           "i18n": "menu.venueManage",
           "icon": "anticon-dashboard",
           "children": [
             {
-              "text": "馆场列表",
+              "text": "场馆列表",
               "link": "/venue/flist",
               "i18n": "menu.venueManage.flist"
             },
@@ -31,69 +56,44 @@
               "i18n": "menu.venueManage.list"
             }
           ]
-        }
-      ]
-    },
-    
-    {
-      "text": "Pro",
-      "i18n": "menu.pro",
-      "group": true,
-
-      "hide": false,
-      "hideInBreadcrumb": true,
-      "children": [
-        {
-          "text": "Account",
-          "i18n": "menu.account",
-          "icon": "anticon-user",
+        },{
+          "text": "仪表盘",
+          "i18n": "menu.dashboardManage",
+          "icon": "anticon-dashboard",
           "children": [
             {
-              "text": "center",
-              "link": "/pro/account/center",
-              "i18n": "menu.account.center"
+              "text": "场管消费",
+              "link": "/dashboar/consume",
+              "i18n": "menu.dashboardManage.consume"
             },
             {
-              "text": "settings",
-              "link": "/pro/account/settings",
-              "i18n": "menu.account.settings"
+              "text": "场管增量",
+              "link": "/dashboar/increment",
+              "i18n": "menu.dashboardManage.userIncrment"
             }
           ]
         }
       ]
-    },
-    {
-      "text": "More",
-      "i18n": "menu.more",
-
-      "hide": false,
+    },{
+      "text": "赛事模块",
+      "i18n": "menu.game",
       "group": true,
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "Extras",
-          "i18n": "menu.extras",
-          "link": "/extras",
-          "icon": "anticon-link",
+          "text": "赛事管理",
+          "i18n": "menu.gameManage",
+          "icon": "anticon-dashboard",
           "children": [
             {
-              "text": "Help Center",
-              "link": "/extras/helpcenter",
-              "i18n": "menu.extras.helpcenter"
-            },
-            {
-              "text": "Settings",
-              "link": "/extras/settings",
-              "i18n": "menu.extras.settings"
-            },
-            {
-              "text": "Poi",
-              "link": "/extras/poi",
-              "i18n": "menu.extras.poi"
+              "text": "赛事列表",
+              "link": "/game/list",
+              "i18n": "menu.gameManage.list"
             }
           ]
         }
       ]
     }
+    
   ]
 }

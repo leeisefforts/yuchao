@@ -58,5 +58,40 @@ namespace yuchao.Business.Admin
             return IService.Update(venue);
         }
 
+        public bool SetSite(int id,Venue obj, List<Site> list, JObject values) {
+            bool result = false;
+            if (id != 0)
+            {
+                obj.MPrice = Convert.ToDecimal(values["mPrice"]);
+                obj.NPrice = Convert.ToDecimal(values["nPrice"]);
+                obj.APrice = Convert.ToDecimal(values["aPrice"]);
+
+
+                IService.Update(obj);
+                foreach (var item in list)
+                {
+                    item.NPrice = obj.NPrice;
+                    item.MPrice = obj.MPrice;
+                    item.APrice = obj.APrice;
+                    result = IService.UpdateSite(item);
+                }
+               
+            }
+            return result;
+        }
+
+
+        public bool SetSitePrice(int id, JObject values) {
+
+            Site obj = IService.GetSiteBySId(id);
+            obj.MPrice = Convert.ToDecimal(values["mPrice"]);
+            obj.NPrice = Convert.ToDecimal(values["nPrice"]);
+            obj.APrice = Convert.ToDecimal(values["aPrice"]);
+            bool result = IService.UpdateSite(obj);
+
+            return result;
+
+        }
+
     }
 }

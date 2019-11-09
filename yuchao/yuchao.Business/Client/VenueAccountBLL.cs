@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
+using yuchao.Model.Extends;
 
 namespace yuchao.Business.Client
 {
@@ -24,18 +25,28 @@ namespace yuchao.Business.Client
             Dictionary<string, object> dic = new Dictionary<string, object>();
             Venue venue = VService.GetById(venueId);
             List<ScheduledRecord> list = RService.GetByVenueId(venueId);
-
+            List<ScheduledRecordExtends> ll = new List<ScheduledRecordExtends>();
             
-            list = list.FindAll(p=> DateTime.Compare(DateTime.Parse(p.UseTime), DateTime.Now) >= 0);
-            decimal day = 0;
-            decimal week = 0;
-            decimal month = 0;
+            list = list.FindAll(p=> DateTime.Compare(DateTime.Parse(p.UseTime), DateTime.Now) >= -1);
+            decimal day1 = 0;
+            decimal day2 = 0;
+            decimal week1 = 0;
+            decimal week2 = 0;
+            decimal month1 = 0;
+            decimal month2 = 0;
             foreach (var item in list)
             {
                 if (item.CreateTime.Subtract(DateTime.Now).Days == 0)
                 {
+                    if (item.IsOnline == 1)
+                    {
+                        day1 += item.Price;
+                    }
+                    else {
+                        day2 += item.Price;
+                    }
                     //如果是今天
-                    day += item.Price;
+                    
                 }
                 // 判断本周
                 DateTime dt1 = DateTime.Now;
@@ -45,7 +56,14 @@ namespace yuchao.Business.Client
                 bool result = temp1 == temp2;
                 if (result)
                 {
-                    week += item.Price;
+                    if (item.IsOnline == 1)
+                    {
+                        week1 += item.Price;
+                    }
+                    else
+                    {
+                        week2 += item.Price;
+                    }
                 }
 
                 DateTime nowMonth = dt1.AddDays(1 - dt1.Day);
@@ -54,7 +72,14 @@ namespace yuchao.Business.Client
                 TimeSpan ts2 = endMonth - dt2;
                 if (ts1.Days >= 0 && ts2.Days >= 0)
                 {
-                    month += item.Price;
+                    if (item.IsOnline == 1)
+                    {
+                        month1 += item.Price;
+                    }
+                    else
+                    {
+                        month2 += item.Price;
+                    }
                 }
                 if (!string.IsNullOrEmpty(item.OpenId))
                 {
@@ -66,12 +91,39 @@ namespace yuchao.Business.Client
                     }
 
                 }
+
+                ScheduledRecordExtends sr = new ScheduledRecordExtends() { 
+                    IsOnline = item.IsOnline,
+                    SiteId = item.SiteId,
+                    SiteName = VService.GetSiteBySId(item.SiteId).SiteName,
+                    StartTime = item.StartTime,
+                    Status = item.Status,
+                    NickName = item.NickName,
+                    OpenId=  item.OpenId,
+                    Price = item.Price,
+                    Tel = item.Tel,
+                    TimeId = item.TimeId,
+                    CreateTime = item.CreateTime,
+                    EndTime = item.EndTime,
+                    Id = item.Id,
+                    IsGame = item.IsGame,
+                    UseTime = item.UseTime,
+                    VenueId = item.VenueId,
+                    Week = item.Week,
+                    VenueName = string.Empty
+
+                };
+
+                ll.Add(sr);
             }
             dic.Add("1", venue);
-            dic.Add("2", list);
-            dic.Add("3", day);
-            dic.Add("4", week);
-            dic.Add("5", month);
+            dic.Add("2", ll);
+            dic.Add("3", day1);
+            dic.Add("4", day2);
+            dic.Add("5", week1);
+            dic.Add("6", week2);
+            dic.Add("7", month1);
+            dic.Add("8", month2);
             return dic;
         }
 
@@ -181,9 +233,11 @@ namespace yuchao.Business.Client
 
         }
 
-        public bool SetAn(int venueId, string an) {
+        public bool SetAn(int venueId, JObject values ) {
             Venue venue = VService.GetById(venueId);
-            venue.Announcement = an;
+            venue.Announcement = values["an"].ToString();
+            venue.VenueAddress = values["venueAddress"].ToString();
+            venue.Desc = values["desc"].ToString();
             return VService.Update(venue);
         }
     }

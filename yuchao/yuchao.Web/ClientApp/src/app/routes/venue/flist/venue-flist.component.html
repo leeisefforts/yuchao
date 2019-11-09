@@ -1,10 +1,10 @@
-<page-header [title]="'管场列表'"></page-header>
+<page-header [title]="'场馆列表'"></page-header>
 <nz-card [nzBordered]="false">
   <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" class="search__form">
     <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
       <div nz-col nzMd="8" nzSm="24">
         <nz-form-item>
-          <nz-form-label nzFor="venueName">馆场名称</nz-form-label>
+          <nz-form-label nzFor="venueName">场馆名称</nz-form-label>
           <nz-form-control>
             <input nz-input [(ngModel)]="q.venueName" name="venueName" placeholder="请输入"s/>
           </nz-form-control>
@@ -24,11 +24,11 @@
   <nz-table #editRowTable nzBordered [nzData]="listOfData" (nzCurrentPageDataChange)="currentPageDataChange($event)">
     <thead>
       <tr>
-        <th nzWidth="15%">馆场名称</th>
-        <th nzWidth="28%">馆场地址</th>
-        <th nzWidth="10%">馆场均价</th>
-        <th nzWidth="10%">馆场评分</th>
-        <th nzWidth="10%">馆场图片</th>
+        <th nzWidth="15%">场馆名称</th>
+        <th nzWidth="28%">场馆地址</th>
+        <th nzWidth="10%">场馆均价</th>
+        <th nzWidth="10%">场馆评分</th>
+        <th nzWidth="10%">场馆图片</th>
         <th nzWidth="8%">经度</th>
         <th nzWidth="8%">纬度</th>
         <th nzWidth="30%">操作</th>
