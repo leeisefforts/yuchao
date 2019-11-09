@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using yuchao.Entity;
 using yuchao.IService;
 
 namespace yuchao.Business.Admin
 {
-   public class VenueAccountBLL
+    public class VenueAccountBLL
     {
         private IVenueAccount IService = new Service.VenueAccountService();
 
