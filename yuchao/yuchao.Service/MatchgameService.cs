@@ -1,10 +1,21 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using yuchao.Entity;
+using yuchao.IService;
+using yuchao.Model;
 
 namespace yuchao.Service
 {
-    class MatchgameService
+   public class MatchgameService: BaseDb, IMatchgame
     {
+        public SimpleClient<MatchGame> rdb = new SimpleClient<MatchGame>(BaseDb.GetClient());
+        
+
+        public List<MatchGame> GetAll()
+        {
+            return rdb.GetList();
+        }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using yuchao.Entity;
 
 namespace yuchao.IService
 {
-    interface IMatchgame
-    {
+   public interface IMatchgame
+{
+        List<MatchGame> GetAll();
     }
 }

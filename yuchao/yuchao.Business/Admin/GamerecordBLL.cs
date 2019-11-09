@@ -6,7 +6,7 @@ using yuchao.IService;
 
 namespace yuchao.Business.Admin
 {
-   public class GamerecordBLL
+    public class GamerecordBLL
     {
         private IGamerecord IService = new Service.GamerecordService();
 
@@ -34,8 +34,8 @@ namespace yuchao.Business.Admin
             gamerecord1.LoseId = gamerecord.LoseId;
             gamerecord1.RefereeId = gamerecord.RefereeId;
             gamerecord1.Status = gamerecord.Status;
-            gamerecord1.WinId = gamerecord.WinId;            
-            gamerecord1.OpenId = gamerecord.OpenId;            
+            gamerecord1.WinId = gamerecord.WinId;
+            gamerecord1.OpenId = gamerecord.OpenId;
             return IService.Update(gamerecord);
 
         }
