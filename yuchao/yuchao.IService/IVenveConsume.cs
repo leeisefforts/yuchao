@@ -8,5 +8,6 @@ namespace yuchao.IService
    public interface IVenveConsume
     {
         List<ScheduledRecord> GetAll();
+        bool DeleteById(int id);
     }
 }

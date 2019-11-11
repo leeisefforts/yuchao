@@ -17,5 +17,9 @@ namespace yuchao.Service
         {
             return rdb.GetList();
         }
+        public bool DeleteById(int id)
+        {
+            return rdb.DeleteById(id);
+        }
     }
 }

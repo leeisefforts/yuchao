@@ -14,6 +14,7 @@ namespace yuchao.Web.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
+    //记录一览
     public class VenueAccountController : Controller
     {
         private VenueAccountBLL bll = new VenueAccountBLL();

@@ -16,6 +16,7 @@ namespace yuchao.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
+    //赛事一览
     public class GamerecordController : Controller
     {
         private GamerecordBLL bll = new GamerecordBLL();
