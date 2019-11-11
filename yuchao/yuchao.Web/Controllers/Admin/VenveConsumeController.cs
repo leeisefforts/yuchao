@@ -14,6 +14,7 @@ namespace yuchao.Web.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
+    //场馆消费一览
     public class VenveConsumeController : Controller
     {
         private VenveConsumeBLL bll = new VenveConsumeBLL();
@@ -37,6 +38,17 @@ namespace yuchao.Web.Controllers.Admin
             });
         }
 
-       
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteById(id)
+            });
+        }
+
     }
 }

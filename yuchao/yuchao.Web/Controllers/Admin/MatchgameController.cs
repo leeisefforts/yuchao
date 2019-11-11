@@ -10,10 +10,12 @@ using yuchao.Model;
 
 namespace yuchao.Web.Controllers.Admin
 {
+
     [Route("api/[controller]")]
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
+    //赛事操作
     public class MatchgameController : Controller
     {
         private MatchgameBLL bll = new MatchgameBLL();
@@ -34,6 +36,18 @@ namespace yuchao.Web.Controllers.Admin
                 Status = 200,
                 Error = "Success",
                 Obj = bll.GetAll()
+            });
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteById(id)
             });
         }
     }
