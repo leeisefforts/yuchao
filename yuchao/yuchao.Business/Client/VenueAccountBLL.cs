@@ -20,14 +20,15 @@ namespace yuchao.Business.Client
             return IService.Login(loginName, loginPwd);
         }
 
-        public Dictionary<string, object> GetPage(int venueId)
+        public Dictionary<string, object> GetPage(int venueId, int page ,int size)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             Venue venue = VService.GetById(venueId);
-            List<ScheduledRecord> list = RService.GetByVenueId(venueId);
+            List<ScheduledRecord> list = RService.GetByVenueIdPage(venueId,page ,size);
             List<ScheduledRecordExtends> ll = new List<ScheduledRecordExtends>();
+            List<ScheduledRecordExtends> llo = new List<ScheduledRecordExtends>();
             
-            list = list.FindAll(p=> DateTime.Compare(DateTime.Parse(p.UseTime), DateTime.Now) >= -1);
+         
             decimal day1 = 0;
             decimal day2 = 0;
             decimal week1 = 0;
@@ -113,9 +114,17 @@ namespace yuchao.Business.Client
                     VenueName = string.Empty
 
                 };
+                if (sr.IsOnline == 0)
+                {
+                    ll.Add(sr);
+                }
+                else {
+                    llo.Add(sr);
+                }
 
-                ll.Add(sr);
             }
+
+            
             dic.Add("1", venue);
             dic.Add("2", ll);
             dic.Add("3", day1);
@@ -124,6 +133,7 @@ namespace yuchao.Business.Client
             dic.Add("6", week2);
             dic.Add("7", month1);
             dic.Add("8", month2);
+            dic.Add("9", llo);
             return dic;
         }
 

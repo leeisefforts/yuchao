@@ -31,9 +31,9 @@
   <nz-table #editRowTable nzBordered [nzData]="listOfData" (nzCurrentPageDataChange)="currentPageDataChange($event)">
     <thead>
       <tr>
-       <th>场地名称</th>
-       <th>场地均价</th>
-       <th>创建时间</th>
+       <th>比赛时间</th>
+       <th>比赛场地</th>
+       <th>状态</th>
        <th>操作</th>
       </tr>
     </thead>
@@ -41,24 +41,24 @@
       <tr *ngFor="let data of editRowTable.data">
         <td>
           <ng-container>
-            {{ data.siteName }}
+            {{ data.gameTime }}
           </ng-container>
         </td>
         <td>
           <ng-container>
-            {{ data.price }}
+            {{ data.venueId }}
           </ng-container>
         </td>
         <td>
           <ng-container>
-            {{ data.createTime }}
+            {{ data.status }}
           </ng-container>
         </td>
         <td>
           <div class="editable-row-operations">
             <ng-container>
               <a (click)="openEdit(data)">编辑</a>
-              <a  nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.VenueId)">删除</a>
+              <a  nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.id)">删除</a>
             </ng-container>
           </div>
         </td>

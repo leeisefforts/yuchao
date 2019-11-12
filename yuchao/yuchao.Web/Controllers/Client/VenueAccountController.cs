@@ -41,13 +41,15 @@ namespace yuchao.Web.Controllers.Client
 
         }
 
-        [HttpGet("{id}")]
-        public JsonResult GetData(int id) {
+        [HttpPost("getdata/{id}")]
+        public JsonResult GetData(int id, [FromBody]JObject values) {
+            int page = Convert.ToInt32(values["page"]);
+            int size = Convert.ToInt32(values["size"]);
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetPage(id)
+                Obj = bll.GetPage(id, page, size)
             });
         }
     }

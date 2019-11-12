@@ -1,8 +1,39 @@
 <div class="modal-header">
-  <div class="modal-title">场地信息</div>
+  <div class="modal-title">赛事操作</div>
 </div>
 <sf #sf mode="edit" [schema]="schema" [formData]="record" button="none">
-    
+  <nz-form-item nzFlex>
+    <nz-form-label [ngStyle]="{ width: '150px' }">比赛时间</nz-form-label>
+    <nz-form-control>
+      <div class="clearfix">
+         <nz-date-picker [(ngModel)]="record.gameTime" (ngModelChange)="onChange($event)"></nz-date-picker>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nzFlex>
+    <nz-form-label [ngStyle]="{ width: '150px' }">比赛场地</nz-form-label>
+    <nz-form-control>
+      <div class="clearfix">
+        <nz-select
+          [(ngModel)]="record.venueId"
+          name="venue"
+          [nzPlaceHolder]="'请选择'"
+          [nzShowSearch]="true"
+        >
+          <nz-option *ngFor="let i of selectList; let idx = index" [nzLabel]="i.venueName" [nzValue]="idx"></nz-option>
+        </nz-select>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nzFlex>
+    <nz-form-label [ngStyle]="{ width: '150px' }">比赛状态</nz-form-label>
+    <nz-form-control>
+      <div class="clearfix">
+        <nz-switch [ngModel]="record.status==1" nzCheckedChildren="启用" nzUnCheckedChildren="关闭"></nz-switch>
+
+      </div>
+    </nz-form-control>
+  </nz-form-item>
   <div class="modal-footer">
     <button nz-button type="button" (click)="close()">关闭</button>
     <button nz-button type="submit" [nzType]="'primary'" (click)="save(sf.value)" [disabled]="!sf.valid">保存</button>

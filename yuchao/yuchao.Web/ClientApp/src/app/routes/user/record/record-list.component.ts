@@ -48,7 +48,7 @@ export class RecordListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSelectData()
+    this.getData()
 
   }
   /**
@@ -58,7 +58,7 @@ export class RecordListComponent implements OnInit {
     this.loading = true;
 
     this.http
-      .get(this.baseUrl + '/api/admin/SiteApi/'+ this.venueId, this.q)
+      .get(this.baseUrl + '/api/admin/Venueaccount', {})
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -70,27 +70,6 @@ export class RecordListComponent implements OnInit {
       .subscribe(res => {
         this.listOfData = res;
         this.cdr.detectChanges();
-      });
-  }
-  /**
-   * 获取场馆选择列表
-   */
-  getSelectData() {
-    this.loading = true;
-    this.http
-      .get(this.baseUrl + '/api/admin/venue/VenueApi',{})
-      .pipe(
-        map((res: any) =>
-          res.obj.map(i => {
-            return i;
-          }),
-        ),
-        tap(() => (this.loading = false)),
-      )
-      .subscribe(res => {
-        this.selectList = res;
-        this.venueId = !!res[0]?res[0].id:''
-        this.getData();
       });
   }
   /**

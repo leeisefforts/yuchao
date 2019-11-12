@@ -44,7 +44,12 @@ namespace yuchao.Service
         }
         public List<ScheduledRecord> GetByVenueId(int venueId)
         {
-            return rdb.GetList(p => p.VenueId ==venueId);
+            return rdb.AsQueryable().OrderBy("useTime desc").Where(p => p.VenueId == venueId).ToList();
+        }
+
+        public List<ScheduledRecord> GetByVenueIdPage(int venueId, int pageIndex, int pageSize)
+        {
+            return rdb.AsQueryable().OrderBy("useTime asc").OrderBy("TimeId asc").Where(p =>  p.VenueId == venueId && DateTime.Parse(p.UseTime) >= DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))).ToPageList(pageIndex, pageSize);
         }
 
         public List<ScheduledRecord> GetByVId(int venueId)

@@ -49,16 +49,14 @@ export class GameListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSelectData()
-
   }
   /**
    * 获取列表数据
    */
   getData() {
     this.loading = true;
-
     this.http
-      .get(this.baseUrl + '/api/admin/SiteApi/'+ this.venueId, this.q)
+      .get(this.baseUrl + '/api/admin/Gamerecord/1', this.q)
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -76,7 +74,6 @@ export class GameListComponent implements OnInit {
    * 获取场馆选择列表
    */
   getSelectData() {
-    this.loading = true;
     this.http
       .get(this.baseUrl + '/api/admin/venue/VenueApi',{})
       .pipe(
@@ -85,19 +82,19 @@ export class GameListComponent implements OnInit {
             return i;
           }),
         ),
-        tap(() => (this.loading = false)),
+        tap(),
       )
       .subscribe(res => {
         this.selectList = res;
         this.venueId = !!res[0]?res[0].id:''
-        this.getData();
+        this.getData()
       });
   }
   /**
    * 编辑行
    */
   editHttp(params){
-    this.http.post(this.baseUrl +'/api/admin/SiteApi', params).subscribe(res => {
+    this.http.post(this.baseUrl +'/api/admin/Gamerecord', params).subscribe(res => {
       this.getData()
     });
   }
@@ -105,10 +102,12 @@ export class GameListComponent implements OnInit {
     this.listOfDisplayData = $event;
   }
   openEdit(record: any = {}) {
-    this.modal.create(listEditComponent, { record }, { size: 'md' }).subscribe(res => {
+    let {selectList} = this
+    this.modal.create(listEditComponent, { record,selectList }, { size: 'md' }).subscribe(res => {
       if (!record.id) {
         res.id = 0
-        res.venueId = this.venueId
+        res.venueId = selectList[0].venueId
+        res.gameTime = Date()
       }
       this.editHttp(res)
       this.cdr.detectChanges();
@@ -118,7 +117,7 @@ export class GameListComponent implements OnInit {
    * 删除行
    */
   handleDel(id){
-    this.http.delete(this.baseUrl +'/api/admin/SiteApi/'+id).subscribe(res => {
+    this.http.delete(this.baseUrl +'/api/admin/Gamerecord/'+id).subscribe(res => {
       this.msgSrv.success('删除成功');
       this.getData()
     });
