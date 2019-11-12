@@ -23,6 +23,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/user/user', pathMatch: 'full' },
       { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
       { path: 'venue', loadChildren: () => import('./venue/venue.module').then(m => m.VenueModule) },
+      { path: 'dashboar', loadChildren: () => import('./dashboar/dashboar.module').then(m => m.DashboarModule) },
       { path: 'game', loadChildren: () => import('./game/game.module').then(m => m.GameModule) },
       { path: 'style', loadChildren: () => import('./style/style.module').then(m => m.StyleModule) },
       { path: 'delon', loadChildren: () => import('./delon/delon.module').then(m => m.DelonModule) },

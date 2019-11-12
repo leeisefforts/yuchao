@@ -4,36 +4,36 @@ import { _HttpClient, ModalHelper } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { NzInputDirective } from 'ng-zorro-antd/input';
-import { recordEditComponent } from './edit/edit.component';
 interface ItemData {
-  venueId: string;
-  siteName:string;
-  Price: string;
+  id: string;
+  venueName: string;
+  venueAddress: string;
+  avePrice: string;
+  score: string;
+  venueImg: string;
+  lng: string;
+  lat: string;
+  checked: boolean;
+  disabled?: boolean;
 }
 
 @Component({
-  selector: 'app-venue-list',
-  templateUrl: './record-list.component.html',
-  styleUrls: ['./record-list.component.less'],
+  selector: 'app-venue-flist',
+  templateUrl: './consume.component.html',
+  styleUrls: ['./consume.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecordListComponent implements OnInit {
+export class ConsumeListComponent implements OnInit {
   listOfData: ItemData[] = [];
-  selectList: ItemData[] = [];
-  venueId: string;
   loading = false;
   baseUrl: string;
-  //选择行
   listOfDisplayData: ItemData[] = [];
-  isAllDisplayDataChecked = false;
-  isIndeterminate = false;
   //页码
   q: any = {
     pi: 1,
     ps: 10,
     sorter: '',
   };
-  selectedRows: STData[] = [];
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
@@ -48,8 +48,7 @@ export class RecordListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getData()
-
+    this.getData();
   }
   /**
    * 获取列表数据
@@ -58,7 +57,7 @@ export class RecordListComponent implements OnInit {
     this.loading = true;
 
     this.http
-      .get(this.baseUrl + '/api/admin/Venueaccount', {})
+      .get(this.baseUrl + '/api/admin/VenveConsume', this.q)
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -72,34 +71,16 @@ export class RecordListComponent implements OnInit {
         this.cdr.detectChanges();
       });
   }
-  /**
-   * 编辑行
-   */
-  editHttp(params){
-    this.http.post(this.baseUrl +'/api/admin/SiteApi', params).subscribe(res => {
-      this.getData()
-    });
-  }
-  currentPageDataChange($event: ItemData[]): void {
-    this.listOfDisplayData = $event;
-  }
-  openEdit(record: any = {}) {
-    this.modal.create(recordEditComponent, { record }, { size: 'md' }).subscribe(res => {
-      if (!record.id) {
-        res.id = 0
-        res.venueId = this.venueId
-      }
-      this.editHttp(res)
-      this.cdr.detectChanges();
-    });
-  }
+ currentPageDataChange($event: ItemData[]): void {
+   this.listOfDisplayData = $event;
+ }
   /**
    * 删除行
    */
   handleDel(id){
-    this.http.delete(this.baseUrl +'/api/admin/SiteApi/'+id).subscribe(res => {
-      this.msgSrv.success('删除成功');
+    this.http.delete(this.baseUrl +'/api/admin/User').subscribe(res => {
       this.getData()
+      this.msgSrv.success('删除成功');
     });
   }
-  }
+}

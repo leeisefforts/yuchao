@@ -62,7 +62,6 @@ export class flistEditComponent  {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log("venueImg",reader.result)
         this.record.venueImg = reader.result
       };
       return true
