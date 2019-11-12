@@ -12,7 +12,6 @@ namespace yuchao.Service
     {
         public SimpleClient<ScheduledRecord> rdb = new SimpleClient<ScheduledRecord>(BaseDb.GetClient());
        
-
         public List<ScheduledRecord> GetAll()
         {
             return rdb.GetList();

@@ -81,7 +81,6 @@ namespace yuchao.Controllers.Admin
             };
             return Json(res);
         }
-
         [HttpDelete("{id}")]
         public JsonResult DeleteById(int id)
         {

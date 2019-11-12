@@ -12,7 +12,6 @@ namespace yuchao.Service
     {
         public SimpleClient<MatchGame> rdb = new SimpleClient<MatchGame>(BaseDb.GetClient());
         
-
         public List<MatchGame> GetAll()
         {
             return rdb.GetList();

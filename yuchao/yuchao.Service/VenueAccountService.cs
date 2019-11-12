@@ -24,7 +24,6 @@ namespace yuchao.Service
         {
             return rdb.GetList();
         }
-
         public bool DeleteById(int id)
         {
             throw new NotImplementedException();

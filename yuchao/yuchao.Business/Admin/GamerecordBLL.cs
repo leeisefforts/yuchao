@@ -24,7 +24,6 @@ namespace yuchao.Business.Admin
         {
             return IService.DeleteById(id);
         }
-
         public bool Update(Gamerecord gamerecord)
         {
             Gamerecord gamerecord1 = IService.GetById(gamerecord.Id);

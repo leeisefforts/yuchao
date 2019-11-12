@@ -7,6 +7,7 @@ namespace yuchao.IService
 {
    public interface IMatchgame
 {
+
         List<MatchGame> GetAll();
         bool DeleteById(int id);
     }
