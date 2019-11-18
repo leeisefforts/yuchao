@@ -38,5 +38,13 @@ namespace yuchao.Business.Client
             return uServer.Update(user);
 
         }
+
+        public bool Exit(int clubId, string openId)
+        {
+            User user = uServer.GetByOpenId(openId);
+            user.ClubId = 0;
+            return uServer.Update(user);
+
+        }
     }
 }

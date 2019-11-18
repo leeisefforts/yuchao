@@ -132,6 +132,21 @@ namespace yuchao.Controllers.Client
         }
 
 
+        [HttpPost("exit")]
+        public JsonResult Exit([FromBody]JObject values)
+        {
+
+            int clubid = Convert.ToInt32(values["clubId"]);
+            string openId = values["openId"].ToString();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.Exit(clubid, openId)
+            });
+        }
+
     }
 
     [Route("api/client/[controller]")]
