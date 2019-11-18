@@ -9,7 +9,6 @@ namespace yuchao.Business.Admin
    public class MatchgameBLL
     {
         private IMatchgame IService = new Service.MatchgameService();
-
         public List<MatchGame> GetAll()
         {
             return IService.GetAll();

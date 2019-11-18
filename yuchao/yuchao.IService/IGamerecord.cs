@@ -7,6 +7,7 @@ namespace yuchao.IService
 {
    public interface IGamerecord
     {
+
         List<Gamerecord> GetAll(string openId);
 
         bool Insert(Gamerecord gamerecord);

@@ -5,6 +5,7 @@ using yuchao.Entity;
 
 namespace yuchao.IService
 {
+
     public interface IVenueAccount
     {
         VenueAccount Login(string loginName, string loginPwd);

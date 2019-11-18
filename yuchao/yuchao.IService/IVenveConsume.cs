@@ -5,7 +5,8 @@ using yuchao.Entity;
 
 namespace yuchao.IService
 {
-   public interface IVenveConsume
+
+    public interface IVenveConsume
     {
         List<ScheduledRecord> GetAll();
         bool DeleteById(int id);
