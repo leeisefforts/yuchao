@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using yuchao.Entity;
 using yuchao.IService;
@@ -15,6 +16,8 @@ namespace yuchao.Business.Admin
         public UserServer Uervice = new Service.UserServer();
         public GamerecordService GService = new Service.GamerecordService();
         private VenueService LService = new VenueService();
+
+        string path = "G:/about/";
         // 查询      
         public Club GetById(int id)
         {
@@ -24,11 +27,35 @@ namespace yuchao.Business.Admin
         // 增加
         public bool Insert(string path ,Club entity)
         {
+            entity.ClubLogo = Base64ToFileAndSave(entity.ClubLogo);
             int id =  IService.AddReturnId(entity);
             User user = Uervice.GetByOpenId(entity.OpenId);
             user.ClubId = id;
             return Uervice.Update(user);
         }
+
+        public string Base64ToFileAndSave(string strInput)
+        {
+            bool bTrue = false;
+
+            string fileName = path + DateTime.Now.ToFileTime().ToString()+".png";
+            try
+            {
+                byte[] buffer = Convert.FromBase64String(strInput);
+                FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+                fs.Write(buffer, 0, buffer.Length);
+                fs.Close();
+                bTrue = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return fileName;
+        }
+
+
         public Dictionary<string, object> GetClubUser(int clubId)
         {
             List<User> list = Uervice.GetByClubId(clubId);
