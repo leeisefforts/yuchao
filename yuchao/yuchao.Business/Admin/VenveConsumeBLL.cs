@@ -18,5 +18,6 @@ namespace yuchao.Business.Admin
         {
             return IService.DeleteById(id);
         }
+
     }
 }

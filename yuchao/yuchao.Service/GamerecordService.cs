@@ -8,6 +8,7 @@ using yuchao.Model;
 
 namespace yuchao.Service
 {
+
     public class GamerecordService : BaseDb, IGamerecord
     {
         public SimpleClient<Gamerecord> rdb = new SimpleClient<Gamerecord>(BaseDb.GetClient());
