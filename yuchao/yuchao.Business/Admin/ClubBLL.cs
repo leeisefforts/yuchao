@@ -17,7 +17,7 @@ namespace yuchao.Business.Admin
         public GamerecordService GService = new Service.GamerecordService();
         private VenueService LService = new VenueService();
 
-        string path = "G:/about/";
+        string path = "C:\\inetpub\\wwwroot\\ycapi\\images\\";
         // 查询      
         public Club GetById(int id)
         {
@@ -37,12 +37,12 @@ namespace yuchao.Business.Admin
         public string Base64ToFileAndSave(string strInput)
         {
             bool bTrue = false;
-
-            string fileName = path + DateTime.Now.ToFileTime().ToString()+".png";
+            string fileName = DateTime.Now.ToFileTime().ToString() + ".png";
+            string filePath = path + fileName;
             try
             {
                 byte[] buffer = Convert.FromBase64String(strInput);
-                FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+                FileStream fs = new FileStream(filePath, FileMode.CreateNew);
                 fs.Write(buffer, 0, buffer.Length);
                 fs.Close();
                 bTrue = true;
