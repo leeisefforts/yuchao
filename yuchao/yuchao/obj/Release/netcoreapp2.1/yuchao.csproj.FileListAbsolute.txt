@@ -56,6 +56,9 @@ E:\code\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.RazorTarget
 E:\code\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.csproj.CopyComplete
 E:\code\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.dll
 E:\code\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.pdb
+G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\appsettings.Development.json
+G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\appsettings.json
+G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\Properties\launchSettings.json
 G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\yuchao.deps.json
 G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\yuchao.runtimeconfig.json
 G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\yuchao.runtimeconfig.dev.json
@@ -76,7 +79,6 @@ G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\SqlSugar.pdb
 G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\yuchao.IService.pdb
 G:\code\yc_admin\yuchao\yuchao\bin\Release\netcoreapp2.1\yuchao.Service.pdb
 G:\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.csprojAssemblyReference.cache
-G:\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.csproj.CoreCompileInputs.cache
 G:\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.RazorAssemblyInfo.cache
 G:\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.RazorAssemblyInfo.cs
 G:\code\yc_admin\yuchao\yuchao\obj\Release\netcoreapp2.1\yuchao.AssemblyInfoInputs.cache

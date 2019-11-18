@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using yuchao.Entity;
-using yuchao.IService;
 using yuchao.Model.Extends;
 using yuchao.Service;
 
@@ -12,12 +10,12 @@ namespace yuchao.Business.Admin
 {
     public class ClubBLL
     {
-        public ClubServer IService = new Service.ClubServer();
-        public UserServer Uervice = new Service.UserServer();
-        public GamerecordService GService = new Service.GamerecordService();
+        public ClubServer IService = new ClubServer();
+        public UserServer Uervice = new UserServer();
+        public GamerecordService GService = new GamerecordService();
         private VenueService LService = new VenueService();
 
-        string path = "C:\\inetpub\\wwwroot\\ycapi\\images\\";
+        
         // 查询      
         public Club GetById(int id)
         {
@@ -25,18 +23,18 @@ namespace yuchao.Business.Admin
         }
 
         // 增加
-        public bool Insert(string path ,Club entity)
+        public bool Insert(Club entity)
         {
             entity.ClubLogo = Base64ToFileAndSave(entity.ClubLogo);
             int id =  IService.AddReturnId(entity);
             User user = Uervice.GetByOpenId(entity.OpenId);
             user.ClubId = id;
-            return Uervice.Update(user);
+            return true;
         }
 
         public string Base64ToFileAndSave(string strInput)
         {
-            bool bTrue = false;
+            string path = @"C:\\inetpub\\wwwroot\\ycapi\\images\\";
             string fileName = DateTime.Now.ToFileTime().ToString() + ".png";
             string filePath = path + fileName;
             try
@@ -45,11 +43,10 @@ namespace yuchao.Business.Admin
                 FileStream fs = new FileStream(filePath, FileMode.CreateNew);
                 fs.Write(buffer, 0, buffer.Length);
                 fs.Close();
-                bTrue = true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                return ex.Message;
             }
 
             return fileName;

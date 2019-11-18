@@ -27,7 +27,7 @@ namespace yuchao.Controllers.Client
         private ClubApiBLL cbll = new ClubApiBLL();
         // POST api/<controller>
         [HttpPost("create/{openId}")]
-        public JsonResult Add(string openId, [FromBody]JObject values)
+        public JsonResult Add(string openId,[FromBody]JObject values)
         {
             Club obj = new Club()
             {
@@ -44,7 +44,7 @@ namespace yuchao.Controllers.Client
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = bll.Insert(HttpContext.Request.Host.ToString(),obj)
+                Obj = bll.Insert(obj)
             });
         }
 
@@ -112,7 +112,7 @@ namespace yuchao.Controllers.Client
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = bll.Insert(Request.Path.Value, obj)
+                Obj = bll.Insert( obj)
             });
         }
 
@@ -157,8 +157,6 @@ namespace yuchao.Controllers.Client
     {
         private ClubBLL bll = new ClubBLL();
 
-        private ClubApiBLL cbll = new ClubApiBLL();
-
         // POST api/<controller>
         [HttpGet("{id}")]
         public JsonResult GetById(int id)
@@ -169,6 +167,31 @@ namespace yuchao.Controllers.Client
                 Status = 200,
                 Error = string.Empty,
                 Obj = bll.GetClubUser(id)
+            });
+        }
+
+        // POST api/<controller>
+        [HttpPost]
+        public JsonResult ClubInsert([FromBody]JObject values)
+        {
+            string openId = string.Empty;
+            Club obj = new Club()
+            {
+                ClubArea = values["clubArea"].ToString(),
+                ClubCity = values["clubCity"].ToString(),
+                ClubDesc = values["clubDesc"].ToString(),
+                ClubLogo = values["clubLogo"].ToString(),
+                ClubName = values["clubName"].ToString(),
+                Status = 1,
+                CreateTime = DateTime.Now,
+                OpenId = openId
+            };
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.Insert(obj)
             });
         }
     }

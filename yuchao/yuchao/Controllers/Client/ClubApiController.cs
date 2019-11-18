@@ -44,7 +44,7 @@ namespace yuchao.Controllers.Client
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = bll.Insert(HttpContext.Request.Host.ToString(),obj)
+                Obj = bll.Insert(obj)
             });
         }
 
@@ -112,7 +112,7 @@ namespace yuchao.Controllers.Client
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = bll.Insert(Request.Path.Value, obj)
+                Obj = bll.Insert(obj)
             });
         }
 
