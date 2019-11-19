@@ -147,6 +147,22 @@ namespace yuchao.Controllers.Client
             });
         }
 
+        [HttpPost("Disband")]
+        public JsonResult Disband([FromBody]JObject values)
+        {
+
+            int clubid = Convert.ToInt32(values["clubId"]);
+            string openId = values["openId"].ToString();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.Disband(clubid, openId)
+            });
+        }
+        
+
     }
 
     [Route("api/client/[controller]")]

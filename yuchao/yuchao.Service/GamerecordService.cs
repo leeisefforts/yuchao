@@ -16,7 +16,7 @@ namespace yuchao.Service
 
         public List<Gamerecord> GetAll(string openId)
         {
-            return rdb.GetList(p=>p.OpenId.Equals(openId));
+            return rdb.GetList(p => p.OpenId.Equals(openId));
         }
         public bool Insert(Gamerecord gamerecord)
         {
@@ -61,6 +61,10 @@ namespace yuchao.Service
         public bool UpdateMatchGame(MatchGame mg)
         {
             return mdb.Update(mg);
+        }
+
+        public List<Gamerecord> GetClubGame(int clubId) {
+            return rdb.GetList(p => p.ClubId == clubId);
         }
     }
 }

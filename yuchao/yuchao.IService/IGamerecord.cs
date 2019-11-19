@@ -19,5 +19,7 @@ namespace yuchao.IService
         bool Update(Gamerecord gamerecord);
 
         Gamerecord GetByVenueId(string venueId);
+
+        List<Gamerecord> GetClubGame(int clubId);
     }
 }

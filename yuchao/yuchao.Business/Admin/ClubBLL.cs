@@ -29,7 +29,7 @@ namespace yuchao.Business.Admin
             int id =  IService.AddReturnId(entity);
             User user = Uervice.GetByOpenId(entity.OpenId);
             user.ClubId = id;
-            return true;
+            return Uervice.Update(user);
         }
 
         public string Base64ToFileAndSave(string strInput)

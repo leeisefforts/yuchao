@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
+using yuchao.IService;
 using yuchao.Model.Extends;
 using yuchao.Service;
 
@@ -13,6 +14,8 @@ namespace yuchao.Business.Client
         private ClubServer  clubServer= new ClubServer();
 
         private UserServer uServer = new UserServer();
+
+        private IGamerecord gServer = new GamerecordService();
 
         public void addClub(Entity.Club club)
         {
@@ -42,9 +45,25 @@ namespace yuchao.Business.Client
         public bool Exit(int clubId, string openId)
         {
             User user = uServer.GetByOpenId(openId);
+
             user.ClubId = 0;
             return uServer.Update(user);
 
+        }
+
+
+        public bool Disband(int clubId, string openId) {
+            User user = uServer.GetByOpenId(openId);
+            user.ClubId = 0;
+            Club club = clubServer.Get(clubId);
+            club.Status = 4;
+            clubServer.Update(club);
+            List<Gamerecord> list = gServer.GetClubGame(clubId);
+            if (list.Count> 0)
+            {
+                return false;
+            }
+            return uServer.Update(user);
         }
     }
 }
