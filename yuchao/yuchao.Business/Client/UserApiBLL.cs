@@ -62,7 +62,7 @@ namespace yuchao.Business.Client
                 old.Country = values["country"].ToString();
                 old.City = values["city"].ToString();
                 old.Province = values["province"].ToString();
-                
+                old.Reputation = 100;
                 result = IService.Update(old);
                 
             }

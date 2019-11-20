@@ -30,3 +30,4 @@ G:\code\yc_admin\yuchao\SqlSugar\obj\Release\netstandard2.0\SqlSugar.AssemblyInf
 G:\code\yc_admin\yuchao\SqlSugar\obj\Release\netstandard2.0\SqlSugar.AssemblyInfo.cs
 G:\code\yc_admin\yuchao\SqlSugar\obj\Release\netstandard2.0\SqlSugar.dll
 G:\code\yc_admin\yuchao\SqlSugar\obj\Release\netstandard2.0\SqlSugar.pdb
+G:\code\yc_admin\yuchao\SqlSugar\obj\Release\netstandard2.0\SqlSugar.csprojAssemblyReference.cache
