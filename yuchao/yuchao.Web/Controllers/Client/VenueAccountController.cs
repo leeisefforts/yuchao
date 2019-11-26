@@ -74,4 +74,27 @@ namespace yuchao.Web.Controllers.Client
             });
         }
     }
+
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class ReferAccountController : Controller
+    {
+
+        private VenueAccountBLL bll = new VenueAccountBLL();
+
+        [HttpPost]
+        public JsonResult Login([FromBody]JObject values)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.Login2(values["loginName"].ToString(), values["loginPwd"].ToString())
+            });
+        }
+
+    }
 }

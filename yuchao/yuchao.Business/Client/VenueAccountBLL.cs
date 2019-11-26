@@ -20,6 +20,12 @@ namespace yuchao.Business.Client
             return IService.Login(loginName, loginPwd);
         }
 
+        public VenueAccount Login2(string loginName, string loginPwd)
+        {
+            return IService.Login2(loginName, loginPwd);
+        }
+
+
         public Dictionary<string, object> GetPage(int venueId, int page ,int size)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();

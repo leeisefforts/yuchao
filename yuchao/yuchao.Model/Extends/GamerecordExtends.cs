@@ -14,4 +14,14 @@ namespace yuchao.Model.Extends
         public decimal AvePrice { get; set; }
 
     }
+
+    public class GamerecordReExtends : Gamerecord
+    {
+        public string VenueName { get; set; }
+        public string Score { get; set; }
+        public string VenueAddress { get; set; }
+        public string VenueImg { get; set; }
+        public decimal AvePrice { get; set; }
+
+    }
 }

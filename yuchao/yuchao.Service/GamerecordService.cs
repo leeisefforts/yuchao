@@ -66,5 +66,15 @@ namespace yuchao.Service
         public List<Gamerecord> GetClubGame(int clubId) {
             return rdb.GetList(p => p.ClubId == clubId);
         }
+
+        public List<Gamerecord> GetGameAll() {
+            return rdb.GetList(p => p.Status == 1);
+        }
+
+        public List<Gamerecord> GetGameAllByReId(int id, int status)
+        {
+            return rdb.GetList(p => p.Status == status && p.RefereeId == id);
+        }
+        
     }
 }

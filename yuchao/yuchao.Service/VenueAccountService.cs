@@ -17,6 +17,12 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.LoginName.Equals(loginName) && p.LoginPwd.Equals(loginPwd));
         }
 
+        public VenueAccount Login2(string loginName, string loginPwd)
+        {
+
+            return rdb.GetSingle(p => p.LoginName.Equals(loginName) && p.LoginPwd.Equals(loginPwd) && p.VenueId == -1);
+        }
+
         public bool Insert(VenueAccount venue) {
             return rdb.Insert(venue);
         }

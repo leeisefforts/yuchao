@@ -57,4 +57,55 @@ namespace yuchao.Controllers.Client
             });
         }
     }
+
+    [Route("api/client/[controller]")]
+    [EnableCors("AllowCors")]
+    [Produces("application/json")]
+    [ApiController]
+    public class RefereeGamerecordApiController : Controller
+    {
+        private GamerecordApiBLL bll = new GamerecordApiBLL();
+        private GamerecordBLL bll2 = new GamerecordBLL();
+
+        [HttpGet]
+        public JsonResult GetGamerecordInfo()
+        {
+            List<GamerecordExtends> list = bll.GetGamerecordInfoByRe();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = list
+            });
+        }
+
+        [HttpGet("byre/{id}/{status}")]
+        public JsonResult GetGamerecordByRe(int id, int status)
+        {
+            List<GamerecordExtends> list = bll.GetGameByReId(id, status);
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = list
+            });
+        }
+
+
+        [HttpPost("addReferee")]
+        public JsonResult AddReferee([FromBody]JObject values)
+        {
+            int id = Convert.ToInt32(values["id"]);
+            int rid = Convert.ToInt32(values["rid"]);
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.SetReferee(id, rid)
+            }); ;
+        }
+
+    }
 }

@@ -43,6 +43,38 @@ namespace yuchao.Business.Client
             }
             return gamerecordInfo;
         }
+
+        public List<GamerecordExtends> GetGamerecordInfoByRe()
+        {
+            // 根据venueId获取Gamerecord
+            List<Gamerecord> gamerecord = IService.GetGameAll();
+            List<GamerecordExtends> list = new List<GamerecordExtends>();
+            foreach (var item in gamerecord)
+            {
+                GamerecordExtends gamerecordInfo = new GamerecordExtends();
+                Venue venue = LService.GetById(item.VenueId);
+                gamerecordInfo.Id = item.Id;
+                gamerecordInfo.CreateTime = item.CreateTime;
+                gamerecordInfo.GameTime = item.GameTime;
+                gamerecordInfo.IsTeamGame = item.IsTeamGame;
+                gamerecordInfo.LoseId = item.LoseId;
+                gamerecordInfo.RefereeId = item.RefereeId;
+                gamerecordInfo.Status = item.Status;
+                gamerecordInfo.VenueId = item.VenueId;
+                gamerecordInfo.WinId = item.WinId;
+                gamerecordInfo.AvePrice = venue.AvePrice;
+                gamerecordInfo.VenueName = venue.VenueName;
+                gamerecordInfo.Score = venue.Score;
+                gamerecordInfo.VenueAddress = venue.VenueAddress;
+                gamerecordInfo.VenueImg = venue.VenueImg;
+                gamerecordInfo.OpenId = item.OpenId;
+                list.Add(gamerecordInfo);
+
+            }
+            return list;
+        }
+
+
         //查询全部
         public List<GamerecordExtends> GetAll(string openId)
         {
@@ -228,6 +260,48 @@ namespace yuchao.Business.Client
                 }
             }
             return list;
+        }
+
+        public bool SetReferee(int id, int rid) {
+            Gamerecord gr = IService.GetById(id);
+            gr.RefereeId = rid;
+            return IService.Update(gr);
+        }
+
+
+        public List<GamerecordExtends> GetGameByReId(int id, int status) {
+
+            // 根据venueId获取Gamerecord
+            List<Gamerecord> gamerecord = IService.GetGameAllByReId(id, status);
+            List<GamerecordExtends> list = new List<GamerecordExtends>();
+            foreach (var item in gamerecord)
+            {
+                GamerecordExtends gamerecordInfo = new GamerecordExtends();
+                Venue venue = LService.GetById(item.VenueId);
+                gamerecordInfo.Id = item.Id;
+                gamerecordInfo.CreateTime = item.CreateTime;
+                gamerecordInfo.GameTime = item.GameTime;
+                gamerecordInfo.IsTeamGame = item.IsTeamGame;
+                gamerecordInfo.LoseId = item.LoseId;
+                gamerecordInfo.RefereeId = item.RefereeId;
+                gamerecordInfo.Status = item.Status;
+                gamerecordInfo.VenueId = item.VenueId;
+                gamerecordInfo.WinId = item.WinId;
+                gamerecordInfo.AvePrice = venue.AvePrice;
+                gamerecordInfo.VenueName = venue.VenueName;
+                gamerecordInfo.Score = venue.Score;
+                gamerecordInfo.VenueAddress = venue.VenueAddress;
+                gamerecordInfo.VenueImg = venue.VenueImg;
+                gamerecordInfo.OpenId = item.OpenId;
+                list.Add(gamerecordInfo);
+
+            }
+            return list;
+        }
+
+        public void SetResult() { 
+        
+        
         }
     }
 }
