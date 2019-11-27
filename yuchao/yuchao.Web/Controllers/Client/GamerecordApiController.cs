@@ -25,7 +25,7 @@ namespace yuchao.Controllers.Client
         [HttpGet("{venueId}")]
         public JsonResult GetGamerecordInfo(string venueId)
         {
-            GamerecordExtends gamerecord = bll.GetGamerecordInfoByVenueId(venueId);
+            GamerecordReExtends gamerecord = bll.GetGamerecordInfoByVenueId(venueId);
 
             return Json(new ApiResult()
             {
@@ -70,7 +70,7 @@ namespace yuchao.Controllers.Client
         [HttpGet]
         public JsonResult GetGamerecordInfo()
         {
-            List<GamerecordExtends> list = bll.GetGamerecordInfoByRe();
+            List<GamerecordReExtends> list = bll.GetGamerecordInfoByRe();
 
             return Json(new ApiResult()
             {
@@ -83,7 +83,7 @@ namespace yuchao.Controllers.Client
         [HttpGet("byre/{id}/{status}")]
         public JsonResult GetGamerecordByRe(int id, int status)
         {
-            List<GamerecordExtends> list = bll.GetGameByReId(id, status);
+            List<GamerecordReExtends> list = bll.GetGameByReId(id, status);
 
             return Json(new ApiResult()
             {
@@ -104,8 +104,53 @@ namespace yuchao.Controllers.Client
                 Status = 200,
                 Error = "Success",
                 Obj = bll.SetReferee(id, rid)
+            });
+        }
+
+        [HttpPost("initResult")]
+        public JsonResult initResult()
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.InitResult()
             }); ;
         }
 
+
+        [HttpPost("setResult")]
+        public JsonResult SetResult([FromBody]JObject values)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.SetResult(values)
+            }); ;
+        }
+
+        [HttpPost("setGameOver")]
+        public JsonResult setGameOver([FromBody]JObject values)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.SetGameOver(values)
+            });
+        }
+
+        [HttpGet("gameDetailList/{id}")]
+        public JsonResult GameDetailList(int id)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GameDetailList(id)
+            }); ;
+        }
+        
     }
 }

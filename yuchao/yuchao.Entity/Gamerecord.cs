@@ -8,9 +8,9 @@ namespace yuchao.Entity
     {
         public int Id { get; set; }
 
-        public int WinId { get; set; }
+        public string WinId { get; set; }
 
-        public int LoseId { get; set; }
+        public string LoseId { get; set; }
 
         public string GameTime { get; set; }
 

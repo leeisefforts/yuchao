@@ -13,6 +13,7 @@ namespace yuchao.Service
     {
         public SimpleClient<Gamerecord> rdb = new SimpleClient<Gamerecord>(BaseDb.GetClient());
         public SimpleClient<MatchGame> mdb = new SimpleClient<MatchGame>(BaseDb.GetClient());
+        public SimpleClient<GameDetail> ddb = new SimpleClient<GameDetail>(BaseDb.GetClient());
 
         public List<Gamerecord> GetAll(string openId)
         {
@@ -68,13 +69,31 @@ namespace yuchao.Service
         }
 
         public List<Gamerecord> GetGameAll() {
-            return rdb.GetList(p => p.Status == 1);
+            return rdb.GetList(p => p.Status == 1 && p.RefereeId == 0);
         }
 
         public List<Gamerecord> GetGameAllByReId(int id, int status)
         {
             return rdb.GetList(p => p.Status == status && p.RefereeId == id);
         }
-        
+
+
+        public bool AddGameDetail(GameDetail gd) {
+            return ddb.Insert(gd);
+        }
+
+        public bool UpdateGameDetail(GameDetail gd)
+        {
+            return ddb.Update(gd);
+        }
+        public int AddGameDetailRId(GameDetail gd)
+        {
+            return ddb.InsertReturnIdentity(gd);
+        }
+
+
+        public List<GameDetail> GdList(int gid) {
+            return ddb.GetList(p=>p.GId == gid);
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace yuchao.Business.Client
         private static string notify_url = "https://fragmenttime.com:8081/api/client/payRedirectApi";
         private static string trade_type = "JSAPI";
         private static string spbill_create_ip = "106.54.146.85";
-        private static string key = "RvpZU2lvoDO6ZTlRuywc1sS85qdPNlau";
+        private static string key = "RvpZU2lvoDO6ZTlRuywc1sS85qdPNla3";
 
         public OrderExtends GetByOpenId(string openId)
         {
@@ -69,7 +69,7 @@ namespace yuchao.Business.Client
                 trade_type = trade_type,
                 openid = openId
             };
-            string stringA = string.Format(@"appid={0}&body={1}&mch_id={2}&nonce_str={3}&notify_url=https://fragmenttime.com:8081/api/client/payRedirect&openid={4}&out_trade_no={5}&spbill_create_ip={6}&total_fee={7}&trade_type=JSAPI", AppId, pay.body, mch_id, nonce_str, openId, pay.out_trade_no,pay.spbill_create_ip,pay.total_fee);
+            string stringA = string.Format(@"appid={0}&body={1}&mch_id={2}&nonce_str={3}&notify_url=https://fragmenttime.com:8081/api/client/payRedirectApi&openid={4}&out_trade_no={5}&spbill_create_ip={6}&total_fee={7}&trade_type=JSAPI", AppId, pay.body, mch_id, nonce_str, openId, pay.out_trade_no,pay.spbill_create_ip,pay.total_fee);
             string stringSignTemp = stringA + "&key=" + key;
             var md5 = MD5.Create();
             var bs = md5.ComputeHash(Encoding.UTF8.GetBytes(stringSignTemp));

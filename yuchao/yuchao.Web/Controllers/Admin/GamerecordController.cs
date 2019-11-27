@@ -43,10 +43,10 @@ namespace yuchao.Controllers.Admin
             };
             bool suc = bll.Insert(new Gamerecord()
             {
-                WinId = Convert.ToInt32(values["levelSort"]),
+                WinId = values["winId"].ToString(),
                 Status = Convert.ToInt32(values["levelSort"]),
                 RefereeId = Convert.ToInt32(values["levelSort"]),
-                LoseId = Convert.ToInt32(values["levelSort"]),
+                LoseId = values["losId"].ToString(),
                 IsTeamGame = Convert.ToInt32(values["levelSort"]),
                 GameTime = values["levelSort"].ToString(),
                 CreateTime = Convert.ToDateTime(values["levelSort"])
@@ -70,10 +70,10 @@ namespace yuchao.Controllers.Admin
                 Obj = bll.Update(new Gamerecord()
                 {
                     Id = id,
-                    WinId = Convert.ToInt32(values["levelSort"]),
+                    WinId = values["levelSort"].ToString(),
                     Status = Convert.ToInt32(values["levelSort"]),
                     RefereeId = Convert.ToInt32(values["levelSort"]),
-                    LoseId = Convert.ToInt32(values["levelSort"]),
+                    LoseId = values["levelSort"].ToString(),
                     IsTeamGame = Convert.ToInt32(values["levelSort"]),
                     GameTime = values["levelSort"].ToString(),
                     CreateTime = Convert.ToDateTime(values["levelSort"])
