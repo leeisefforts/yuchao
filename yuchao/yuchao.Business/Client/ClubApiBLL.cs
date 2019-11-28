@@ -29,6 +29,11 @@ namespace yuchao.Business.Client
             return clubServer.Get(id);
         }
 
+        public List<User> GetListByClubId(int id)
+        {
+            return clubServer.GetListByClubId(id);
+        }
+
         public Club GetByOpenId(string openId)
         {
             return clubServer.GetByOpenId(openId);

@@ -80,6 +80,17 @@ namespace yuchao.Controllers.Client
                 Obj = cbll.GetByOpenId(openId)
             });
         }
+
+        [HttpGet("gender/{id}")]
+        public JsonResult GetByGender(int id)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = cbll.GetListByClubId(id)
+            });
+        }
     }
 
 

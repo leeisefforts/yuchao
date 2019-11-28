@@ -382,9 +382,11 @@ namespace yuchao.Business.Client
             return gd;
         }
 
-        public bool SetGameOver(JObject values) {
-            int id = Convert.ToInt32(values["id"]);
-            string windId = values["windId"].ToString();
+        public object SetGameOver(JObject values) {
+
+            int id = Convert.ToInt32(values["id"].ToString());
+ 
+            string windId = values["winId"].ToString();
             string losId = values["losId"].ToString();
             Gamerecord gr = IService.GetById(id);
             if (gr == null)
@@ -394,7 +396,7 @@ namespace yuchao.Business.Client
             gr.Status = 2;
             gr.WinId = windId;
             gr.LoseId = losId;
-            
+
             return IService.Update(gr);
 
 

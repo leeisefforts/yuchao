@@ -56,6 +56,18 @@ namespace yuchao.Controllers.Client
                 Obj = bll.CreateGame(openId, values)
             });
         }
+
+        [HttpPost("team/{openId}")]
+        public JsonResult TeamGameCreate(string openId, [FromBody]JObject values)
+        {
+
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.CreateGame(openId, values)
+            });
+        }
     }
 
     [Route("api/client/[controller]")]
