@@ -65,7 +65,7 @@ namespace yuchao.Controllers.Client
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.CreateGame(openId, values)
+                Obj = bll.CreateTeamGame(openId, values)
             });
         }
     }

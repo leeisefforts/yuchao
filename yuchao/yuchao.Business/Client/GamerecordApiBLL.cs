@@ -121,6 +121,22 @@ namespace yuchao.Business.Client
             }
             return list;
         }
+
+
+        public bool CreateTeamGame(string openId, JObject values) {
+            int clubId = Convert.ToInt32(values["id"]);
+            string msopenId = values["msopenId"].ToString();
+            string wsopenId = values["wsopenId"].ToString();
+            string mdopenIds = values["mdopenIds"].ToString();
+            string hdopenIds = values["hdopenIds"].ToString();
+            int venueId = Convert.ToInt32(values["venueId"]);
+            int days = Convert.ToInt32(values["days"]);
+            string matchTime = values["matchTime"].ToString();
+
+            return true;
+        }
+
+
         public Order CreateGame(string openId , JObject values) {
 
             int venueId = Convert.ToInt32(values["venueId"]);
