@@ -14,16 +14,21 @@ namespace yuchao.Service
         public SimpleClient<Gamerecord> rdb = new SimpleClient<Gamerecord>(BaseDb.GetClient());
         public SimpleClient<MatchGame> mdb = new SimpleClient<MatchGame>(BaseDb.GetClient());
         public SimpleClient<GameDetail> ddb = new SimpleClient<GameDetail>(BaseDb.GetClient());
+        public SimpleClient<TeamGameDetail> tgdb = new SimpleClient<TeamGameDetail>(BaseDb.GetClient());
 
         public List<Gamerecord> GetAll(string openId)
         {
-            return rdb.GetList(p => p.OpenId.Equals(openId));
+            return rdb.GetList(p => (p.OpenId.Equals(openId) || p.OpenId2.Equals(openId)));
         }
         public bool Insert(Gamerecord gamerecord)
         {
             return rdb.Insert(gamerecord);
         }
 
+        public int InsertRId(Gamerecord gamerecord)
+        {
+            return rdb.InsertReturnIdentity(gamerecord);
+        }
         public Gamerecord GetById(int id)
         {
             return rdb.GetById(id);
@@ -54,7 +59,10 @@ namespace yuchao.Service
         public List<MatchGame> GetMatchUser(string gameTime, int venueId, string openId) {
             return mdb.GetList(p => p.MatchTime.Equals(gameTime) && p.VenueId == venueId && p.MatchStatus == 1 && !p.OpenId.Equals(openId));
         }
-
+        public List<MatchGame> GetMatchTeamUser(string gameTime, int venueId, string openId)
+        {
+            return mdb.GetList(p => p.MatchTime.Equals(gameTime) && p.VenueId == venueId && p.MatchStatus == 1 && !p.OpenId.Equals(openId) && p.IsTeam == 1);
+        }
         public bool AddMatchGame(MatchGame mg) {
             return mdb.Insert(mg);
         }
@@ -69,17 +77,31 @@ namespace yuchao.Service
         }
 
         public List<Gamerecord> GetGameAll() {
-            return rdb.GetList(p => p.Status == 1 && p.RefereeId == 0);
+            return rdb.GetList(p => p.Status == 1 && p.RefereeId == 0 && p.IsTeamGame == 0);
+        }
+
+        public List<Gamerecord> GetTeamGameAll()
+        {
+            return rdb.GetList(p => p.Status == 1 && p.RefereeId == 0 && p.IsTeamGame == 1);
         }
 
         public List<Gamerecord> GetGameAllByReId(int id, int status)
         {
-            return rdb.GetList(p => p.Status == status && p.RefereeId == id);
+            return rdb.GetList(p => p.Status == status && p.RefereeId == id && p.IsTeamGame == 0);
+        }
+
+        public List<Gamerecord> GetTeamGameAllByReId(int id, int status)
+        {
+            return rdb.GetList(p => p.Status == status && p.RefereeId == id && p.IsTeamGame == 1);
         }
 
 
         public bool AddGameDetail(GameDetail gd) {
             return ddb.Insert(gd);
+        }
+        public bool AddTeamGameDetail(TeamGameDetail gd)
+        {
+            return tgdb.Insert(gd);
         }
 
         public bool UpdateGameDetail(GameDetail gd)
@@ -94,6 +116,16 @@ namespace yuchao.Service
 
         public List<GameDetail> GdList(int gid) {
             return ddb.GetList(p=>p.GId == gid);
+        }
+
+        public TeamGameDetail GetGameDetail(int gid)
+        {
+            return tgdb.GetSingle(p => p.GId == gid);
+        }
+
+        public TeamGameDetail GetGameDetailByOid(int oid)
+        {
+            return tgdb.GetSingle(p => p.Id == oid);
         }
     }
 }

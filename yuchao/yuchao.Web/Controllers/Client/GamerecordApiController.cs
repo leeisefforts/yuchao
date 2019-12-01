@@ -105,6 +105,19 @@ namespace yuchao.Controllers.Client
             });
         }
 
+        [HttpGet("teambyre/{id}/{status}")]
+        public JsonResult GetTeamGamerecordByRe(int id, int status)
+        {
+            List<GamerecordTeamReExtends> list = bll.GetTeamGameByReId(id, status);
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = list
+            });
+        }
+
 
         [HttpPost("addReferee")]
         public JsonResult AddReferee([FromBody]JObject values)
@@ -162,6 +175,16 @@ namespace yuchao.Controllers.Client
                 Error = "Success",
                 Obj = bll.GameDetailList(id)
             }); ;
+        }
+
+        [HttpGet("team")]
+        public JsonResult TeamDetailList() {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetTeamGamerecordInfoByRe()
+            }); 
         }
         
     }

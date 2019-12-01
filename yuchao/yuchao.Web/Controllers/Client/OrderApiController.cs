@@ -33,6 +33,18 @@ namespace yuchao.Controllers.Client
             });
         }
 
+        [HttpGet("venueOrder/{openId}")]
+        public JsonResult GetvenueOrderInfo(string openId)
+        {
+            OrderExtends user = bll.GetByOpenId(openId);
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = user
+            });
+        }
+
         [HttpPost("{openId}")]
         public JsonResult CreateOrder(string openId, [FromBody]JObject values) {
             

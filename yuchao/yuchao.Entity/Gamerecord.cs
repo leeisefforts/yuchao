@@ -27,6 +27,7 @@ namespace yuchao.Entity
         public int SiteId { get; set; }
 
         public string OpenId { get; set; }
+
         public string OpenId2 { get; set; }
 
         public int ScheduleRecordId { get; set; }

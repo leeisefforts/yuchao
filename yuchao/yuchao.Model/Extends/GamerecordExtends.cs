@@ -40,4 +40,26 @@ namespace yuchao.Model.Extends
         public string EndTime { get; set; }
 
     }
+
+    public class GamerecordTeamReExtends : Gamerecord
+    {
+        public string VenueName { get; set; }
+
+        public string Score { get; set; }
+
+        public string VenueAddress { get; set; }
+
+        public string VenueImg { get; set; }
+
+        public decimal AvePrice { get; set; }
+
+        public object OpenIdList { get; set; }
+
+        public string StartTime { get; set; }
+
+        public string EndTime { get; set; }
+        public string ClubName1 { get; set; }
+        public string ClubName2 { get; set; }
+
+    }
 }

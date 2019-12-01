@@ -27,5 +27,7 @@ namespace yuchao.Entity
         public int VenueId { get; set; }
 
         public DateTime MatchDate { get; set; }
+
+        public int GId { get; set; }
     }
 }
