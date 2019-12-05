@@ -203,7 +203,6 @@ namespace yuchao.Business.Client
 
             string openId2 = string.Empty;
             User user = UService.GetByOpenId(openId);
-            Order order = orderApiBLL.CreateOrder(openId, values);
             MatchGame mg = new MatchGame()
             {
                 MatchDays = days,
@@ -216,8 +215,21 @@ namespace yuchao.Business.Client
 
             };
 
+            ScheduledRecord scheduledRecord = new ScheduledRecord()
+            {
+                OpenId = openId,
+                CreateTime = DateTime.Now,
+                SiteId = 0,
+                TimeId = 0,
+                UseTime = matchTime,
+                VenueId = venueId,
+                Week = 0,
+                IsGame = 1,
+                Status = 0
+            };
+            int c = SrService.InsertRId(scheduledRecord);
 
-
+            Order order = orderApiBLL.CreateOrder(c, openId, values);
             // 判断当前是否存在正在匹配的人
             List<MatchGame> list = IService.GetMatchTeamUser(matchTime, venueId, openId);
             if (list.Count == 0)
@@ -259,19 +271,9 @@ namespace yuchao.Business.Client
             ilist = GetMatchSite(venueId, days, matchTime);
             if (ilist.Count == 0) return order;
 
-            ScheduledRecord scheduledRecord = new ScheduledRecord()
-            {
-                OpenId = openId,
-                CreateTime = DateTime.Now,
-                SiteId = ilist[0],
-                TimeId = ilist[1],
-                UseTime = matchTime,
-                VenueId = venueId,
-                Week = 0,
-                IsGame = 1
-            };
-            int c = SrService.InsertRId(scheduledRecord);
-
+            scheduledRecord.SiteId = ilist[0];
+            scheduledRecord.TimeId = ilist[1];
+            SrService.Update(scheduledRecord);
             Gamerecord gr = new Gamerecord()
             {
                 ScheduleRecordId = c,
@@ -317,7 +319,19 @@ namespace yuchao.Business.Client
             string openId2 = string.Empty;
             User user = UService.GetByOpenId(openId);
 
-            Order order = orderApiBLL.CreateOrder(openId, values);
+            ScheduledRecord scheduledRecord = new ScheduledRecord()
+            {
+                OpenId = openId,
+                CreateTime = DateTime.Now,
+                SiteId = 0,
+                TimeId = 0,
+                UseTime = matchTime,
+                VenueId = venueId,
+                Week = 0,
+                IsGame = 1
+            };
+            int c = SrService.InsertRId(scheduledRecord);
+            Order order = orderApiBLL.CreateOrder(c, openId, values);
             
             MatchGame mg = new MatchGame()
             {
@@ -373,19 +387,9 @@ namespace yuchao.Business.Client
             ilist = GetMatchSite(venueId, days, matchTime);
             if (ilist.Count == 0) return order;
 
-            ScheduledRecord scheduledRecord = new ScheduledRecord()
-            {
-                OpenId = openId,
-                CreateTime = DateTime.Now,
-                SiteId = ilist[0],
-                TimeId = ilist[1],
-                UseTime = matchTime,
-                VenueId = venueId,
-                Week = 0,
-                IsGame = 1
-            };
-            int c = SrService.InsertRId(scheduledRecord);
-
+            scheduledRecord.SiteId = ilist[0];
+            scheduledRecord.TimeId = ilist[1];
+            SrService.Update(scheduledRecord);
             Gamerecord gr = new Gamerecord()
             {
                 ScheduleRecordId = c,

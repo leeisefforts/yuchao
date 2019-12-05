@@ -14,11 +14,13 @@ using yuchao.Service;
 
 namespace yuchao.Business.Client
 {
-   public class OrderApiBLL
+    public class OrderApiBLL
     {
         //订单
         private OrderService IService = new OrderService();
         private VenueService LService = new VenueService();
+        private ScheduleRecordService SService = new ScheduleRecordService();
+        private UserServer Uservice = new UserServer();
 
         private static string AppId = "wx78eab72a6ea9581d";
         private static string mch_id = "1547699641";
@@ -49,10 +51,12 @@ namespace yuchao.Business.Client
                 orderInfo.VenueAddress = LService.GetById(order.VenueId).VenueAddress;
                 orderInfo.VenueImg = LService.GetById(order.VenueId).VenueImg;
                 orderInfo.AvePrice = LService.GetById(order.VenueId).AvePrice;
+                orderInfo.NickName = Uservice.GetByOpenId(openId).NickName;
             }
             return orderInfo;
         }
-        public Order CreateOrder(string openId, JObject values) {
+        public Order CreateOrder(int sid, string openId, JObject values)
+        {
             Order order = new Order();
             order.OrderSn = BasicService.InitOrderSn();
             string nonce_str = Guid.NewGuid().ToString("N");
@@ -69,7 +73,7 @@ namespace yuchao.Business.Client
                 trade_type = trade_type,
                 openid = openId
             };
-            string stringA = string.Format(@"appid={0}&body={1}&mch_id={2}&nonce_str={3}&notify_url=https://fragmenttime.com:8081/api/client/payRedirectApi&openid={4}&out_trade_no={5}&spbill_create_ip={6}&total_fee={7}&trade_type=JSAPI", AppId, pay.body, mch_id, nonce_str, openId, pay.out_trade_no,pay.spbill_create_ip,pay.total_fee);
+            string stringA = string.Format(@"appid={0}&body={1}&mch_id={2}&nonce_str={3}&notify_url=https://fragmenttime.com:8081/api/client/payRedirectApi&openid={4}&out_trade_no={5}&spbill_create_ip={6}&total_fee={7}&trade_type=JSAPI", AppId, pay.body, mch_id, nonce_str, openId, pay.out_trade_no, pay.spbill_create_ip, pay.total_fee);
             string stringSignTemp = stringA + "&key=" + key;
             var md5 = MD5.Create();
             var bs = md5.ComputeHash(Encoding.UTF8.GetBytes(stringSignTemp));
@@ -81,11 +85,11 @@ namespace yuchao.Business.Client
             //所有字符转为大写
             string result = sb.ToString().ToUpper();
 
-            pay.sign = result;          
+            pay.sign = result;
 
 
             string xml = BasicService.Serialize<WeChatPay>(pay);
-            WeChatResult rxml = new WeChatResult ();
+            WeChatResult rxml = new WeChatResult();
             using (HttpClient httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/xml"));
@@ -110,8 +114,64 @@ namespace yuchao.Business.Client
             order.NonceStr = nonce_str;
             order.OrderXml = result;
             order.Sign = pay.sign;
+            order.Sid = sid;
             IService.Insert(order);
             return order;
+        }
+
+        public Dictionary<string, object> GetOrderDetail(string openId, int isGame, int sId)
+        {
+
+            Order order = IService.GetBySId(sId);
+            Venue venue = LService.GetById(order.VenueId);
+            OrderExtends orderInfo = new OrderExtends();
+            if (order != null)
+            {
+                orderInfo.Id = order.Id;
+                orderInfo.CreateTime = order.CreateTime;
+                orderInfo.GameTime = order.GameTime;
+                orderInfo.Money = order.Money;
+                orderInfo.OrderSn = order.OrderSn;
+                orderInfo.OrderType = order.OrderType;
+                orderInfo.PayStatus = order.PayStatus;
+                orderInfo.PayTime = order.PayTime;
+                orderInfo.Status = order.Status;
+                orderInfo.VenueId = order.VenueId;
+                orderInfo.VenueName = venue == null ? "待匹配": venue.VenueName;
+                orderInfo.Score = venue == null? "": venue.Score;
+                orderInfo.VenueAddress = venue == null ? string.Empty: venue.VenueAddress;
+                orderInfo.VenueImg = venue == null ? "" :venue.VenueImg;
+                orderInfo.AvePrice = venue == null ? 0: venue.AvePrice;
+            }
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+
+            ScheduledRecord item = SService.GetById(sId);
+            Site site = LService.GetSiteBySId(item.SiteId);
+
+            ScheduledRecordExtends se = new ScheduledRecordExtends()
+            {
+                CreateTime = item.CreateTime,
+                EndTime = item.EndTime,
+                VenueId = item.VenueId,
+                VenueName = venue == null ? "待匹配" : venue.VenueName,
+                SiteId = item.SiteId,
+                SiteName = site ==null ? "待匹配": site.SiteName,
+                Id = item.Id,
+                StartTime = item.StartTime,
+                Status = item.Status,
+                IsGame = item.IsGame,
+                OpenId = item.OpenId,
+                TimeId = item.TimeId,
+                UseTime = item.UseTime,
+                Week = item.Week
+
+            };
+
+            dic.Add("1", orderInfo);
+            dic.Add("2", se);
+
+            return dic;
         }
 
     }

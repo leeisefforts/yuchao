@@ -45,14 +45,16 @@ namespace yuchao.Controllers.Client
             });
         }
 
-        [HttpPost("{openId}")]
-        public JsonResult CreateOrder(string openId, [FromBody]JObject values) {
-            
+        [HttpPost("orderdetail/{openId}")]
+        public JsonResult OrderDetail(string openId, [FromBody]JObject values)
+        {
+            int sid = Convert.ToInt32(values["sId"]);
+            int isGame = Convert.ToInt32(values["isGame"]);
             return Json(new ApiResult()
             {
-                Status =  200,
+                Status = 200,
                 Error = "Success",
-                Obj = bll.CreateOrder(openId, values)
+                Obj = bll.GetOrderDetail(openId, isGame, sid)
             });
         }
     }

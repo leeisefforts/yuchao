@@ -53,6 +53,10 @@ namespace yuchao.Service
             return rdb.GetById(id);
         }
 
+        public Order GetBySId(int id)
+        {
+            return rdb.GetSingle(p=>p.Sid == id);
+        }
         public Order GetByUserId(string userId)
         {
 

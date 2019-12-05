@@ -17,7 +17,7 @@ namespace yuchao.Business.Client
 
         public Order CreateSc(string openId, JObject values)
         {
-
+            int sid = 0;
             foreach (var item in values["list"])
             {
                 int siteId = Convert.ToInt32(item["areaId"]);
@@ -92,6 +92,7 @@ namespace yuchao.Business.Client
                 sr.VenueId = Convert.ToInt32(values["venueId"]);
                 sr.UseTime = values["useTime"].ToString();
                 sr.IsOnline = 1;
+                sr.Price = Convert.ToDecimal(values["total_fee"]);
                 switch (values["week"].ToString())
                 {
                     case "周一":
@@ -119,9 +120,9 @@ namespace yuchao.Business.Client
                         break;
                 }
                 
-                IService.Insert(sr);
+                sid = IService.InsertRId(sr);
             }
-            Order order =BasicService.CreateOrder(openId, Convert.ToDecimal(values["total_fee"]) ,Convert.ToInt32(values["venueId"]));
+            Order order =BasicService.CreateOrder(sid, openId, Convert.ToDecimal(values["total_fee"]) ,Convert.ToInt32(values["venueId"]));
 
            return order;
 
@@ -143,14 +144,16 @@ namespace yuchao.Business.Client
             List<ScheduledRecordExtends> res = new List<ScheduledRecordExtends>();
             foreach (var item in list)
             {
+                Venue venue = VService.GetById(item.VenueId);
+                Site site = VService.GetSiteBySId(item.SiteId);
                 ScheduledRecordExtends se = new ScheduledRecordExtends()
                 {
                     CreateTime = item.CreateTime,
                     EndTime = item.EndTime,
                     VenueId = item.VenueId,
-                    VenueName = VService.GetById(item.VenueId).VenueName,
+                    VenueName = venue == null?"待匹配" : venue.VenueName,
                     SiteId = item.SiteId,
-                    SiteName = VService.GetSiteBySId(item.SiteId).SiteName,
+                    SiteName = site==null ? "待匹配" : site.SiteName,
                     Id = item.Id,
                     StartTime = item.StartTime,
                     Status = item.Status,

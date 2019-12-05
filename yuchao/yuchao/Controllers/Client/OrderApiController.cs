@@ -32,16 +32,5 @@ namespace yuchao.Controllers.Client
                 Obj = user
             });
         }
-
-        [HttpPost("{openId}")]
-        public JsonResult CreateOrder(string openId, [FromBody]JObject values) {
-            
-            return Json(new ApiResult()
-            {
-                Status =  200,
-                Error = "Success",
-                Obj = bll.CreateOrder(openId, values)
-            });
-        }
     }
 }

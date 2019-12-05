@@ -11,6 +11,8 @@ namespace yuchao.IService
 
         bool Insert(ScheduledRecord record);
 
+        int InsertRId(ScheduledRecord record);
+
         ScheduledRecord GetById(int id);
 
         bool DeleteById(int id);

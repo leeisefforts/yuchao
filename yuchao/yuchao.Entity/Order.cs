@@ -40,5 +40,7 @@ namespace yuchao.Entity
 
         public string Sign { get; set; }
 
+        public int Sid { get; set; }
+
     }
 }

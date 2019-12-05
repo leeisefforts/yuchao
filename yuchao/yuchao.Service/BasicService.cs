@@ -97,7 +97,7 @@ namespace yuchao.Service
 
         }
 
-        public static Order CreateOrder(string openId , decimal total_fee, int venueId) {
+        public static Order CreateOrder(int sid,string openId , decimal total_fee, int venueId) {
             Order order = new Order();
             order.OrderSn = BasicService.InitOrderSn();
             string nonce_str = Guid.NewGuid().ToString("N");
@@ -155,6 +155,7 @@ namespace yuchao.Service
             order.NonceStr = nonce_str;
             order.OrderXml = result;
             order.TimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+            order.Sid = sid;
             odb.Insert(order);
             return order;
         }
