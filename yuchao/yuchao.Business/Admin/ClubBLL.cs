@@ -23,13 +23,31 @@ namespace yuchao.Business.Admin
         }
 
         // 增加
-        public bool Insert(Club entity)
+        public int Insert(Club entity)
         {
+
+            List<ClubClose> ccList = IService.GetCC(entity.OpenId);
+            foreach (var item in ccList)
+            {
+                DateTime dt1 = DateTime.Now;
+                DateTime dt2 = DateTime.Parse(item.CloseTime);
+                int Year = dt2.Year - dt1.Year;
+
+                int Month = (dt2.Year - dt1.Year) * 12 + (dt2.Month - dt1.Month);
+                if (Month >=1)
+                {
+                    return -1;
+                }
+
+            }
+
             entity.ClubLogo = Base64ToFileAndSave(entity.ClubLogo);
             int id =  IService.AddReturnId(entity);
             User user = Uervice.GetByOpenId(entity.OpenId);
             user.ClubId = id;
-            return Uervice.Update(user);
+
+            Uervice.Update(user);
+            return id;
         }
 
         public string Base64ToFileAndSave(string strInput)

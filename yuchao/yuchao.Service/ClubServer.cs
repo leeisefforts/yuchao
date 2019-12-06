@@ -13,6 +13,7 @@ namespace yuchao.Service
         public SimpleClient<Club> rdb = new SimpleClient<Club>(BaseDb.GetClient());
         public SimpleClient<ClubTotal> tdb = new SimpleClient<ClubTotal>(BaseDb.GetClient());
         public SimpleClient<User> udb = new SimpleClient<User>(BaseDb.GetClient());
+        public SimpleClient<ClubClose> cdb = new SimpleClient<ClubClose>(BaseDb.GetClient());
         //查询
         public Club Get(int Id)
         {
@@ -64,5 +65,12 @@ namespace yuchao.Service
             return udb.GetList(p=>p.ClubId == clubId);
         }
 
+        public bool InsertCloseData(ClubClose cc) {
+            return cdb.Insert(cc);
+        }
+
+        public List<ClubClose> GetCC(string openId) {
+            return cdb.GetList(p=>p.OpenId.Equals(openId));
+        }
     }
 }

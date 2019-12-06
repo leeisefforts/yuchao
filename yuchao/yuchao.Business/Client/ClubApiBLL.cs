@@ -63,6 +63,15 @@ namespace yuchao.Business.Client
             Club club = clubServer.Get(clubId);
             club.Status = 4;
             clubServer.Update(club);
+
+            ClubClose cc = new ClubClose()
+            {
+                OpenId = openId,
+                ClubId = clubId,
+                CloseTime = DateTime.Now.ToString("yyyy-MM-dd"),
+                CreateTime = DateTime.Now
+            };
+            clubServer.InsertCloseData(cc);
             List<Gamerecord> list = gServer.GetClubGame(clubId);
             if (list.Count> 0)
             {
