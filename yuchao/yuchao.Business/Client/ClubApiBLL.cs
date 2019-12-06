@@ -68,7 +68,7 @@ namespace yuchao.Business.Client
             {
                 OpenId = openId,
                 ClubId = clubId,
-                CloseTime = DateTime.Now.ToString("yyyy-MM-dd"),
+                CloseTime = DateTime.Now.ToString("d"),
                 CreateTime = DateTime.Now
             };
             clubServer.InsertCloseData(cc);

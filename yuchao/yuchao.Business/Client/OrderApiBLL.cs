@@ -21,6 +21,7 @@ namespace yuchao.Business.Client
         private VenueService LService = new VenueService();
         private ScheduleRecordService SService = new ScheduleRecordService();
         private UserServer Uservice = new UserServer();
+        private LevelService LevelService = new LevelService();
 
         private static string AppId = "wx78eab72a6ea9581d";
         private static string mch_id = "1547699641";
@@ -125,6 +126,8 @@ namespace yuchao.Business.Client
             Order order = IService.GetBySId(sId);
             Venue venue = LService.GetById(order.VenueId);
             OrderExtends orderInfo = new OrderExtends();
+            User user = Uservice.GetByOpenId(openId);
+            Level level = LevelService.GetById(user.LevelId);
             if (order != null)
             {
                 orderInfo.Id = order.Id;
@@ -142,6 +145,7 @@ namespace yuchao.Business.Client
                 orderInfo.VenueAddress = venue == null ? string.Empty: venue.VenueAddress;
                 orderInfo.VenueImg = venue == null ? "" :venue.VenueImg;
                 orderInfo.AvePrice = venue == null ? 0: venue.AvePrice;
+                orderInfo.LevelName = level == null ? "无段位" : level.LevelName;
             }
 
             Dictionary<string, object> dic = new Dictionary<string, object>();

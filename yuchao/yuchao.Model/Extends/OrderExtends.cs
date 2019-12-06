@@ -13,5 +13,7 @@ namespace yuchao.Model.Extends
         public string VenueImg { get; set; }
         public decimal AvePrice { get; set; }
         public string NickName { get; set; }
+
+        public string LevelName { get; set; }
     }
 }
