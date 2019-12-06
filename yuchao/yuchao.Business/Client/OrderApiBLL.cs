@@ -146,6 +146,7 @@ namespace yuchao.Business.Client
                 orderInfo.VenueImg = venue == null ? "" :venue.VenueImg;
                 orderInfo.AvePrice = venue == null ? 0: venue.AvePrice;
                 orderInfo.LevelName = level == null ? "无段位" : level.LevelName;
+                orderInfo.NickName = user.NickName;
             }
 
             Dictionary<string, object> dic = new Dictionary<string, object>();
