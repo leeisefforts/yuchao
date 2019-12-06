@@ -19,6 +19,8 @@ namespace yuchao.Business.Client
             // 根据userId获取Ranking
             Ranking ranking = IService.GetByUserId(userId);
             User user = LService.GetByOpenId(userId);
+
+            Level level = LlService.GetById(user.LevelId);
             RankingExtends rankingInfo = new RankingExtends();
             if (ranking != null)
             {
@@ -30,17 +32,21 @@ namespace yuchao.Business.Client
                 rankingInfo.Country = user.Country;
                 rankingInfo.Province = user.Province;
                 rankingInfo.NickName = user.NickName;
-                rankingInfo.LevelName = LlService.GetById(user.LevelId).LevelName;
+                rankingInfo.LevelName = level == null || level.Id == 0 ? "无段位" : level.LevelName;
             }
             return rankingInfo;
         }
         public List<RankingExtends> GetAllRanking() {
             List<Ranking> list = IService.GetList();
             List<RankingExtends> result = new List<RankingExtends>();
+
+            
             foreach (var item in list)
             {
                 RankingExtends rankingInfo = new RankingExtends();
                 User user = LService.GetByOpenId(item.UserId);
+
+                Level level = LlService.GetById(user.LevelId);
                 rankingInfo.Id = item.Id;
                 rankingInfo.UserId = item.UserId;
                 rankingInfo.Rank = item.Rank;
@@ -49,7 +55,7 @@ namespace yuchao.Business.Client
                 rankingInfo.Country = user.Country;
                 rankingInfo.Province = user.Province;
                 rankingInfo.NickName = user.NickName;
-                rankingInfo.LevelName = LlService.GetById(user.LevelId).LevelName;
+                rankingInfo.LevelName = level == null  || level.Id == 0 ? "无段位" : level.LevelName;
 
                 result.Add(rankingInfo);
             }

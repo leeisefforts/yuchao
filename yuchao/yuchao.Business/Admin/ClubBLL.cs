@@ -34,7 +34,7 @@ namespace yuchao.Business.Admin
 
         public string Base64ToFileAndSave(string strInput)
         {
-            string path = @"C:\\inetpub\\wwwroot\\ycapi\\images\\";
+            string path = @"C:\\inetpub\\wwwroot\\yc_admin\\images\\";
             string fileName = DateTime.Now.ToFileTime().ToString() + ".png";
             string filePath = path + fileName;
             try

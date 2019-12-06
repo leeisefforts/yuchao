@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using yuchao.Entity;
@@ -9,12 +10,15 @@ namespace yuchao.Business.Admin
     public class RefereeApplyBLL
     {
         private IRefereeApply IService = new Service.RefereeApplyService();
+        private IUser UService = new Service.UserServer();
 
-        public RefereeApply GetById(int id) {
+        public RefereeApply GetById(int id)
+        {
             return IService.Get(id);
         }
 
-        public bool Insert(RefereeApply entity) {
+        public bool Insert(RefereeApply entity)
+        {
             return IService.Add(entity);
         }
 
@@ -31,6 +35,25 @@ namespace yuchao.Business.Admin
         public object DeleteById(dynamic ids)
         {
             return IService.Dels(ids);
+        }
+
+        public bool ApplyRef(string openId, JObject values)
+        {
+            User user = UService.GetByOpenId(openId);
+            user.IsApplyReferee = 1;
+            UService.Update(user);
+            RefereeApply entity = new RefereeApply()
+            {
+                OpenId = openId,
+                ApplyDate = DateTime.Now,
+                CreateTime = DateTime.Now,
+                ApplyResult = 0,
+                ApplyUserId = user.Id,
+                Phone = Convert.ToInt32(values["phone"]),
+                Name = values["name"].ToString()
+
+            };
+            return IService.Add(entity);
         }
     }
 }

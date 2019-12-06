@@ -47,5 +47,7 @@ namespace yuchao.Entity
 
         public int ClubId { get; set; }
 
+        public int IsApplyReferee { get; set; }
+
     }
 }
