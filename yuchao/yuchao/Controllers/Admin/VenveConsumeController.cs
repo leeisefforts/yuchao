@@ -37,7 +37,6 @@ namespace yuchao.Web.Controllers.Admin
                 Obj = bll.GetAll()
             });
         }
-
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)

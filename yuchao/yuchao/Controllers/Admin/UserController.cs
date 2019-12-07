@@ -21,13 +21,18 @@ namespace yuchao.Controllers.Admin
         private UserBLL bll = new UserBLL();
 
         // GET: api/<controller>
+      
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult GetList()
         {
-            return new string[] { "value1", "value2" };
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetList()
+            });
         }
 
-        // GET api/<controller>/5
         [HttpGet("{id}")]
         public JsonResult GetById(int id)
         {
@@ -92,7 +97,16 @@ namespace yuchao.Controllers.Admin
             };
              return Json(res);
         }
-
+        // DELETE api/<controller>
+        public JsonResult Delete(int id)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DeleteById(id)
+            });
+        }
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public JsonResult DeleteByIds(dynamic[] ids)

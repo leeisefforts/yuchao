@@ -32,5 +32,30 @@ namespace yuchao.Controllers.Client
                 Obj = user
             });
         }
+
+        [HttpGet("venueOrder/{openId}")]
+        public JsonResult GetvenueOrderInfo(string openId)
+        {
+            OrderExtends user = bll.GetByOpenId(openId);
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = user
+            });
+        }
+
+        [HttpPost("orderdetail/{openId}")]
+        public JsonResult OrderDetail(string openId, [FromBody]JObject values)
+        {
+            int sid = Convert.ToInt32(values["sId"]);
+            int isGame = Convert.ToInt32(values["isGame"]);
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetOrderDetail(openId, isGame, sid)
+            });
+        }
     }
 }

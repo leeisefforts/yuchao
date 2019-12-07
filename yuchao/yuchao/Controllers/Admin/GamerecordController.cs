@@ -16,6 +16,7 @@ namespace yuchao.Controllers.Admin
     [EnableCors("AllowCors")]
     [Produces("application/json")]
     [ApiController]
+    //赛事一览
     public class GamerecordController : Controller
     {
         private GamerecordBLL bll = new GamerecordBLL();
@@ -42,10 +43,10 @@ namespace yuchao.Controllers.Admin
             };
             bool suc = bll.Insert(new Gamerecord()
             {
-                WinId = values["levelSort"].ToString(),
+                WinId = values["winId"].ToString(),
                 Status = Convert.ToInt32(values["levelSort"]),
                 RefereeId = Convert.ToInt32(values["levelSort"]),
-                LoseId = values["levelSort"].ToString(),
+                LoseId = values["losId"].ToString(),
                 IsTeamGame = Convert.ToInt32(values["levelSort"]),
                 GameTime = values["levelSort"].ToString(),
                 CreateTime = Convert.ToDateTime(values["levelSort"])
@@ -80,7 +81,6 @@ namespace yuchao.Controllers.Admin
             };
             return Json(res);
         }
-
         [HttpDelete("{id}")]
         public JsonResult DeleteById(int id)
         {

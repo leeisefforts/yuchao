@@ -24,30 +24,15 @@ namespace yuchao.Controllers.Client
         private RefereeApplyBLL bll = new RefereeApplyBLL();
 
         // POST api/<controller>
-        [HttpPost]
-        public JsonResult Post(int id, [FromBody]JObject values)
+        [HttpPost("{openId}")]
+        public JsonResult Post(string openId, [FromBody]JObject values)
         {
-            RefereeApply obj = new RefereeApply()
-            {
-                ApplyUserId = Convert.ToInt32(values["applyUserId"]),
-                ApplyResult = Convert.ToInt32(values["applyResult"]),
-                ApplyDate = Convert.ToDateTime(values["applyDate"])
-            };
-            bool result = false;
-            if (id != 0)
-            {
-                obj.Id = id;
-                result = bll.Update(obj);
-            }
-            else
-            {
-                result = bll.Insert(obj);
-            }
+
             return Json(new ApiResult()
             {
                 Status = 200,
                 Error = string.Empty,
-                Obj = result
+                Obj = bll.ApplyRef(openId, values)
             });
         }
     }

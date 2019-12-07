@@ -34,6 +34,16 @@ namespace yuchao.Controllers.Client
             });
         }
 
+        [HttpGet("list/{openId}/{isGame}")]
+        public JsonResult GetList2(string openId, int isGame)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetListByOpenId(openId, isGame)
+            });
+        }
 
 
         [HttpPost("{openId}")]
