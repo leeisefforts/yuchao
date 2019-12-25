@@ -43,6 +43,10 @@ namespace yuchao.Business.Client
         public bool Apply(int clubId, string openId) {
             User user = uServer.GetByOpenId(openId);
             user.ClubId = clubId;
+
+            Club club = clubServer.Get(clubId);
+            club.PersonCount += 1;
+            clubServer.Update(club);
             return uServer.Update(user);
 
         }
@@ -52,6 +56,10 @@ namespace yuchao.Business.Client
             User user = uServer.GetByOpenId(openId);
 
             user.ClubId = 0;
+
+            Club club = clubServer.Get(clubId);
+            club.PersonCount -= 1;
+            clubServer.Update(club);
             return uServer.Update(user);
 
         }

@@ -49,22 +49,28 @@ namespace yuchao.Service
 
         public List<ScheduledRecord> GetByVenueIdPage(int venueId, int pageIndex, int pageSize)
         {
-            return rdb.AsQueryable().OrderBy("useTime asc").OrderBy("TimeId asc").Where(p =>  p.VenueId == venueId && DateTime.Parse(p.UseTime) >= DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))).ToPageList(pageIndex, pageSize);
+            return rdb.AsQueryable().OrderBy("useTime asc").OrderBy("TimeId asc").Where(p =>p.Status!=-1 &&  p.VenueId == venueId && DateTime.Parse(p.UseTime) >= DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))).ToPageList(pageIndex, pageSize);
         }
 
         public List<ScheduledRecord> GetByVId(int venueId)
         {
-            return rdb.GetList(p => p.VenueId == venueId);
+            return rdb.GetList(p => p.VenueId == venueId && p.Status != -1);
+        }
+
+        public ScheduledRecord GetByOIdVenPage(string openId)
+        {
+            return rdb.AsQueryable().OrderBy("CreateTime asc").First(p=>p.OpenId.Equals(openId));
+
         }
 
         public List<ScheduledRecord> GetList(int venueId, string date)
         {
-            return rdb.GetList(p => p.VenueId == venueId && p.UseTime.Equals(date));
+            return rdb.GetList(p => p.VenueId == venueId && p.UseTime.Equals(date) && p.Status != -1);
         }
 
         public List<ScheduledRecord> GetListByOpenId(string openid, int isGame)
         {
-            return rdb.GetList(p => p.OpenId.Equals(openid)&& p.IsGame == isGame);
+            return rdb.GetList(p => p.OpenId.Equals(openid)&& p.IsGame == isGame && p.Status  == 1);
         }
 
         public List<ScheduledRecord> MatchGame(int venueId, string useTime, int days) {

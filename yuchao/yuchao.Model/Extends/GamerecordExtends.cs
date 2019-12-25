@@ -39,6 +39,9 @@ namespace yuchao.Model.Extends
 
         public string EndTime { get; set; }
 
+        public int Point1 { get; set; }
+
+        public int Point2 { get; set; }
     }
 
     public class GamerecordTeamReExtends : Gamerecord

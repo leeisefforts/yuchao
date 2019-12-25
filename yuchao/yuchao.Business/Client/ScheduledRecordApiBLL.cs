@@ -14,6 +14,8 @@ namespace yuchao.Business.Client
     {
         private IScheduleRecordService IService = new Service.ScheduleRecordService();
         private IVenue VService = new Service.VenueService();
+        private IUser UService = new Service.UserServer();
+
 
         public Order CreateSc(string openId, JObject values)
         {
@@ -84,7 +86,7 @@ namespace yuchao.Business.Client
                 sr.CreateTime = DateTime.Now;
                 sr.OpenId = openId;
                 sr.IsGame = 0;
-                sr.Status = 1;
+                sr.Status = -1;
                 sr.SiteId = siteId;
                 sr.StartTime = start;
                 sr.EndTime = end;
@@ -125,8 +127,20 @@ namespace yuchao.Business.Client
             Order order =BasicService.CreateOrder(sid, openId, Convert.ToDecimal(values["total_fee"]) ,Convert.ToInt32(values["venueId"]));
 
            return order;
-
         }
+
+        public bool SetSStatus(int sid) {
+
+            ScheduledRecord sr = IService.GetById(sid);
+            sr.Status = 1;
+            User user = UService.GetByOpenId(sr.OpenId);
+            user.CoinNum += Convert.ToInt32( sr.Price);
+            user.LevelExperience += Convert.ToInt32(sr.Price);
+            UService.Update(user);
+            return IService.Update(sr);
+        }
+
+
 
         public void SelectEmptySite(int venueId)
         {

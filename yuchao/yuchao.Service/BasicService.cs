@@ -19,6 +19,7 @@ namespace yuchao.Service
     {
         private static SimpleClient<China> rdb = new SimpleClient<China>(BaseDb.GetClient());
         private static SimpleClient<Order> odb = new SimpleClient<Order>(BaseDb.GetClient());
+        private static SimpleClient<User> udb = new SimpleClient<User>(BaseDb.GetClient());
 
         private static string AppId = "wx78eab72a6ea9581d";
         private static string mch_id = "1547699641";
@@ -97,7 +98,8 @@ namespace yuchao.Service
 
         }
 
-        public static Order CreateOrder(int sid,string openId , decimal total_fee, int venueId) {
+        public static Order CreateOrder(int sid, string openId, decimal total_fee, int venueId)
+        {
             Order order = new Order();
             order.OrderSn = BasicService.InitOrderSn();
             string nonce_str = Guid.NewGuid().ToString("N");
@@ -158,6 +160,19 @@ namespace yuchao.Service
             order.Sid = sid;
             odb.Insert(order);
             return order;
+        }
+
+
+        public static bool SetMsg(string openId, string name, string birthday, int gender, string phone) {
+
+            User user = udb.GetSingle(p=>p.OpenId.Equals(openId));
+            user.RealName = name;
+            user.RealGender = gender;
+            user.Tel = phone;
+            user.Birthday = birthday;
+
+            return udb.Update(user);
+
         }
     }
 }

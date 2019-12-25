@@ -14,6 +14,7 @@ namespace yuchao.Business.Admin
         public UserServer Uervice = new UserServer();
         public GamerecordService GService = new GamerecordService();
         private VenueService LService = new VenueService();
+        private LevelService LeService = new LevelService();
 
         
         // 查询      
@@ -74,6 +75,35 @@ namespace yuchao.Business.Admin
         public Dictionary<string, object> GetClubUser(int clubId)
         {
             List<User> list = Uervice.GetByClubId(clubId);
+            List<UserExtends> ulist = new List<UserExtends>();
+            foreach (var item in list)
+            {
+                UserExtends ue = new UserExtends()
+                {
+                    AvatarUrl = item.AvatarUrl,
+                    IsApplyReferee = item.IsApplyReferee,
+                    Status = item.Status,
+                    NickName = item.NickName,
+                    OpenId = item.OpenId,
+                    Birthday = item.Birthday,
+                    City = item.Birthday,
+                    ClubId = item.ClubId,
+                    CoinNum = item.CoinNum,
+                    Country = item.Country,
+                    TotalGame = item.TotalGame,
+                    WinCount = item.WinCount,
+                    Tel = item.Tel,
+                    Reputation = item.Reputation,
+                    LevelId = item.LevelId,
+                    LevelCount = item.LevelCount,
+                    LevelName = item.LevelId == 0 ? "无段位": LeService.GetById(item.LevelId).LevelName,
+                    Province = item.Province,
+                    LosCount = item.LosCount,
+                    LevelExperience = item.LevelExperience
+                };
+
+                ulist.Add(ue);
+            }
             List<Gamerecord> glist = GService.GetByClubId(clubId);
             List<GamerecordExtends> gglist = new List<GamerecordExtends>();
             foreach (var gamerecord in glist)
@@ -100,7 +130,7 @@ namespace yuchao.Business.Admin
             }
             ClubTotal tlist = IService.GetClubTotalByClubId(clubId);
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add("1", list);
+            dic.Add("1", ulist);
             dic.Add("2", gglist);
             dic.Add("3", tlist);
             return dic;

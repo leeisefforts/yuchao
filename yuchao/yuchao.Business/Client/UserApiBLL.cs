@@ -43,6 +43,10 @@ namespace yuchao.Business.Client
                 userInfo.TotalGame = user.TotalGame;
                 userInfo.Tel = user.Tel;
                 userInfo.ClubId = user.ClubId;
+                userInfo.RealName = user.RealName;
+                userInfo.RealGender = user.RealGender;
+                userInfo.Birthday = user.Birthday;
+                userInfo.LevelExperience = user.LevelExperience;
 
             }
             return userInfo;

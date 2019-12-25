@@ -49,5 +49,13 @@ namespace yuchao.Entity
 
         public int IsApplyReferee { get; set; }
 
+        public string RealName { get; set; }
+
+        public string Birthday { get; set; }
+
+        public int RealGender { get; set; }
+
+        public int LevelExperience { get; set; }
+
     }
 }

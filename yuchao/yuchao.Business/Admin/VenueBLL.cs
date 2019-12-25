@@ -10,11 +10,40 @@ namespace yuchao.Business.Admin
     public class VenueBLL
     {
         private IVenue IService = new Service.VenueService();
+        private IScheduleRecordService RService = new Service.ScheduleRecordService();
 
         public List<Venue> GetAll()
         {
-            return IService.GetAll();
+            List<Venue> list = IService.GetAll();
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("2",list);
+
+            return list;
         }
+
+        public Dictionary<string, object> GetVenList(string openId) {
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            List<Venue> list = IService.GetAll();
+            ScheduledRecord sr = RService.GetByOIdVenPage(openId);
+            if (sr == null)
+            {
+                dic.Add("1", "");
+            }
+            else {
+
+                Venue venue = IService.GetById(sr.VenueId);
+                dic.Add("1", venue);
+            }
+
+            dic.Add("2", list);
+
+
+            return dic;
+        }
+
+
 
         public List<Site> GetSiteById(int id)
         {

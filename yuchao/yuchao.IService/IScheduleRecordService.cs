@@ -15,6 +15,10 @@ namespace yuchao.IService
 
         ScheduledRecord GetById(int id);
 
+        ScheduledRecord GetByOIdVenPage(string openId);
+
+
+
         bool DeleteById(int id);
 
         bool Update(ScheduledRecord record);

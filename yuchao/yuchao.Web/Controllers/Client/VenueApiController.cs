@@ -33,6 +33,20 @@ namespace yuchao.Controllers.Client
                 Obj = bll.GetAll()
             });            
         }
+
+        [HttpPost]
+        public JsonResult GetAllP([FromBody]JObject values)
+        {
+            string openId = values["openId"].ToString();
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetVenList(openId)
+            });
+        }
+
+
         [HttpGet("{id}")]
         public JsonResult GetById(int id)
         {

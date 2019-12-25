@@ -124,5 +124,17 @@ namespace yuchao.Controllers.Client
             });
 
         }
+
+        [HttpPost("setMsg/{openId}")]
+        public JsonResult UpdateMSG(string openId, [FromBody]JObject values) {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = BasicService.SetMsg(openId, values["name"].ToString(), values["birthday"].ToString(),Convert.ToInt32( values["gender"]), values["phone"].ToString())
+            });
+
+            
+        }
     }
 }

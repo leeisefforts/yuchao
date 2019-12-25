@@ -56,5 +56,16 @@ namespace yuchao.Controllers.Client
                 Obj = bll.CreateSc(openId, values)
             });
         }
+
+        [HttpPost("paysuccess/{sid}")]
+        public JsonResult Paysuccess(int sid, [FromBody]JObject values)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.SetSStatus(sid)
+            });
+        }
     }
 }

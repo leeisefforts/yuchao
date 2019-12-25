@@ -22,7 +22,7 @@ namespace yuchao.Service
 
         public Club GetByOpenId(string openId)
         {
-            return rdb.GetSingle(p => p.OpenId.Equals(openId));
+            return rdb.GetSingle(p =>p.Status == 1 && p.OpenId.Equals(openId));
         }
 
         public ClubTotal GetClubTotalByClubId(int clubId)

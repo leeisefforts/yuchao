@@ -75,9 +75,9 @@ namespace yuchao.Business.Client
                 gamerecordInfo.OpenId = item.OpenId;
                 gamerecordInfo.OpenId2 = item.OpenId2;
                 gamerecordInfo.OpenName1 = user1.NickName;
-                gamerecordInfo.OpenName2 = user2.NickName;
+                gamerecordInfo.OpenName2 = user2 == null ? string.Empty: user2.NickName;
                 gamerecordInfo.Phone1 = user1.Tel;
-                gamerecordInfo.Phone2 = user2.Tel;
+                gamerecordInfo.Phone2 = user2 == null ? string.Empty : user2.Tel;
                 list.Add(gamerecordInfo);
 
             }
@@ -180,9 +180,22 @@ namespace yuchao.Business.Client
                 gamerecordInfo.OpenId = item.OpenId;
                 gamerecordInfo.OpenId2 = item.OpenId2;
                 gamerecordInfo.OpenName1 = user1.NickName;
-                gamerecordInfo.OpenName2 = user2.NickName;
+                gamerecordInfo.OpenName2 = user2 ==null ? "" : user2.NickName;
+                gamerecordInfo.ScheduleRecordId = item.ScheduleRecordId;
                 gamerecordInfo.Phone1 = user1.Tel;
-                gamerecordInfo.Phone2 = user2.Tel;
+                gamerecordInfo.Phone2 = user2 == null ? "" : user2.Tel;
+
+                List<GameDetail> gd = IService.GdList(item.Id);
+                int point1 = 0;
+                int point2 = 0;
+                foreach (var gitem in gd)
+                {
+                    point1 += gitem.Point1;
+                    point2 += gitem.Point2;
+                }
+
+                gamerecordInfo.Point1 = point1;
+                gamerecordInfo.Point2 = point2;
                 list.Add(gamerecordInfo);
 
             }
@@ -225,7 +238,7 @@ namespace yuchao.Business.Client
                 VenueId = venueId,
                 Week = 0,
                 IsGame = 1,
-                Status = 0
+                Status = -1
             };
             int c = SrService.InsertRId(scheduledRecord);
 
@@ -328,7 +341,8 @@ namespace yuchao.Business.Client
                 UseTime = matchTime,
                 VenueId = venueId,
                 Week = 0,
-                IsGame = 1
+                IsGame = 1,
+                Status = -1
             };
             int c = SrService.InsertRId(scheduledRecord);
             Order order = orderApiBLL.CreateOrder(c, openId, values);
@@ -514,10 +528,10 @@ namespace yuchao.Business.Client
                 gamerecordInfo.VenueImg = venue.VenueImg;
                 gamerecordInfo.OpenId = item.OpenId;
                 gamerecordInfo.OpenId2 = item.OpenId2;
-                gamerecordInfo.OpenName1 = user1.NickName;
-                gamerecordInfo.OpenName2 = user2.NickName;
-                gamerecordInfo.Phone1 = user1.Tel;
-                gamerecordInfo.Phone2 = user2.Tel;
+                gamerecordInfo.OpenName1 = user1 == null ? string.Empty : user1.NickName;
+                gamerecordInfo.OpenName2 = user2 == null ? string.Empty : user2.NickName;
+                gamerecordInfo.Phone1 = user1 == null ? string.Empty : user1.Tel;
+                gamerecordInfo.Phone2 = user2 == null ? string.Empty:user2.Tel;
                 list.Add(gamerecordInfo);
 
             }
