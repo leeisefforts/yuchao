@@ -21,5 +21,7 @@ namespace yuchao.IService
         Gamerecord GetByVenueId(string venueId);
 
         List<Gamerecord> GetClubGame(int clubId);
+
+        List<TeamGameDetail> GetByOpenId(string openId);
     }
 }

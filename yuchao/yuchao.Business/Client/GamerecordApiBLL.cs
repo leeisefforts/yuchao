@@ -242,6 +242,40 @@ namespace yuchao.Business.Client
             };
             int c = SrService.InsertRId(scheduledRecord);
 
+
+            Gamerecord gr = new Gamerecord()
+            {
+                ScheduleRecordId = c,
+                CreateTime = DateTime.Now,
+                SiteId = scheduledRecord.SiteId,
+                VenueId = venueId,
+                Status = 1,
+                IsTeamGame = 1,
+                OpenId = openId,
+                OpenId2 = openId2,
+                GameTime = matchTime,
+                WinId = string.Empty,
+                LoseId = string.Empty
+            };
+
+            int gid = IService.InsertRId(gr);
+
+            TeamGameDetail tgd = new TeamGameDetail()
+            {
+                CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now,
+                VenueId = venueId,
+                OpponentId = 0,
+                MSOpenId = msopenId,
+                WSOpenId = wsopenId,
+                HDOpenId = hdopenIds,
+                MDOpenId = mdopenIds,
+                GId = gid
+
+            };
+
+            IService.AddTeamGameDetail(tgd);
+
             Order order = orderApiBLL.CreateOrder(c, openId, values);
             // 判断当前是否存在正在匹配的人
             List<MatchGame> list = IService.GetMatchTeamUser(matchTime, venueId, openId);
@@ -287,38 +321,13 @@ namespace yuchao.Business.Client
             scheduledRecord.SiteId = ilist[0];
             scheduledRecord.TimeId = ilist[1];
             SrService.Update(scheduledRecord);
-            Gamerecord gr = new Gamerecord()
-            {
-                ScheduleRecordId = c,
-                CreateTime = DateTime.Now,
-                SiteId = scheduledRecord.SiteId,
-                VenueId = venueId,
-                Status = 1,
-                IsTeamGame = 1,
-                OpenId = openId,
-                OpenId2 = openId2,
-                GameTime = matchTime,
-                WinId = string.Empty,
-                LoseId = string.Empty
-            };
 
-            int gid = IService.InsertRId(gr);
+            Gamerecord ggr = IService.GetBySId(scheduledRecord.Id);
+            TeamGameDetail btdg = IService.GetGameDetail(ggr.Id);
 
-            TeamGameDetail tgd = new TeamGameDetail()
-            {
-                CreateTime = DateTime.Now,
-                UpdateTime = DateTime.Now,
-                VenueId = venueId,
-                OpponentId = 0,
-                MSOpenId = msopenId,
-                WSOpenId = wsopenId,
-                HDOpenId = hdopenIds,
-                MDOpenId = mdopenIds,
-                GId = gid
+            tgd.OpponentId = btdg.Id;
+            IService.UpdateTGameDetail(tgd);
 
-            };
-
-            IService.AddTeamGameDetail(tgd);
             return order;
         }
 

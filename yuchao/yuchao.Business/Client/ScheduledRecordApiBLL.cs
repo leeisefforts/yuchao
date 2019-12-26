@@ -15,6 +15,7 @@ namespace yuchao.Business.Client
         private IScheduleRecordService IService = new Service.ScheduleRecordService();
         private IVenue VService = new Service.VenueService();
         private IUser UService = new Service.UserServer();
+        private IGamerecord GService = new Service.GamerecordService();
 
 
         public Order CreateSc(string openId, JObject values)
@@ -156,10 +157,20 @@ namespace yuchao.Business.Client
         {
             List<ScheduledRecord> list =  IService.GetListByOpenId(openId, isGame);
             List<ScheduledRecordExtends> res = new List<ScheduledRecordExtends>();
+
+            // 查询俱乐部团体赛
+            List<TeamGameDetail> tgd = GService.GetByOpenId(openId);
+            foreach (var item in tgd)
+            {
+
+            }
+
+
             foreach (var item in list)
             {
                 Venue venue = VService.GetById(item.VenueId);
                 Site site = VService.GetSiteBySId(item.SiteId);
+
                 ScheduledRecordExtends se = new ScheduledRecordExtends()
                 {
                     CreateTime = item.CreateTime,

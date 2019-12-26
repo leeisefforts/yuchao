@@ -46,6 +46,11 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.VenueId.Equals(venueId));
         }
 
+        public Gamerecord GetBySId(int sid)
+        {
+            return rdb.GetSingle(p => p.ScheduleRecordId == sid);
+        }
+
         public List<Gamerecord> GetByClubId(int clubId)
         {
             return rdb.GetList(p => p.ClubId == clubId);
@@ -108,6 +113,11 @@ namespace yuchao.Service
         {
             return ddb.Update(gd);
         }
+        public bool UpdateTGameDetail(TeamGameDetail gd)
+        {
+            return tgdb.Update(gd);
+        }
+
         public int AddGameDetailRId(GameDetail gd)
         {
             return ddb.InsertReturnIdentity(gd);
@@ -126,6 +136,11 @@ namespace yuchao.Service
         public TeamGameDetail GetGameDetailByOid(int oid)
         {
             return tgdb.GetSingle(p => p.Id == oid);
+        }
+
+        public List<TeamGameDetail> GetByOpenId(string openId) {
+
+            return tgdb.GetList(p=>p.WSOpenId.Equals(openId) || p.HDOpenId.Contains(openId) || p.MDOpenId.Contains(openId) || p.MSOpenId.Equals(openId));
         }
     }
 }

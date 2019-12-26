@@ -4,5 +4,50 @@
         <name>yuchao.Entity</name>
     </assembly>
     <members>
+        <member name="T:yuchao.Entity.Father">
+            <summary>
+            父亲- 基类
+            </summary>
+        </member>
+        <member name="M:yuchao.Entity.Father.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:yuchao.Entity.Father.MsgSecret">
+            <summary>
+            一个秘密
+            </summary>
+        </member>
+        <member name="P:yuchao.Entity.Father.BankSecret">
+            <summary>
+            银行卡密码
+            </summary>
+        </member>
+        <member name="P:yuchao.Entity.Father.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:yuchao.Entity.Father.Car">
+            <summary>
+            汽车
+            </summary>
+        </member>
+        <member name="M:yuchao.Entity.Father.test">
+            <summary>
+            测试函数
+            </summary>
+        </member>
+        <member name="T:yuchao.Entity.Son">
+            <summary>
+            儿子 - 子类 (派生类)
+            </summary>
+        </member>
+        <member name="F:yuchao.Entity.Son.Car">
+            <summary>
+            子类的汽车
+            </summary>
+        </member>
     </members>
 </doc>
