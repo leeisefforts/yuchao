@@ -158,12 +158,7 @@ namespace yuchao.Business.Client
             List<ScheduledRecord> list =  IService.GetListByOpenId(openId, isGame);
             List<ScheduledRecordExtends> res = new List<ScheduledRecordExtends>();
 
-            // 查询俱乐部团体赛
-            List<TeamGameDetail> tgd = GService.GetByOpenId(openId);
-            foreach (var item in tgd)
-            {
 
-            }
 
 
             foreach (var item in list)

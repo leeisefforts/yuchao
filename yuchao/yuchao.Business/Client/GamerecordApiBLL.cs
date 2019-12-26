@@ -156,6 +156,56 @@ namespace yuchao.Business.Client
         {
             List<GamerecordReExtends> list = new List<GamerecordReExtends>();
             List<Gamerecord> res = IService.GetAll(openId);
+
+
+            // 查询俱乐部团体赛
+            List<TeamGameDetail> tgd = IService.GetByOpenId(openId);
+            foreach (var item in tgd)
+            {
+                Gamerecord gr = IService.GetById(item.GId);
+
+                GamerecordReExtends gamerecordInfo = new GamerecordReExtends();
+
+                var user1 = UService.GetByOpenId(gr.OpenId);
+                var user2 = UService.GetByOpenId(gr.OpenId2);
+                Venue venue = LService.GetById(item.VenueId);
+                gamerecordInfo.Id = item.Id;
+                gamerecordInfo.CreateTime = item.CreateTime;
+                gamerecordInfo.GameTime = gr.GameTime;
+                gamerecordInfo.IsTeamGame = gr.IsTeamGame;
+                gamerecordInfo.LoseId = gr.LoseId;
+                gamerecordInfo.RefereeId = gr.RefereeId;
+                gamerecordInfo.Status = gr.Status;
+                gamerecordInfo.VenueId = item.VenueId;
+                gamerecordInfo.WinId = gr.WinId;
+                gamerecordInfo.AvePrice = venue.AvePrice;
+                gamerecordInfo.VenueName = venue.VenueName;
+                gamerecordInfo.Score = venue.Score;
+                gamerecordInfo.VenueAddress = venue.VenueAddress;
+                gamerecordInfo.VenueImg = venue.VenueImg;
+                gamerecordInfo.OpenId = gr.OpenId;
+                gamerecordInfo.OpenId2 = gr.OpenId2;
+                gamerecordInfo.OpenName1 = user1.NickName;
+                gamerecordInfo.OpenName2 = user2 == null ? "" : user2.NickName;
+                gamerecordInfo.ScheduleRecordId = gr.ScheduleRecordId;
+                gamerecordInfo.Phone1 = user1.Tel;
+                gamerecordInfo.Phone2 = user2 == null ? "" : user2.Tel;
+
+                List<GameDetail> gd = IService.GdList(item.Id);
+                int point1 = 0;
+                int point2 = 0;
+                foreach (var gitem in gd)
+                {
+                    point1 += gitem.Point1;
+                    point2 += gitem.Point2;
+                }
+
+                gamerecordInfo.Point1 = point1;
+                gamerecordInfo.Point2 = point2;
+                list.Add(gamerecordInfo);
+            }
+
+
             foreach (var item in res)
             {
                 GamerecordReExtends gamerecordInfo = new GamerecordReExtends();
