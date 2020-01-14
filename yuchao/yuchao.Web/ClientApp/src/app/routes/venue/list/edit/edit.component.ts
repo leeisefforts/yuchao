@@ -19,8 +19,7 @@ export class listEditComponent  {
        record: any = {};
        schema: SFSchema = {
        properties: {
-         siteName: { type: 'string', title: '场地名称', maxLength: 50 },
-         price: { type: 'number', title: '场地均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+         siteName: { type: 'string', title: '场地名称', maxLength: 50 }
 
        },
        required: ['siteName', 'price'],

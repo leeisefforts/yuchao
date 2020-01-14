@@ -128,6 +128,7 @@ namespace yuchao.Business.Client
             OrderExtends orderInfo = new OrderExtends();
             User user = Uservice.GetByOpenId(openId);
             Level level = LevelService.GetById(user.LevelId);
+            
             if (order != null)
             {
                 orderInfo.Id = order.Id;

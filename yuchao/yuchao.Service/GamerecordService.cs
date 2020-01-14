@@ -33,6 +33,12 @@ namespace yuchao.Service
         {
             return rdb.GetById(id);
         }
+
+        public Gamerecord GetBySId(int sid)
+        {
+            return rdb.GetSingle(p=>p.ScheduleRecordId == sid);
+        }
+
         public bool DeleteById(int id)
         {
             return rdb.DeleteById(id);
@@ -46,10 +52,6 @@ namespace yuchao.Service
             return rdb.GetSingle(p => p.VenueId.Equals(venueId));
         }
 
-        public Gamerecord GetBySId(int sid)
-        {
-            return rdb.GetSingle(p => p.ScheduleRecordId == sid);
-        }
 
         public List<Gamerecord> GetByClubId(int clubId)
         {
@@ -71,7 +73,11 @@ namespace yuchao.Service
         public bool AddMatchGame(MatchGame mg) {
             return mdb.Insert(mg);
         }
-
+        public List<MatchGame> GetMatchList(string gameTime)
+        {
+            return mdb.GetList(p => p.MatchTime.Equals(gameTime)  && p.MatchStatus == 1);
+        }
+        
         public bool UpdateMatchGame(MatchGame mg)
         {
             return mdb.Update(mg);
@@ -87,7 +93,7 @@ namespace yuchao.Service
 
         public List<Gamerecord> GetTeamGameAll()
         {
-            return rdb.GetList(p => p.Status == 1 && p.RefereeId == 0 && p.IsTeamGame == 1);
+            return rdb.GetList(p => p.Status == 1  && p.RefereeId == 0 && p.IsTeamGame == 1);
         }
 
         public List<Gamerecord> GetGameAllByReId(int id, int status)
@@ -107,6 +113,16 @@ namespace yuchao.Service
         public bool AddTeamGameDetail(TeamGameDetail gd)
         {
             return tgdb.Insert(gd);
+        }
+
+        public int AddTeamGameDetailRId (TeamGameDetail gd)
+        {
+            return tgdb.InsertReturnIdentity(gd);
+        }
+
+        public TeamGameDetail GetTeamGameDetailRId(int id )
+        {
+            return tgdb.GetById(id);
         }
 
         public bool UpdateGameDetail(GameDetail gd)

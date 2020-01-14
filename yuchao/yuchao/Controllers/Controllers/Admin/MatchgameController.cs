@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using yuchao.Business.Admin;
 using yuchao.Model;
 
@@ -35,7 +31,7 @@ namespace yuchao.Web.Controllers.Admin
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetAll()
+                Obj =true
             });
         }
         // DELETE api/<controller>/5
@@ -46,7 +42,7 @@ namespace yuchao.Web.Controllers.Admin
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.DeleteById(id)
+                Obj = true
             });
         }
     }

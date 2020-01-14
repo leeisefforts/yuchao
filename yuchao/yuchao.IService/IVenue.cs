@@ -26,5 +26,12 @@ namespace yuchao.IService
         bool DeleteSite(int id);
 
         bool Update(Venue level);
+
+        VenueAccount GetVenueAccount(int vid);
+
+        VenueAccount GetVenueAccountById(int id);
+
+        bool UpdateVAccount(VenueAccount va);
+        bool InsertVAccount(VenueAccount va);
     }
 }

@@ -29,6 +29,11 @@
               "text": "记录列表",
               "link": "/user/record",
               "i18n": "menu.userManage.record"
+            },
+            {
+              "text": "裁判申请列表",
+              "link": "/user/referee",
+              "i18n": "menu.userManage.referee"
             }
           ]
         }

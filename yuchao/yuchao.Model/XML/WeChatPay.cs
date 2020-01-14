@@ -44,7 +44,33 @@ namespace yuchao.Model.XML
 
 
         [XmlElement("sign")]
-        public string sign { get; set; } 
+        public string sign { get; set; }
+
+    }
+
+
+    [XmlType("XML")]
+    public class RefundPay
+    {
+        [XmlElement("appid")]
+        public string appid { get; set; }
+        [XmlElement("mch_id")]
+        public string mch_id { get; set; }
+        [XmlElement("nonce_str")]
+        public string nonce_str { get; set; }
+        [XmlElement("sign")]
+        public string sign { get; set; }
+        [XmlElement("sign_type")]
+        public string sign_type { get; set; }
+        [XmlElement("out_trade_no")]
+        public string out_trade_no { get; set; }
+        [XmlElement("out_refund_no")]
+        public string out_refund_no { get; set; }
+        [XmlElement("total_fee")]
+        public string total_fee { get; set; }
+        [XmlElement("refund_fee")]
+        public string refund_fee { get; set; }
+
 
     }
 }

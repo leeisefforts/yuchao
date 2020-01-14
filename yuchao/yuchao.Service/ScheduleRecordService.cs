@@ -59,7 +59,7 @@ namespace yuchao.Service
 
         public ScheduledRecord GetByOIdVenPage(string openId)
         {
-            return rdb.AsQueryable().OrderBy("CreateTime asc").First(p=>p.OpenId.Equals(openId));
+            return rdb.AsQueryable().OrderBy("CreateTime desc").First(p=>p.OpenId.Equals(openId));
 
         }
 
@@ -70,7 +70,7 @@ namespace yuchao.Service
 
         public List<ScheduledRecord> GetListByOpenId(string openid, int isGame)
         {
-            return rdb.GetList(p => p.OpenId.Equals(openid)&& p.IsGame == isGame && p.Status  == 1);
+            return rdb.GetList(p => p.OpenId.Equals(openid)&& p.IsGame == isGame && p.Status != -1);
         }
 
         public List<ScheduledRecord> MatchGame(int venueId, string useTime, int days) {

@@ -22,14 +22,15 @@ namespace yuchao.Controllers.Admin
 
         // GET: api/<controller>
       
-        [HttpGet]
-        public JsonResult GetList()
+        [HttpPost]
+        public JsonResult GetList([FromBody]JObject values)
         {
+            string searchName = values["searchName"].ToString();
             return Json(new ApiResult
             {
                 Status = 200,
                 Error = "Success",
-                Obj = bll.GetList()
+                Obj = bll.GetList(searchName)
             });
         }
 
@@ -56,7 +57,8 @@ namespace yuchao.Controllers.Admin
                 AvatarUrl = values["avatarUrl"].ToString(),
                 Country = values["country"].ToString(),
                 City = values["city"].ToString(),
-                Province = values["province"].ToString()
+                Province = values["province"].ToString(),
+                Reputation = 100
             };
             bool result = false;
             if (id != 0)
@@ -76,6 +78,20 @@ namespace yuchao.Controllers.Admin
             });
         }
 
+        [HttpPost("login")]
+        public JsonResult Login(int id, [FromBody]JObject values)
+        {
+            string loginName = values["userName"].ToString();
+            string loginPwd  = values["password"].ToString();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = true
+            });
+        }
+
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         public JsonResult Put(int id, [FromBody]JObject values)
@@ -92,7 +108,8 @@ namespace yuchao.Controllers.Admin
                     Gender = Convert.ToInt32(values["gender"]),
                     Language = values["language"].ToString(),
                     NickName = values["nickName"].ToString(),
-                     Province=values["province"].ToString()
+                     Province=values["province"].ToString(),
+                     Reputation = 100
                 })
             };
              return Json(res);

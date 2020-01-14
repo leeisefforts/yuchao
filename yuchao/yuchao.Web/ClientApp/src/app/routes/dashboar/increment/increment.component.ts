@@ -44,7 +44,7 @@ export class IncrementListComponent implements OnInit {
     @Inject('BASE_URL') baseUrl: string,
   ) {
     // this.baseUrl = baseUrl;
-    this.baseUrl = "https://fragmenttime.com:8081"
+    this.baseUrl = "https://nestmiu.com:8081"
   }
 
   ngOnInit(): void {

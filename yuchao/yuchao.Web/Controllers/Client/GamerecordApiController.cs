@@ -172,7 +172,7 @@ namespace yuchao.Controllers.Client
             return Json(new ApiResult()
             {
                 Status = 200,
-                Error = "Success",
+                Error = "Success", 
                 Obj = bll.GameDetailList(id)
             }); ;
         }

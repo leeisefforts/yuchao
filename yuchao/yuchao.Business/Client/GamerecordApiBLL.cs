@@ -91,6 +91,7 @@ namespace yuchao.Business.Client
             List<GamerecordTeamReExtends> list = new List<GamerecordTeamReExtends>();
             foreach (var item in gamerecord)
             {
+
                 GamerecordTeamReExtends gamerecordInfo = new GamerecordTeamReExtends();
                 Venue venue = LService.GetById(item.VenueId);
                 gamerecordInfo.Id = item.Id;
@@ -110,18 +111,25 @@ namespace yuchao.Business.Client
                 gamerecordInfo.OpenId = item.OpenId;
                 gamerecordInfo.OpenId2 = item.OpenId2;
 
-                TeamGameDetail tgd1 = IService.GetGameDetail(item.Id);
+                
 
+                TeamGameDetail tgd1 = IService.GetGameDetail(item.Id);
+                if (tgd1.OpponentId == 0)
+                {
+                    continue;
+                }
+                
                 Dictionary<string, User> dic = new Dictionary<string, User>();
                 TeamGameDetail tgg2 = IService.GetGameDetailByOid(tgd1.OpponentId);  // 有且只有两条
-
+                int index =  list.FindIndex(p => p.Id == tgg2.GId);
+                if (index != -1) continue;
                 var user1 = UService.GetByOpenId(tgd1.MSOpenId);
                 var user2 = UService.GetByOpenId(tgd1.WSOpenId);
                 var user3 = UService.GetByOpenId(tgd1.MDOpenId.Split(',')[0]);
                 var user4 = UService.GetByOpenId(tgd1.MDOpenId.Split(',')[1]);
                 var user5 = UService.GetByOpenId(tgd1.HDOpenId.Split(',')[0]);
                 var user6 = UService.GetByOpenId(tgd1.HDOpenId.Split(',')[1]);
-                var user7 = UService.GetByOpenId(tgg2.WSOpenId);
+                var user7 = UService.GetByOpenId(tgg2.MSOpenId);
                 var user8 = UService.GetByOpenId(tgg2.WSOpenId);
                 var user9 = UService.GetByOpenId(tgg2.MDOpenId.Split(',')[0]);
                 var user10 = UService.GetByOpenId(tgg2.MDOpenId.Split(',')[1]);
@@ -163,7 +171,7 @@ namespace yuchao.Business.Client
             foreach (var item in tgd)
             {
                 Gamerecord gr = IService.GetById(item.GId);
-
+                if (gr == null) continue;
                 GamerecordReExtends gamerecordInfo = new GamerecordReExtends();
 
                 var user1 = UService.GetByOpenId(gr.OpenId);
@@ -196,8 +204,13 @@ namespace yuchao.Business.Client
                 int point2 = 0;
                 foreach (var gitem in gd)
                 {
-                    point1 += gitem.Point1;
-                    point2 += gitem.Point2;
+                    if (gitem.Point1 > gitem.Point2)
+                    {
+                        point1 += 1;
+                    }
+                    else {
+                        point2 += 1;
+                    }
                 }
 
                 gamerecordInfo.Point1 = point1;
@@ -240,8 +253,14 @@ namespace yuchao.Business.Client
                 int point2 = 0;
                 foreach (var gitem in gd)
                 {
-                    point1 += gitem.Point1;
-                    point2 += gitem.Point2;
+                    if (gitem.Point1 > gitem.Point2)
+                    {
+                        point1 += 1;
+                    }
+                    else
+                    {
+                        point2 += 1;
+                    }
                 }
 
                 gamerecordInfo.Point1 = point1;
@@ -288,8 +307,9 @@ namespace yuchao.Business.Client
                 VenueId = venueId,
                 Week = 0,
                 IsGame = 1,
-                Status = -1
-            };
+                Status = -1,
+                Price = Convert.ToDecimal(values["total_fee"])
+        };
             int c = SrService.InsertRId(scheduledRecord);
 
 
@@ -299,7 +319,7 @@ namespace yuchao.Business.Client
                 CreateTime = DateTime.Now,
                 SiteId = scheduledRecord.SiteId,
                 VenueId = venueId,
-                Status = 1,
+                Status = -1,
                 IsTeamGame = 1,
                 OpenId = openId,
                 OpenId2 = openId2,
@@ -324,7 +344,7 @@ namespace yuchao.Business.Client
 
             };
 
-            IService.AddTeamGameDetail(tgd);
+            int tgdId =  IService.AddTeamGameDetailRId(tgd);
 
             Order order = orderApiBLL.CreateOrder(c, openId, values);
             // 判断当前是否存在正在匹配的人
@@ -372,11 +392,14 @@ namespace yuchao.Business.Client
             scheduledRecord.TimeId = ilist[1];
             SrService.Update(scheduledRecord);
 
-            Gamerecord ggr = IService.GetBySId(scheduledRecord.Id);
+            Gamerecord ggr = IService.GetBySId(c);
             TeamGameDetail btdg = IService.GetGameDetail(ggr.Id);
+            TeamGameDetail tgd2 = IService.GetTeamGameDetailRId(tgdId);
 
-            tgd.OpponentId = btdg.Id;
-            IService.UpdateTGameDetail(tgd);
+            tgd2.OpponentId = btdg.Id;
+            btdg.OpponentId = tgdId;
+            IService.UpdateTGameDetail(tgd2);
+            IService.UpdateTGameDetail(btdg);
 
             return order;
         }
@@ -401,7 +424,8 @@ namespace yuchao.Business.Client
                 VenueId = venueId,
                 Week = 0,
                 IsGame = 1,
-                Status = -1
+                Status = -1,
+                Price = Convert.ToDecimal(values["total_fee"]),
             };
             int c = SrService.InsertRId(scheduledRecord);
             Order order = orderApiBLL.CreateOrder(c, openId, values);
@@ -414,7 +438,8 @@ namespace yuchao.Business.Client
                 MatchTime = matchTime,
                 OpenId = openId,
                 VenueId = venueId,
-                IsTeam = 0
+                IsTeam = 0,
+                SId = c
 
             };
 
@@ -430,8 +455,15 @@ namespace yuchao.Business.Client
             if (days == 4)
             {
                 Random r = new Random();
+                
                 int i = r.Next(0, list.Count);
                 MatchGame mm = list[i];
+                User user2 = UService.GetByOpenId(mm.OpenId);
+                if (user2.LevelId != user.LevelId)
+                {
+                    return order;
+                }
+
                 mg.MatchStatus = 2;
                 mm.MatchStatus = 2;
                 IService.AddMatchGame(mg);
@@ -445,6 +477,11 @@ namespace yuchao.Business.Client
                 {
                     if (days == item.MatchDays)
                     {
+                        User user2 = UService.GetByOpenId(item.OpenId);
+                        if (user2.LevelId != user.LevelId)
+                        {
+                            continue;
+                        }
                         mg.MatchStatus = 2;
                         item.MatchStatus = 2;
                         IService.AddMatchGame(mg);
@@ -460,9 +497,11 @@ namespace yuchao.Business.Client
             ilist = GetMatchSite(venueId, days, matchTime);
             if (ilist.Count == 0) return order;
 
-            scheduledRecord.SiteId = ilist[0];
-            scheduledRecord.TimeId = ilist[1];
-            SrService.Update(scheduledRecord);
+
+            ScheduledRecord sssssr = SrService.GetById(c);
+            sssssr.SiteId = ilist[0];
+            sssssr.TimeId = ilist[1];
+            SrService.Update(sssssr);
             Gamerecord gr = new Gamerecord()
             {
                 ScheduleRecordId = c,
@@ -569,7 +608,7 @@ namespace yuchao.Business.Client
                 GamerecordReExtends gamerecordInfo = new GamerecordReExtends();
                 var user1 = UService.GetByOpenId(item.OpenId);
                 var user2 = UService.GetByOpenId(item.OpenId2);
-
+                ScheduledRecord sr = SrService.GetById(item.ScheduleRecordId);
                 Venue venue = LService.GetById(item.VenueId);
                 gamerecordInfo.Id = item.Id;
                 gamerecordInfo.CreateTime = item.CreateTime;
@@ -579,6 +618,8 @@ namespace yuchao.Business.Client
                 gamerecordInfo.RefereeId = item.RefereeId;
                 gamerecordInfo.Status = item.Status;
                 gamerecordInfo.VenueId = item.VenueId;
+                gamerecordInfo.StartTime = sr.TimeId.ToString();
+                gamerecordInfo.EndTime = (sr.TimeId + 1).ToString();
                 gamerecordInfo.WinId = item.WinId;
                 gamerecordInfo.AvePrice = venue.AvePrice;
                 gamerecordInfo.VenueName = venue.VenueName;
@@ -735,6 +776,8 @@ namespace yuchao.Business.Client
 
             string windId = values["winId"].ToString();
             string losId = values["losId"].ToString();
+            int winPoint = Convert.ToInt32( values["winPoint"]);
+            int losPoint = Convert.ToInt32(values["losPoint"]);
             Gamerecord gr = IService.GetById(id);
             if (gr == null)
             {
@@ -743,6 +786,26 @@ namespace yuchao.Business.Client
             gr.Status = 2;
             gr.WinId = windId;
             gr.LoseId = losId;
+
+            ScheduledRecord sr = SrService.GetById(gr.ScheduleRecordId);
+            sr.Status = 2;
+            SrService.Update(sr);
+            User win = UService.GetByOpenId(windId);
+            User los = UService.GetByOpenId(losId);
+            win.WinCount += 1;
+            los.LosCount += 1;
+            win.TotalGame += 1;
+            los.TotalGame += 1;
+
+            if (winPoint == 2)
+            {
+                win.LevelCount += 15;
+                los.LevelCount -= 15;
+            }else if(winPoint == 3)
+            {
+                win.LevelCount += 20;
+                los.LevelCount -= 20;
+            }
 
             return IService.Update(gr);
 

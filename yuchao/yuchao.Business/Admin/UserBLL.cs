@@ -42,8 +42,8 @@ namespace yuchao.Business.Admin
             return IService.Update(user);
         }
 
-        public List<User> GetList() {
-            return IService.GetAll();
+        public List<User> GetList(string searchName) {
+            return IService.GetAll(searchName);
         }
 
         public bool DeleteById(int id)

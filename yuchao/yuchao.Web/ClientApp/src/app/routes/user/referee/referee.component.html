@@ -1,0 +1,63 @@
+<page-header [title]="'记录列表'"></page-header>
+<nz-card [nzBordered]="false">
+  <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" class="search__form">
+    <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
+      <div nz-col nzMd="8" nzSm="24">
+        <nz-form-item>
+          <nz-form-label >用户名称</nz-form-label>
+          <input />
+        </nz-form-item>
+      </div>
+      <div nz-col >
+        <button nz-button type="submit" [nzType]="'primary'" [nzLoading]="loading">查询</button>
+
+      </div>
+
+    </div>
+  </form>
+
+  <nz-table #editRowTable nzBordered [nzData]="listOfData" (nzCurrentPageDataChange)="currentPageDataChange($event)">
+    <thead>
+      <tr>
+       <th>用户ID</th>
+       <th>用户名称</th>
+       <th>用户手机</th>
+       <th>申请时间</th>
+       <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of editRowTable.data">
+        <td>
+          <ng-container>
+            {{ data.id }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.name }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.phone }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
+            {{ data.applyDate }}
+          </ng-container>
+        </td>
+        <td>
+          <div class="editable-row-operations">
+            <ng-container>
+              <a (click)="openEdit(data.id,2)">审核通过</a>
+              <a (click)="openEdit(data.id,3)">审核拒绝</a>
+              <!--<a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.VenueId)">删除</a>-->
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

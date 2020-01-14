@@ -135,9 +135,17 @@ namespace yuchao.Business.Client
             ScheduledRecord sr = IService.GetById(sid);
             sr.Status = 1;
             User user = UService.GetByOpenId(sr.OpenId);
-            user.CoinNum += Convert.ToInt32( sr.Price);
-            user.LevelExperience += Convert.ToInt32(sr.Price);
+            user.CoinNum += Convert.ToInt32( sr.Price) / 100;
+            user.LevelExperience += Convert.ToInt32(sr.Price) / 10;
             UService.Update(user);
+            if (sr.IsGame == 1)
+            {
+                Gamerecord gr = GService.GetBySId(sid);
+
+                gr.Status = 1;
+
+                GService.Update(gr);
+            }
             return IService.Update(sr);
         }
 
@@ -149,6 +157,12 @@ namespace yuchao.Business.Client
 
         }
 
+        public bool DelSr(int sid) {
+            ScheduledRecord sr = IService.GetById(sid);
+            sr.Status = -1;
+            return IService.Update(sr);
+
+        }
         public List<ScheduledRecord> GetList(int venueId, string date) {
             return IService.GetList(venueId, date);
         }

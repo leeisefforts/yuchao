@@ -6,6 +6,7 @@ import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { listEditComponent } from './edit/edit.component';
 import { priceEditComponent } from '../flist/edit/price.component';
+import { debug } from 'util';
 interface ItemData {
   venueId: string;
   siteName:string;
@@ -45,7 +46,7 @@ export class VenueListComponent implements OnInit {
     @Inject('BASE_URL') baseUrl: string,
   ) {
     // this.baseUrl = baseUrl;
-    this.baseUrl = "https://fragmenttime.com:8081"
+    this.baseUrl = "https://nestmiu.com:8081"
   }
 
   ngOnInit(): void {
@@ -79,7 +80,7 @@ export class VenueListComponent implements OnInit {
   getSelectData() {
     this.loading = true;
     this.http
-      .get(this.baseUrl + '/api/admin/venue/VenueApi',{})
+      .get(this.baseUrl + '/api/admin/venue',{})
       .pipe(
         map((res: any) =>
           res.obj.map(i => {
@@ -88,7 +89,7 @@ export class VenueListComponent implements OnInit {
         ),
         tap(() => (this.loading = false)),
       )
-      .subscribe(res => {
+        .subscribe(res => {
         this.selectList = res;
         this.venueId = !!res[0]?res[0].id:''
         this.getData();
@@ -128,12 +129,12 @@ export class VenueListComponent implements OnInit {
    * 设置价格
    */
   priceHttp(res){
-    let {id,mPrice,aPrice,nPrice} = res
-    this.http.post(this.baseUrl +'/api/admin/siteApi/setPrice/'+ id, {mPrice,aPrice,nPrice}).subscribe(res => {
+      let { id, mPrice, aPrice, nPrice } = res
+    this.http.post(this.baseUrl +'/api/admin/siteApi/setPrice/site/'+ id, {mPrice,aPrice,nPrice}).subscribe(res => {
       this.getData()
     });
   }
-  handlePrice(record: any = {}){
+    handlePrice(record: any = {}) {
     this.modal.create(priceEditComponent, { record }, { size: 'md' }).subscribe(res => {
       this.priceHttp(res)
       this.cdr.detectChanges();

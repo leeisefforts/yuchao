@@ -22,5 +22,7 @@ namespace yuchao.Model.Extends
         public string LevelName { get; set; }
 
         public int Status { get; set; }
+
+        public int LevelCount { get; set; }
     }
 }

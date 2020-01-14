@@ -10,6 +10,7 @@ using yuchao.Business.Client;
 using yuchao.Entity;
 using yuchao.Model;
 using yuchao.Model.Extends;
+using yuchao.Service;
 
 namespace yuchao.Controllers.Client
 {
@@ -55,6 +56,18 @@ namespace yuchao.Controllers.Client
                 Status = 200,
                 Error = "Success",
                 Obj = bll.GetOrderDetail(openId, isGame, sid)
+            });
+        }
+
+        [HttpPost("refund/{openId}")]
+        public JsonResult RefundPay(string openId, [FromBody]JObject values)
+        {
+            string orderSn =  values["orderSn"].ToString();
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = BasicService.RefundPay(orderSn)
             });
         }
     }

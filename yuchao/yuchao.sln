@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yuchao.Token", "yuchao.Toke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlSugar", "SqlSugar\SqlSugar.csproj", "{24AB7C3E-2B24-40F2-954A-9BA352347E44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yuchao.Web", "yuchao.Web\yuchao.Web.csproj", "{81EE2820-EEA0-4A1C-8F58-4699B9EBC306}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yuchao.Web", "yuchao.Web\yuchao.Web.csproj", "{81EE2820-EEA0-4A1C-8F58-4699B9EBC306}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

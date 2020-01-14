@@ -35,4 +35,12 @@ namespace yuchao.Entity
         public string Desc { get; set; }
 
     }
+
+    public class VenueExtend : Venue { 
+
+        public string Account { get; set; }
+
+        public string Pwd { get; set; }
+    
+    }
 }

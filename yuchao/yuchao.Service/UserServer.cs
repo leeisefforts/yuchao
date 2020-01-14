@@ -58,8 +58,16 @@ namespace yuchao.Service
             return rdb.Insert(user);
         }
 
-        public List<User> GetAll() {
-            return rdb.GetList();
+        public List<User> GetAll(string searchName) {
+            List<User> list = new List<User>();
+            if (string.IsNullOrEmpty(searchName))
+            {
+                list = rdb.GetList();
+            }
+            else {
+                list = rdb.GetList(p=>p.Tel.Contains(searchName) || p.RealName.Contains(searchName) || p.NickName.Contains(searchName));
+            }
+            return list;
         }
 
         public bool DeleteById(int id)

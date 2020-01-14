@@ -12,7 +12,7 @@
               [nzPlaceHolder]="'请选择'"
               [nzShowSearch]="true"
             >
-              <nz-option *ngFor="let i of selectList; let idx = index" [nzLabel]="i.venueName" [nzValue]="idx"></nz-option>
+              <nz-option *ngFor="let i of selectList; let idx = index" [nzLabel]="i.venueName" [nzValue]="i.id"></nz-option>
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -57,7 +57,7 @@
         <td>
           <div class="editable-row-operations">
             <ng-container>
-               <a (click)="handlePrice(data)">价格设置</a>
+               <!--<a (click)="handlePrice(data)">价格设置</a>-->
               <a (click)="openEdit(data)">编辑</a>
               <a  nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.VenueId)">删除</a>
             </ng-container>

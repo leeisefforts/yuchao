@@ -12,6 +12,7 @@ namespace yuchao.Service
     {
         public SimpleClient<Venue> rdb = new SimpleClient<Venue>(BaseDb.GetClient());
         public SimpleClient<Site> sdb = new SimpleClient<Site>(BaseDb.GetClient());
+        public SimpleClient<VenueAccount> vadb = new SimpleClient<VenueAccount>(BaseDb.GetClient());
 
         public List<Venue> GetAll()
         {
@@ -58,6 +59,26 @@ namespace yuchao.Service
 
         public bool DeleteSite(int id) {
             return sdb.DeleteById(id);
+        }
+
+        public VenueAccount GetVenueAccount(int vid) {
+
+            return vadb.GetSingle(p=>p.VenueId == vid);
+        }
+
+        public VenueAccount GetVenueAccountById(int id)
+        {
+
+            return vadb.GetById(id);
+        }
+
+        public bool UpdateVAccount(VenueAccount va) {
+            return vadb.Update(va);
+        }
+
+        public bool InsertVAccount(VenueAccount va)
+        {
+            return vadb.Insert(va);
         }
     }
 }

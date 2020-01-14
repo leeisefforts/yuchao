@@ -15,7 +15,7 @@ import { StartupService } from '@core';
   providers: [SocialService],
 })
 export class UserLoginComponent implements OnDestroy {
-  baseUrl = "https://fragmenttime.com:8081";
+    baseUrl = "https://nestmiu.com:8081";
   constructor(
     fb: FormBuilder,
     modalSrv: NzModalService,
@@ -74,8 +74,8 @@ export class UserLoginComponent implements OnDestroy {
         userName: this.userName.value,
         password: this.password.value,
       }
-    this.http
-      .get(this.baseUrl + '/api/admin/user?_allow_anonymous=true',params)
+      this.http
+          .post(this.baseUrl + '/api/admin/user/login', params)
       .subscribe((res: any) => {
         this.reuseTabService.clear();
         let user = {

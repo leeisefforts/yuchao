@@ -20,15 +20,8 @@ namespace yuchao.Controllers.Admin
     {
         private VenueBLL bll = new VenueBLL();
 
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/<controller>/5
-        [HttpGet("{id}")]
+        [HttpGet]
         public JsonResult GetAll()
         {
             return Json(new ApiResult
@@ -36,6 +29,20 @@ namespace yuchao.Controllers.Admin
                 Status = 200,
                 Error = "Success",
                 Obj = bll.GetAll()
+            });
+        }
+
+        [HttpPost("setAccount/{id}")]
+        public JsonResult SetPrice(int id, [FromBody]JObject values)
+        {
+            string name = values["account"].ToString();
+            string pwd = values["pwd"].ToString();
+
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = string.Empty,
+                Obj = bll.SetAccount(id, name, pwd)
             });
         }
 
@@ -53,6 +60,8 @@ namespace yuchao.Controllers.Admin
                 AvePrice = Convert.ToDecimal(values["avePrice"]),
                 Lng = values["lng"].ToString(),
                 Lat = values["lat"].ToString(),
+                Announcement = values["announcement"].ToString(),
+                Desc = values["desc"].ToString(),
                 Status = 1
             };
             bool result = false;
@@ -180,6 +189,8 @@ namespace yuchao.Controllers.Admin
                 Obj = bll.SetSite(id ,obj, list , values)
             });
         }
+
+
 
         [HttpPost("setPrice/site/{id}")]
         public JsonResult SetSitePrice(int id, [FromBody]JObject values)

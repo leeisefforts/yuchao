@@ -55,5 +55,16 @@ namespace yuchao.Business.Admin
             };
             return IService.Add(entity);
         }
+
+        public List<RefereeApply> GetList() {
+            return IService.GetAllByStatus();
+        }
+
+
+        public bool UpdateStatus(int id, int status)
+        {
+            return IService.UpdateStatus(id, status);
+        }
+        
     }
 }

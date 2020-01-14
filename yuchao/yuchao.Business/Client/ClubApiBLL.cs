@@ -71,7 +71,12 @@ namespace yuchao.Business.Client
             Club club = clubServer.Get(clubId);
             club.Status = 4;
             clubServer.Update(club);
-
+            List<User> ul = uServer.GetByClubId(clubId);
+            foreach (var item in ul)
+            {
+                item.ClubId = 0;
+                uServer.Update(item);
+            }
             ClubClose cc = new ClubClose()
             {
                 OpenId = openId,

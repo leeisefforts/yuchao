@@ -8,6 +8,7 @@
   "menu.userManage": "用户管理",
   "menu.userManage.user": "用户列表",
   "menu.userManage.record": "记录列表",
+  "menu.userManage.referee": "裁判申请列表",
 
   "menu.venue": "场馆模块",
   "menu.venueManage": "场馆管理",

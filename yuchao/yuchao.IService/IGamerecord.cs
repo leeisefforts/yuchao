@@ -14,6 +14,8 @@ namespace yuchao.IService
 
         Gamerecord GetById(int id);
 
+        Gamerecord GetBySId(int sid);
+
         bool DeleteById(int id);
 
         bool Update(Gamerecord gamerecord);

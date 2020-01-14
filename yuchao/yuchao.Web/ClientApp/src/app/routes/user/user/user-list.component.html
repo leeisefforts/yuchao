@@ -4,7 +4,7 @@
     <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
       <div nz-col nzMd="8" nzSm="24">
         <nz-form-item>
-          <nz-form-label nzFor="venueName">用户名</nz-form-label>
+          <nz-form-label nzFor="venueName">用户名或手机号</nz-form-label>
           <nz-form-control>
             <input nz-input [(ngModel)]="q.venueName" name="venueName" placeholder="请输入"s/>
           </nz-form-control>
@@ -21,6 +21,8 @@
     <thead>
       <tr>
         <th >用户名称</th>
+        <th >真实姓名</th>
+        <th >性别</th>
         <th >手机号</th>
         <th >地址</th>
         <th >等级</th>
@@ -40,12 +42,23 @@
         </td>
         <td>
           <ng-container>
+            {{ data.realName }}
+          </ng-container>
+        </td>
+
+        <td>
+          <ng-container>
+            {{ data.realGender == 0? '无真实性别':  data.realGender == 1?'男' :'女' }}
+          </ng-container>
+        </td>
+        <td>
+          <ng-container>
             {{ data.tel }}
           </ng-container>
         </td>
         <td>
           <ng-container>
-           {{ data.province+data.city}}
+            {{ data.province+data.city}}
           </ng-container>
         </td>
         <td>
@@ -64,7 +77,7 @@
           </ng-container>
         </td>
         <td>
-          <ng-container >
+          <ng-container>
             {{data.coinNum }}
           </ng-container>
         </td>
@@ -78,7 +91,7 @@
         <td>
           <div class="editable-row-operations">
             <ng-container>
-              <a  nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.id)">删除</a>
+              <a nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.id)">删除</a>
             </ng-container>
           </div>
         </td>

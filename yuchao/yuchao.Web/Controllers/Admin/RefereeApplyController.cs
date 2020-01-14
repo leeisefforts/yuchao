@@ -95,5 +95,30 @@ namespace yuchao.Controllers.Admin
                 Obj = bll.DeleteById(id)
             });
         }
+
+
+        [HttpGet("list")]
+        public JsonResult GetList()
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.GetList()
+            });
+        }
+
+        [HttpPost("update")]
+        public JsonResult UpdateStatus([FromBody]JObject values)
+        {
+            int id = Convert.ToInt32(values["id"]);
+            int status = Convert.ToInt32(values["status"]);
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.UpdateStatus(id, status)
+            });
+        }
     }
 }

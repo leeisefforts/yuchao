@@ -15,5 +15,8 @@ namespace yuchao.Model.Extends
         public string NickName { get; set; }
 
         public string LevelName { get; set; }
+
+        public string SiteName { get; set; }
+
     }
 }

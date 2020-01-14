@@ -32,6 +32,7 @@ namespace yuchao.Business.Client
                 rankingInfo.Country = user.Country;
                 rankingInfo.Province = user.Province;
                 rankingInfo.NickName = user.NickName;
+                rankingInfo.LevelCount = user.LevelCount;
                 rankingInfo.LevelName = level == null || level.Id == 0 ? "无段位" : level.LevelName;
             }
             return rankingInfo;
@@ -39,7 +40,6 @@ namespace yuchao.Business.Client
         public List<RankingExtends> GetAllRanking() {
             List<Ranking> list = IService.GetList();
             List<RankingExtends> result = new List<RankingExtends>();
-
             
             foreach (var item in list)
             {
@@ -51,10 +51,12 @@ namespace yuchao.Business.Client
                 rankingInfo.UserId = item.UserId;
                 rankingInfo.Rank = item.Rank;
                 rankingInfo.AvatarUrl = user.AvatarUrl;
+                rankingInfo.OpenId = user.OpenId;
                 rankingInfo.City = user.City;
                 rankingInfo.Country = user.Country;
                 rankingInfo.Province = user.Province;
                 rankingInfo.NickName = user.NickName;
+                rankingInfo.LevelCount = user.LevelCount;
                 rankingInfo.LevelName = level == null  || level.Id == 0 ? "无段位" : level.LevelName;
 
                 result.Add(rankingInfo);

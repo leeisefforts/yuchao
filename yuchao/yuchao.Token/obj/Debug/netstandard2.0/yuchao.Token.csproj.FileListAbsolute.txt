@@ -31,4 +31,3 @@ G:\code\yc_admin\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.Assem
 G:\code\yc_admin\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.dll
 G:\code\yc_admin\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.pdb
 G:\code\yc_admin\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.csprojAssemblyReference.cache
-E:\code\code\yc_admin\yuchao\yuchao.Token\obj\Debug\netstandard2.0\yuchao.Token.csprojAssemblyReference.cache

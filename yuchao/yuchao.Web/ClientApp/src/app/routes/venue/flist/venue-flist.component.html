@@ -78,6 +78,7 @@
               <a (click)="handlePrice(data)">价格设置</a>
               <a (click)="openEdit(data)">编辑</a>
               <a  nz-popconfirm nzPopconfirmTitle="是否要删除此行？" (nzOnConfirm)="handleDel(data.id)">删除</a>
+              <a  (click)="openSetAccount(data)">设置账号</a>
             </ng-container>
           </div>
         </td>

@@ -57,6 +57,17 @@ namespace yuchao.Controllers.Client
             });
         }
 
+        [HttpPost("delsr/{sid}")]
+        public JsonResult DelSr(int sid)
+        {
+            return Json(new ApiResult
+            {
+                Status = 200,
+                Error = "Success",
+                Obj = bll.DelSr(sid)
+            });
+        }
+
         [HttpPost("paysuccess/{sid}")]
         public JsonResult Paysuccess(int sid, [FromBody]JObject values)
         {

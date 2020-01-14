@@ -29,6 +29,8 @@ namespace yuchao.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTimedJob();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +49,7 @@ namespace yuchao.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseTimedJob();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

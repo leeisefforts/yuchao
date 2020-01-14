@@ -14,6 +14,8 @@ namespace yuchao.IService
         RefereeApply Get(int id);
         List<RefereeApply> GetAll();
 
+        List<RefereeApply> GetAllByStatus();
+
 
         /// <summary>
         /// 添加
@@ -38,6 +40,8 @@ namespace yuchao.IService
         /// <param name="ids"></param>
         /// <returns></returns>
         bool Dels(dynamic[] ids);
+
+        bool UpdateStatus(int id, int status);
 
     }
 }

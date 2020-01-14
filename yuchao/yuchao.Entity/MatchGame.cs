@@ -21,5 +21,7 @@ namespace yuchao.Entity
         public int MatchStatus { get; set; }
 
         public int IsTeam { get; set; }
+
+        public int SId { get; set; }
     }
 }

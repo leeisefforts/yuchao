@@ -43,5 +43,17 @@ namespace yuchao.Service
         {
             throw new NotImplementedException();
         }
+        public List<RefereeApply> GetAllByStatus()
+        {
+            return rdb.GetList(p=>p.ApplyResult == 1);
+        }
+
+        public bool UpdateStatus(int id, int status) {
+            RefereeApply re = rdb.GetSingle(p => p.Id == id);
+            re.ApplyResult = status;
+            return rdb.Update(re);
+        }
+
+
     }
 }

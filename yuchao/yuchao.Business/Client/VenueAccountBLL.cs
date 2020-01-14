@@ -98,11 +98,11 @@ namespace yuchao.Business.Client
                     }
 
                 }
-
+                Site site = VService.GetSiteBySId(item.SiteId);
                 ScheduledRecordExtends sr = new ScheduledRecordExtends() { 
                     IsOnline = item.IsOnline,
                     SiteId = item.SiteId,
-                    SiteName = VService.GetSiteBySId(item.SiteId).SiteName,
+                    SiteName = site == null? string.Empty :site.SiteName,
                     StartTime = item.StartTime,
                     Status = item.Status,
                     NickName = item.NickName,
