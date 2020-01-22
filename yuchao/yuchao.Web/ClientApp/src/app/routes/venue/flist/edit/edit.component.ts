@@ -28,7 +28,7 @@ export class flistEditComponent  {
           autosize: { minRows: 1, maxRows: 4 },
         },
       },
-      avePrice: { type: 'number', title: '场馆均价',minimum:0, maximum:10000, pattern : '/^\d+(\.\d{0,2})?$/'},
+      avePrice: { type: 'number', title: '场馆电话'},
       lng: { type: 'string', title: '经度'},
       lat: { type: 'string', title: '纬度'},
       announcement: { type: 'string', title: '公告'},

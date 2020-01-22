@@ -24,6 +24,7 @@ namespace yuchao.Service
         private static SimpleClient<Order> odb = new SimpleClient<Order>(BaseDb.GetClient());
         private static SimpleClient<User> udb = new SimpleClient<User>(BaseDb.GetClient());
         private static SimpleClient<ScheduledRecord> sdb = new SimpleClient<ScheduledRecord>(BaseDb.GetClient());
+        private static SimpleClient<OnceTotal> otdb = new SimpleClient<OnceTotal>(BaseDb.GetClient());
 
         private static string AppId = "wx78eab72a6ea9581d";
         private static string mch_id = "1547699641";
@@ -105,6 +106,7 @@ namespace yuchao.Service
         public static Order CreateOrder(int sid, string openId, decimal total_fee, int venueId)
         {
             Order order = new Order();
+            ScheduledRecord sr = sdb.GetById(sid);
             order.OrderSn = BasicService.InitOrderSn();
             string nonce_str = Guid.NewGuid().ToString("N");
             WeChatPay pay = new WeChatPay()
@@ -162,7 +164,9 @@ namespace yuchao.Service
             order.OrderXml = result;
             order.TimeStamp = DateTimeOffset.Now.ToUnixTimeSeconds();
             order.Sid = sid;
-            odb.Insert(order);
+            int oid = odb.InsertReturnIdentity(order);
+            sr.OId = oid;
+            sdb.Update(sr);
             return order;
         }
 
@@ -174,7 +178,21 @@ namespace yuchao.Service
             user.RealGender = gender;
             user.Tel = phone;
             user.Birthday = birthday;
+            user.Reputation = 100;
 
+            OnceTotal ot = BasicService.GetOt(user.OpenId);
+            if (ot == null)
+            {
+                OnceTotal oo = new OnceTotal()
+                {
+                    OpenId = user.OpenId,
+                    IsCreate = 0,
+                    IsOnce = 1
+                };
+
+                BasicService.InsertOnce(oo);
+            }
+            user.CoinNum += 100;
             return udb.Update(user);
 
         }
@@ -312,6 +330,19 @@ namespace yuchao.Service
         {
             //直接确认，否则打不开    
             return true;
+        }
+
+        public static bool SetOnce(OnceTotal ot) {
+
+            return otdb.Update(ot);
+        }
+
+        public static bool InsertOnce(OnceTotal ot) {
+            return otdb.Insert(ot);
+        }
+
+        public static OnceTotal GetOt(string openId) {
+            return otdb.GetSingle(p=>p.OpenId.Equals(openId));
         }
     }
 }

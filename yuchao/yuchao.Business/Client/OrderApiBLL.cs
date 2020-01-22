@@ -170,7 +170,8 @@ namespace yuchao.Business.Client
                 OpenId = item.OpenId,
                 TimeId = item.TimeId,
                 UseTime = item.UseTime,
-                Week = item.Week
+                Week = item.Week,
+                QrCode = item.QrCode
 
             };
 
@@ -178,6 +179,12 @@ namespace yuchao.Business.Client
             dic.Add("2", se);
 
             return dic;
+        }
+
+        public bool WriteOffOrder(string openId, int sid) {
+            ScheduledRecord sr = SService.GetById(sid);
+            sr.Status = 2;       
+            return SService.Update(sr); ;
         }
 
     }

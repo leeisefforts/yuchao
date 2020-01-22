@@ -17,6 +17,11 @@ namespace yuchao.Service
             return rdb.GetList(p => p.OpenId.Equals(openId));
         }
 
+        public List<ScheduledRecord> GetAllByDate(string date)
+        {
+            return rdb.GetList(p => p.UseTime.Equals(date));
+        }
+
         public bool Insert(ScheduledRecord record)
         {
             return rdb.Insert(record);
@@ -95,6 +100,10 @@ namespace yuchao.Service
                     break;
             }
             return rdb.GetList(p=>p.VenueId == venueId && p.UseTime.Equals(useTime) && (p.TimeId > min || p.TimeId< max ) && p.Status == 1);
+        }
+
+        public List<ScheduledRecord> GetAllByOid(int Oid) {
+            return rdb.GetList(p => p.OId == Oid);
         }
     }
 }

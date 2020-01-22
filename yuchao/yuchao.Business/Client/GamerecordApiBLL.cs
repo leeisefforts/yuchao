@@ -177,6 +177,10 @@ namespace yuchao.Business.Client
                 var user1 = UService.GetByOpenId(gr.OpenId);
                 var user2 = UService.GetByOpenId(gr.OpenId2);
                 Venue venue = LService.GetById(item.VenueId);
+                if (venue == null)
+                {
+                    continue;
+                }
                 gamerecordInfo.Id = item.Id;
                 gamerecordInfo.CreateTime = item.CreateTime;
                 gamerecordInfo.GameTime = gr.GameTime;
@@ -266,8 +270,8 @@ namespace yuchao.Business.Client
                 gamerecordInfo.Point1 = point1;
                 gamerecordInfo.Point2 = point2;
                 list.Add(gamerecordInfo);
-
             }
+
             return list;
         }
 

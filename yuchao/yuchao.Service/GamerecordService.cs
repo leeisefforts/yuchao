@@ -156,7 +156,7 @@ namespace yuchao.Service
 
         public List<TeamGameDetail> GetByOpenId(string openId ) {
 
-            return tgdb.GetList(p=>p.WSOpenId.Equals(openId) || p.HDOpenId.Contains(openId) || p.MDOpenId.Contains(openId) || p.MSOpenId.Equals(openId));
+            return tgdb.GetList(p=>  p.WSOpenId.Equals(openId) || p.HDOpenId.Contains(openId) || p.MDOpenId.Contains(openId) || p.MSOpenId.Equals(openId) );
         }
     }
 }

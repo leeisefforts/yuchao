@@ -15,12 +15,14 @@ namespace yuchao.Business.Client
         private IScheduleRecordService IService = new Service.ScheduleRecordService();
         private IVenue VService = new Service.VenueService();
         private IUser UService = new Service.UserServer();
+        private IOrder OService = new Service.OrderService();
         private IGamerecord GService = new Service.GamerecordService();
 
 
         public Order CreateSc(string openId, JObject values)
         {
             int sid = 0;
+            Order order = null;
             foreach (var item in values["list"])
             {
                 int siteId = Convert.ToInt32(item["areaId"]);
@@ -96,6 +98,8 @@ namespace yuchao.Business.Client
                 sr.UseTime = values["useTime"].ToString();
                 sr.IsOnline = 1;
                 sr.Price = Convert.ToDecimal(values["total_fee"]);
+                sr.OId = -1;
+                
                 switch (values["week"].ToString())
                 {
                     case "周一":
@@ -124,17 +128,34 @@ namespace yuchao.Business.Client
                 }
                 
                 sid = IService.InsertRId(sr);
-            }
-            Order order =BasicService.CreateOrder(sid, openId, Convert.ToDecimal(values["total_fee"]) ,Convert.ToInt32(values["venueId"]));
+                sr.QrCode = "https://nestmiu.com:8081/api/orderApi/writeOff/" + openId + "/" + sid;
+                
 
-           return order;
+                order = BasicService.CreateOrder(sid, openId, Convert.ToDecimal(values["total_fee"]), Convert.ToInt32(values["venueId"]));
+               
+                IService.Update(sr);
+            }
+
+
+            OnceTotal ot = BasicService.GetOt(openId);
+            if (ot != null && ot.IsCreate == 0)
+            {
+                ot.IsCreate = 1;
+                User user = UService.GetByOpenId(openId);
+                user.CoinNum += 100;
+                BasicService.SetOnce(ot);
+
+                UService.Update(user);
+            }
+            return order;
         }
 
         public bool SetSStatus(int sid) {
 
             ScheduledRecord sr = IService.GetById(sid);
-            sr.Status = 1;
             User user = UService.GetByOpenId(sr.OpenId);
+            List<ScheduledRecord> list = IService.GetAllByOid(sr.OId);
+            sr.Status = 1;
             user.CoinNum += Convert.ToInt32( sr.Price) / 100;
             user.LevelExperience += Convert.ToInt32(sr.Price) / 10;
             UService.Update(user);
@@ -145,6 +166,22 @@ namespace yuchao.Business.Client
                 gr.Status = 1;
 
                 GService.Update(gr);
+            }
+            foreach (var item in list)
+            {
+                item.Status = 1;
+                user.CoinNum += Convert.ToInt32(item.Price) / 100;
+                user.LevelExperience += Convert.ToInt32(item.Price) / 10;
+                UService.Update(user);
+                if (sr.IsGame == 1)
+                {
+                    Gamerecord gr = GService.GetBySId(item.Id);
+
+                    gr.Status = 1;
+
+                    GService.Update(gr);
+                }
+                IService.Update(item);
             }
             return IService.Update(sr);
         }

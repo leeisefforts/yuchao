@@ -70,5 +70,16 @@ namespace yuchao.Controllers.Client
                 Obj = BasicService.RefundPay(orderSn)
             });
         }
+
+        [HttpGet("writeOff/{openId}/{sid}")]
+        public JsonResult WriteOffOrder(string openId, int sid)
+        {
+            return Json(new ApiResult()
+            {
+                Status = 200,
+                Error = "Success",
+                Obj  = bll.WriteOffOrder(openId, sid)
+            });
+        }
     }
 }

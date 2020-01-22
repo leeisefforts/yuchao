@@ -9,7 +9,7 @@ using yuchao.Service;
 
 namespace yuchao.Web.Controllers
 {
-    public class YuchaoJob: Job
+    public class YuchaoJob : Job
     {
         private GamerecordService IService = new GamerecordService();
         private VenueService LService = new VenueService();
@@ -19,7 +19,7 @@ namespace yuchao.Web.Controllers
         private OrderService OService = new OrderService();
 
 
-        [Invoke(Begin = "2020-01-15 00:00", Interval = 10000 * 3600 * 24, SkipWhileExecuting = true)]
+        [Invoke(Begin = "2020-01-18 00:00", Interval = 10000 * 3600 * 24, SkipWhileExecuting = true)]
         public void MatchGame()
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -62,7 +62,7 @@ namespace yuchao.Web.Controllers
                             oo.MatchStatus = 2;
                             IService.UpdateMatchGame(item);
 
-                            User user2 = UService.GetByOpenId(oo.OpenId); 
+                            User user2 = UService.GetByOpenId(oo.OpenId);
                             if (user2.LevelId != user.LevelId)
                             {
                                 continue;
@@ -101,7 +101,7 @@ namespace yuchao.Web.Controllers
             }
         }
 
-        [Invoke(Begin = "2020-01-15 00:30", Interval = 10000 * 3600 * 24, SkipWhileExecuting = true)]
+        [Invoke(Begin = "2020-01-18 00:30", Interval = 10000 * 3600 * 24, SkipWhileExecuting = true)]
         public void RefundPay()
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -118,6 +118,30 @@ namespace yuchao.Web.Controllers
                 item.MatchStatus = 3;
                 IService.UpdateMatchGame(item);
             }
+        }
+
+
+        [Invoke(Begin = "2020-01-17 16:00", Interval = 10000 * 60, SkipWhileExecuting = true)]
+        public void TimeValid()
+        {
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            List<ScheduledRecord> list = SrService.GetAllByDate(date);
+            foreach (var sr in list)
+            {
+                sr.Status = 4;
+                SrService.Update(sr);
+                Gamerecord gr = IService.GetBySId(sr.Id);
+                if (gr != null)
+                {
+                    User user = UService.GetByOpenId(sr.OpenId);
+                    user.Reputation -= 50;
+                    UService.Update(user);
+                    gr.Status = 4;
+                    IService.Update(gr);
+                }
+            }
+
         }
 
 

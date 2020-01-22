@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using yuchao.Service;
 
 namespace yuchao.Controllers
 {
@@ -16,6 +17,7 @@ namespace yuchao.Controllers
         [HttpGet]
         public JsonResult Get()
         {
+            string cc = BasicService.InitQrCode("https://baidu.com");
             return Json("Success Job");
         }
     }

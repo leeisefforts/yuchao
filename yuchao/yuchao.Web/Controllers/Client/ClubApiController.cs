@@ -10,6 +10,7 @@ using yuchao.Business.Admin;
 using yuchao.Business.Client;
 using yuchao.Entity;
 using yuchao.Model;
+using yuchao.Service;
 
 namespace yuchao.Controllers.Client
 { 
@@ -40,6 +41,17 @@ namespace yuchao.Controllers.Client
                 CreateTime = DateTime.Now,
                 OpenId = openId
             };
+
+            OnceTotal ot = BasicService.GetOt(openId);
+            if (ot != null && ot.IsClub == 0) { 
+
+                UserServer userServer = new UserServer();
+                ot.IsClub = 1;
+                User user = userServer.GetByOpenId(openId);
+                user.CoinNum += 100;
+                BasicService.SetOnce(ot);
+                userServer.Update(user);
+            }
             return Json(new ApiResult()
             {
                 Status = 200,

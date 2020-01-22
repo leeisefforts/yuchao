@@ -14,6 +14,7 @@ namespace yuchao.IService
         bool Insert(Order order);
 
         Order GetById(int id);
+        Order GetBySId(int id);
 
         bool DeleteById(int id);
 

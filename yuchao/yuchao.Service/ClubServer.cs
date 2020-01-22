@@ -54,7 +54,7 @@ namespace yuchao.Service
         public List<Club> GetList(string keyword)
         {
             List<Club> list = rdb.GetList(p => p.Status == 1);
-            if (string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrEmpty(keyword))
             {
                 list = list.FindAll(p => p.ClubName.Contains(keyword));
             }

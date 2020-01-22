@@ -39,5 +39,9 @@ namespace yuchao.Entity
 
         public decimal Price { get; set; }
 
+        public string QrCode { get; set; }
+
+        public int OId { get; set; }
+
     }
 }
